@@ -1,0 +1,160 @@
+[gd_scene load_steps=10 format=3 uid="uid://3cal17cwogsp"]
+
+[ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="1_7gmnv"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_xreyo"]
+[ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="3_78mp4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6m5p5"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(1524.28, 427.008, 456.499, 205.424)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p2upj"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(621.9, 427.1, 436.7, 189.2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vbhde"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(162.928, 425.545, 437.576, 196.643)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ynvsv"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(1076.57, 426.562, 439.347, 194.872)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_doj8l"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(2045.56, 1562.79, 53.1469, 102.751)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sucoi"]
+texture = ExtResource("1_7gmnv")
+region_rect = Rect2(2024.3, 1649.6, 19.4871, 63.7761)
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -448.5
+offset_top = -480.5
+offset_right = 448.5
+offset_bottom = 480.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_6m5p5")
+
+[node name="Menu" type="Label" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -180.5
+offset_top = 40.0
+offset_right = 180.5
+offset_bottom = 197.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xreyo")
+theme_override_font_sizes/font_size = 150
+text = "Menu"
+
+[node name="Resume" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -280.5
+offset_right = 119.0
+offset_bottom = -142.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xreyo")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_p2upj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vbhde")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ynvsv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_doj8l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sucoi")
+text = "RESUME"
+
+[node name="Quit" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = 119.5
+offset_right = 119.0
+offset_bottom = 257.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xreyo")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_p2upj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vbhde")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ynvsv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_doj8l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sucoi")
+text = "QUIT"
+
+[node name="Stats" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -163.0
+offset_top = -80.5
+offset_right = 119.0
+offset_bottom = 57.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_xreyo")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_p2upj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_vbhde")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ynvsv")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_doj8l")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sucoi")
+text = "STATS"
+
+[node name="PressButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_78mp4")

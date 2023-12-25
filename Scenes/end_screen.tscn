@@ -1,0 +1,129 @@
+[gd_scene load_steps=11 format=3 uid="uid://bobx5gjek12kx"]
+
+[ext_resource type="Texture2D" uid="uid://fc7ntig5dsj4" path="res://Assets/Map/background/GameOverBG.jpg" id="1_apese"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_yj6ba"]
+[ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="3_sywxy"]
+[ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="4_fvrcs"]
+
+[sub_resource type="GDScript" id="GDScript_12wdg"]
+script/source = "extends Node2D
+
+
+func _process(delta):
+	Input.set_custom_mouse_cursor(load(\"res://Assets/Other/Gui/1 cursor.png\"))
+
+
+func _on_quit_pressed():
+	$PressButtonSound.play()
+	await $PressButtonSound.finished
+	get_tree().change_scene_to_file(\"res://Scenes/menu.tscn\")
+
+
+func _on_exit_shame_pressed():
+	$PressButtonSound.play()
+	await $PressButtonSound.finished
+	get_tree().quit()
+"
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_jmi8k"]
+texture = ExtResource("3_sywxy")
+region_rect = Rect2(621.9, 427.1, 436.7, 189.2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_td87m"]
+texture = ExtResource("3_sywxy")
+region_rect = Rect2(162.928, 425.545, 437.576, 196.643)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lnq54"]
+texture = ExtResource("3_sywxy")
+region_rect = Rect2(1076.57, 426.562, 439.347, 194.872)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_76alg"]
+texture = ExtResource("3_sywxy")
+region_rect = Rect2(2045.56, 1562.79, 53.1469, 102.751)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tenb2"]
+texture = ExtResource("3_sywxy")
+region_rect = Rect2(2024.3, 1649.6, 19.4871, 63.7761)
+
+[node name="EndScreen" type="Node2D"]
+script = SubResource("GDScript_12wdg")
+
+[node name="GameOverBg" type="Sprite2D" parent="."]
+position = Vector2(961, 546)
+scale = Vector2(1.53333, 1.53333)
+texture = ExtResource("1_apese")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 323.0
+offset_top = -6.0
+offset_right = 2043.0
+offset_bottom = 403.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_yj6ba")
+theme_override_font_sizes/font_size = 200
+text = "Ты проиграл..."
+
+[node name="Exit_shame" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1489.0
+offset_top = 844.0
+offset_right = 1771.0
+offset_bottom = 982.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_yj6ba")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_jmi8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_td87m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lnq54")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_76alg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_tenb2")
+text = "выйти из игры
+(с позором)"
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 34.0
+offset_top = 844.0
+offset_right = 316.0
+offset_bottom = 982.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_yj6ba")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_jmi8k")
+theme_override_styles/hover = SubResource("StyleBoxTexture_td87m")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_lnq54")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_76alg")
+theme_override_styles/focus = SubResource("StyleBoxTexture_tenb2")
+text = "выйти в меню"
+
+[node name="PressButtonSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_fvrcs")
+
+[connection signal="pressed" from="Exit_shame" to="." method="_on_exit_shame_pressed"]
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

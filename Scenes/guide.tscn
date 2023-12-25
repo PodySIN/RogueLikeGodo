@@ -1,0 +1,81 @@
+[gd_scene load_steps=11 format=3 uid="uid://yi5hps6545me"]
+
+[ext_resource type="PackedScene" uid="uid://dc2o1q08tqv8d" path="res://Scenes/bg.tscn" id="1_e43oi"]
+[ext_resource type="Script" path="res://Scripts/guide.gd" id="1_iw6ku"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_8ex6x"]
+[ext_resource type="AudioStream" uid="uid://nv2k23m1lp0g" path="res://Assets/Other/Music/Menu_Music.wav" id="3_yewhq"]
+[ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="5_54o61"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4r46q"]
+texture = ExtResource("5_54o61")
+region_rect = Rect2(621.9, 427.1, 436.7, 189.2)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r2u47"]
+texture = ExtResource("5_54o61")
+region_rect = Rect2(162.928, 425.545, 437.576, 196.643)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_62cvq"]
+texture = ExtResource("5_54o61")
+region_rect = Rect2(1076.57, 426.562, 439.347, 194.872)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ur178"]
+texture = ExtResource("5_54o61")
+region_rect = Rect2(2045.56, 1562.79, 53.1469, 102.751)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_koq06"]
+texture = ExtResource("5_54o61")
+region_rect = Rect2(2024.3, 1649.6, 19.4871, 63.7761)
+
+[node name="Guide" type="Node2D"]
+script = ExtResource("1_iw6ku")
+
+[node name="BG" parent="." instance=ExtResource("1_e43oi")]
+
+[node name="Label" type="Label" parent="."]
+offset_left = 114.0
+offset_top = 54.0
+offset_right = 2025.0
+offset_bottom = 1111.0
+theme_override_fonts/font = ExtResource("2_8ex6x")
+theme_override_font_sizes/font_size = 175
+text = "1) Убивать монстров
+2) Выживать
+3) Собирать экспу
+3) Прокачиваться
+5) ПОБЕДИТЬ!"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_yewhq")
+volume_db = -20.0
+autoplay = true
+
+[node name="Quit" type="Button" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1422.0
+offset_top = 820.0
+offset_right = 1704.0
+offset_bottom = 958.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.2, 1.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_8ex6x")
+theme_override_font_sizes/font_size = 60
+theme_override_styles/normal = SubResource("StyleBoxTexture_4r46q")
+theme_override_styles/hover = SubResource("StyleBoxTexture_r2u47")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_62cvq")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ur178")
+theme_override_styles/focus = SubResource("StyleBoxTexture_koq06")
+text = "QUIT"
+
+[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

@@ -1,0 +1,14 @@
+AudioStreamPlayer
+Label
+Timer
+Button
+Panel
+Node
+VBoxContainer
+ParallaxLayer
+ParallaxBackground
+TextureProgressBar
+CanvasLayer
+CollisionShape2D
+Area2D
+Node2D
