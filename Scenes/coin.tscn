@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://2iun7dnnjvke"]
+
+[ext_resource type="Texture2D" uid="uid://bfxe3onitklm5" path="res://Assets/Other/Gui/coin.png" id="1_lw1gy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8lrj6"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(0, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0om5j"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(20, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lt6tn"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(40, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvfnp"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(60, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dtu7"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(80, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtohy"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(100, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s72dc"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(120, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s45yg"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(140, 0, 20, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8uaq"]
+atlas = ExtResource("1_lw1gy")
+region = Rect2(160, 0, 20, 20)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0lgwi"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8lrj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0om5j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lt6tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jvfnp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dtu7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtohy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s72dc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s45yg")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_f8uaq")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 7.0
+}]
+
+[node name="coin" type="CharacterBody2D"]
+scale = Vector2(2, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -10)
+sprite_frames = SubResource("SpriteFrames_0lgwi")
+animation = &"idle"
+autoplay = "idle"
+frame_progress = 0.204647

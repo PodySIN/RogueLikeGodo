@@ -1,45 +1,27 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1703528365
+::res://::1703690005
 icon.svg::CompressedTexture2D::3628345125574775535::1702834217::1702834232::1::::<><>::
 ::res://Assets/::1703442852
 ::res://Assets/Character/::1703268595
-::res://Assets/Character/3 Dude_Monster/::1703268596
-Double_Jump_Dust_5.png::CompressedTexture2D::191208636673535919::1564081138::1703268596::1::::<><>::
-Dude_Monster.png::CompressedTexture2D::4929316370896899423::1564255276::1703268596::1::::<><>::
+::res://Assets/Character/3 Dude_Monster/::1703632932
 Dude_Monster_Attack1_4.png::CompressedTexture2D::9201006907316993485::1564255640::1703268596::1::::<><>::
 Dude_Monster_Attack2_6.png::CompressedTexture2D::5143416919666857744::1564255602::1703268596::1::::<><>::
-Dude_Monster_Climb_4.png::CompressedTexture2D::4581704746730838933::1564255670::1703268596::1::::<><>::
 Dude_Monster_Death_8.png::CompressedTexture2D::1548012051947467033::1564255352::1703268596::1::::<><>::
 Dude_Monster_Hurt_4.png::CompressedTexture2D::5543951232229443298::1564255734::1703268596::1::::<><>::
 Dude_Monster_Idle_4.png::CompressedTexture2D::1019941758899087928::1564255712::1703268596::1::::<><>::
-Dude_Monster_Jump_8.png::CompressedTexture2D::6227365146076653283::1564255326::1703268596::1::::<><>::
-Dude_Monster_Push_6.png::CompressedTexture2D::8879063106799741106::1564255536::1703268596::1::::<><>::
 Dude_Monster_Run_6.png::CompressedTexture2D::719910359442821947::1564255502::1703268596::1::::<><>::
-Dude_Monster_Throw_4.png::CompressedTexture2D::8668741446129607192::1564255760::1703268596::1::::<><>::
 Dude_Monster_Walk+Attack_6.png::CompressedTexture2D::5953280379828391268::1564255574::1703268596::1::::<><>::
 Dude_Monster_Walk_6.png::CompressedTexture2D::8354390184968310529::1564255478::1703268596::1::::<><>::
-Rock1.png::CompressedTexture2D::4708198531661262529::1564081448::1703268596::1::::<><>::
-Rock2.png::CompressedTexture2D::425873741078818821::1564081482::1703268596::1::::<><>::
-Walk_Run_Push_Dust_6.png::CompressedTexture2D::7668429354582888112::1564081004::1703268596::1::::<><>::
 ::res://Assets/Enemy/::1703415381
-::res://Assets/Enemy/2 Owlet_Monster/::1703415382
-Double_Jump_Dust_5.png::CompressedTexture2D::9219674411236654778::1564081138::1703415382::1::::<><>::
-Owlet_Monster.png::CompressedTexture2D::5021166543921802643::1564220864::1703415382::1::::<><>::
+::res://Assets/Enemy/2 Owlet_Monster/::1703632966
 Owlet_Monster_Attack1_4.png::CompressedTexture2D::1044087438056993761::1564221136::1703415382::1::::<><>::
 Owlet_Monster_Attack2_6.png::CompressedTexture2D::2064011746185070053::1564221026::1703415382::1::::<><>::
-Owlet_Monster_Climb_4.png::CompressedTexture2D::1963547270307112::1564221162::1703415382::1::::<><>::
 Owlet_Monster_Death_8.png::CompressedTexture2D::7863369428968485236::1564221104::1703415382::1::::<><>::
 Owlet_Monster_Hurt_4.png::CompressedTexture2D::8439433403725030891::1564221210::1703415382::1::::<><>::
 Owlet_Monster_Idle_4.png::CompressedTexture2D::5779018438993968009::1564221184::1703415382::1::::<><>::
-Owlet_Monster_Jump_8.png::CompressedTexture2D::5778532693068225506::1564221074::1703415382::1::::<><>::
-Owlet_Monster_Push_6.png::CompressedTexture2D::3506285667833384368::1564220996::1703415382::1::::<><>::
 Owlet_Monster_Run_6.png::CompressedTexture2D::407850496975370005::1564220932::1703415382::1::::<><>::
-Owlet_Monster_Throw_4.png::CompressedTexture2D::1519709623773849080::1564221246::1703415382::1::::<><>::
 Owlet_Monster_Walk+Attack_6.png::CompressedTexture2D::657300578127004871::1564220970::1703415382::1::::<><>::
 Owlet_Monster_Walk_6.png::CompressedTexture2D::4479798993418799338::1564220908::1703415382::1::::<><>::
-Rock1.png::CompressedTexture2D::6803688600878378945::1564081448::1703415382::1::::<><>::
-Rock2.png::CompressedTexture2D::8321001531241666400::1564081482::1703415382::1::::<><>::
-Walk_Run_Push_Dust_6.png::CompressedTexture2D::4359849625383224761::1564081004::1703415382::1::::<><>::
 ::res://Assets/Map/::1703437031
 Cliff-Water.png::CompressedTexture2D::6116081559815851757::1615083970::1703437031::1::::<><>::
 Cliff.png::CompressedTexture2D::3555494746744764357::1615083932::1703437031::1::::<><>::
@@ -52,37 +34,68 @@ background_layer_1.png::CompressedTexture2D::465145792801141505::1575030164::170
 background_layer_2.png::CompressedTexture2D::7125145411364456217::1575030206::1703436999::1::::<><>::
 background_layer_3.png::CompressedTexture2D::7363248568359460740::1575030278::1703436999::1::::<><>::
 GameOverBG.jpg::CompressedTexture2D::357040143402501711::1703516736::1703516764::1::::<><>::
-::res://Assets/Other/::1703443929
+::res://Assets/Other/::1703591835
 GameLogo.png::CompressedTexture2D::864103160757467947::1703002743::1703002871::1::::<><>::
 Kurland.otf::FontFile::1848960926992790827::1659121872::1703443826::1::::<><>::
-::res://Assets/Other/Gui/::1703518590
+::res://Assets/Other/Gui/::1703696772
 1 cursor.png::CompressedTexture2D::5238213674238764345::1685652330::1703517682::1::::<><>::
 Button.png::CompressedTexture2D::1784315265701629135::1428146846::1703442856::1::::<><>::
+coin.png::CompressedTexture2D::2785139216225680162::1703696711::1703696774::1::::<><>::
 cursor2.png::CompressedTexture2D::156192317065736313::1703518121::1703518147::1::::<><>::
+Frame_Kit_Atlas.png::CompressedTexture2D::6466225437427323315::1678869564::1703689502::1::::<><>::
+::res://Assets/Other/Guns/::1703620557
+pistol2.png::CompressedTexture2D::1970904013341369322::1566982982::1703591838::1::::<><>::
+::res://Assets/Other/Guns/4/::1703619062
+1_0.png::CompressedTexture2D::3214140487254886717::1588802714::1703619062::1::::<><>::
+1_1.png::CompressedTexture2D::3731133623098389089::1588802714::1703619062::1::::<><>::
+1_2.png::CompressedTexture2D::6523243455092480230::1588802714::1703619062::1::::<><>::
+1_3.png::CompressedTexture2D::8152710026044897725::1588802714::1703619062::1::::<><>::
+1_4.png::CompressedTexture2D::7621021912283553133::1588802715::1703619062::1::::<><>::
+1_5.png::CompressedTexture2D::5345713922100855497::1588802715::1703619062::1::::<><>::
+1_6.png::CompressedTexture2D::6769591300031328789::1588802715::1703619062::1::::<><>::
+1_7.png::CompressedTexture2D::3000759103150590634::1588802715::1703619062::1::::<><>::
+1_8.png::CompressedTexture2D::5278008713203402294::1588802715::1703619062::1::::<><>::
+1_9.png::CompressedTexture2D::5173108165474625202::1588802715::1703619062::1::::<><>::
+1_10.png::CompressedTexture2D::3827899419362205373::1588802715::1703619062::1::::<><>::
+1_11.png::CompressedTexture2D::6811143492917665672::1588802715::1703619062::1::::<><>::
+1_12.png::CompressedTexture2D::8926103146188341500::1588802715::1703619062::1::::<><>::
+1_13.png::CompressedTexture2D::7269269465042081676::1588802715::1703619062::1::::<><>::
+1_14.png::CompressedTexture2D::5815735596757240851::1588802715::1703619062::1::::<><>::
 ::res://Assets/Other/HpExpBars/::1703431942
 12 Cell Green Blank.png::CompressedTexture2D::3862449861830531784::1555531042::1703431941::1::::<><>::
 12 Cell Green.png::CompressedTexture2D::4449503541264728867::1555528028::1703431941::1::::<><>::
 HP Orb empty.png::CompressedTexture2D::8469406531942196730::1556260058::1703431942::1::::<><>::
 HP Orb.png::CompressedTexture2D::5143397098872219497::1556303026::1703431942::1::::<><>::
-::res://Assets/Other/Music/::1703519218
-background music.mp3::AudioStreamMP3::2092972026658852006::1703269555::1703269625::1::::<><>::
+::res://Assets/Other/Music/::1703689091
 Game_Music.wav::AudioStreamWAV::4655463031353293255::1703459970::1703460035::1::::<><>::
+GO!.mp3::AudioStreamMP3::3929531754458469984::1703631899::1703631941::1::::<><>::
 Menu_Music.wav::AudioStreamWAV::957465578838817676::1703459562::1703459793::1::::<><>::
+numbers.mp3::AudioStreamMP3::844836207154709201::1703631876::1703631941::1::::<><>::
+Pistol_fire.mp3::AudioStreamMP3::8651305669948066341::1703615428::1703615455::1::::<><>::
 prees_button_sound.mp3::AudioStreamMP3::812778867378792702::1703514165::1703514198::1::::<><>::
-Steps.mp3::AudioStreamMP3::9215024592607813775::1703445631::1703446076::1::::<><>::
-::res://Scenes/::1703519351
+Steps.mp3::AudioStreamMP3::9215024592607813775::1703445631::1703689091::1::::<><>::
+Svidvard_Laugh.mp3::AudioStreamMP3::4590153245830109805::1703445702::1703610465::1::::<><>::
+::res://Scenes/::1703696612
 bg.tscn::PackedScene::7356275286774366025::1703461765::0::1::::<><>::res://Scripts/bg.gd<>uid://gvk5bbhe85xt::::res://Assets/Map/background/background_layer_1.png<>uid://c8rqdse2i6euj::::res://Assets/Map/background/background_layer_2.png<>uid://dc52vmej25djg::::res://Assets/Map/background/background_layer_3.png
-end_screen.tscn::PackedScene::3372579266269888903::1703519351::0::1::::<><>::uid://fc7ntig5dsj4::::res://Assets/Map/background/GameOverBG.jpg<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
-enemy_1.tscn::PackedScene::3586541011389321331::1703519350::0::1::::<><>::uid://f2tidigiacy4::::res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png<>res://Scripts/enemy_1.gd<>uid://o4075rbs07er::::res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Attack1_4.png
+bullet.tscn::PackedScene::791597783397957082::1703696612::0::1::::<><>::res://Scripts/bullet.gd<>uid://bl17ooochhnt2::::res://Assets/Other/Guns/4/1_0.png<>uid://btfnhw33gqivx::::res://Assets/Other/Guns/4/1_1.png<>uid://cy654p3ymd2xu::::res://Assets/Other/Guns/4/1_2.png<>uid://dofh7cd2aqsvl::::res://Assets/Other/Guns/4/1_3.png<>uid://dgtxd81i056hd::::res://Assets/Other/Guns/4/1_4.png<>uid://cifreles0dlbt::::res://Assets/Other/Guns/4/1_5.png<>uid://c3pigdxouj4ij::::res://Assets/Other/Guns/4/1_6.png<>uid://bi0ucf87hak7s::::res://Assets/Other/Guns/4/1_7.png<>uid://chgybdowhb0tu::::res://Assets/Other/Guns/4/1_8.png<>uid://cfx5lob0xpsmk::::res://Assets/Other/Guns/4/1_9.png<>uid://busi7dp2osct6::::res://Assets/Other/Guns/4/1_10.png<>uid://c4bmskfyrhk0g::::res://Assets/Other/Guns/4/1_11.png<>uid://d0f4u5ucyb0vg::::res://Assets/Other/Guns/4/1_12.png<>uid://dbtj2n1oq88yq::::res://Assets/Other/Guns/4/1_13.png<>uid://co4gky256pcml::::res://Assets/Other/Guns/4/1_14.png
+end_screen.tscn::PackedScene::3372579266269888903::1703610494::0::1::::<><>::uid://fc7ntig5dsj4::::res://Assets/Map/background/GameOverBG.jpg<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3<>uid://b6nrfhipd6yph::::res://Assets/Other/Music/Svidvard_Laugh.mp3
+enemy_1.tscn::PackedScene::3586541011389321331::1703696612::0::1::::<><>::uid://f2tidigiacy4::::res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png<>res://Scripts/enemy_1.gd<>uid://o4075rbs07er::::res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Attack1_4.png<>uid://dkbcss06wq741::::res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Death_8.png
 guide.tscn::PackedScene::1702882096792078396::1703508314::0::1::::<><>::uid://dc2o1q08tqv8d::::res://Scenes/bg.tscn<>res://Scripts/guide.gd<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://nv2k23m1lp0g::::res://Assets/Other/Music/Menu_Music.wav<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png
-Hero.tscn::PackedScene::4556841033185178656::1703519350::0::1::::<><>::res://Scripts/CharacterBody2D.gd<>uid://wb4sdmvkyv3n::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png<>uid://oscj6jc8u2eu::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Idle_4.png<>uid://kiy23d7tqtpb::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Run_6.png<>uid://d4j3dxww3c2xf::::res://Assets/Other/Music/Steps.mp3
-menu.tscn::PackedScene::1813844558757638732::1703519350::0::1::::<><>::res://Scripts/Menu.gd<>uid://dc2o1q08tqv8d::::res://Scenes/bg.tscn<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://nv2k23m1lp0g::::res://Assets/Other/Music/Menu_Music.wav<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
-pause_menu.tscn::PackedScene::1969437436267653275::1703519350::0::1::::<><>::uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
-world.tscn::PackedScene::1073439588951805401::1703519350::0::1::::<><>::res://Scripts/Manager.gd<>uid://ctew7784bgw8t::::res://Assets/Map/Cliff-Water.png<>uid://bqwkqj0gptshh::::res://Assets/Map/Cliff.png<>uid://px7bs3j5xeia::::res://Assets/Map/Grass.png<>uid://6wqmdxdr3cm6::::res://Assets/Map/Shore.png<>uid://cp2fa550w3db0::::res://Assets/Map/TexturedGrass.png<>uid://b56mrg8633ijo::::res://Scenes/Hero.tscn<>uid://b7le2ceg7r8wp::::res://Assets/Other/Music/Game_Music.wav<>uid://dswv5g0iabqow::::res://Assets/Other/HpExpBars/HP Orb empty.png<>uid://cfjq87thhhw7j::::res://Assets/Other/HpExpBars/HP Orb.png<>uid://bva88qtbggrto::::res://Assets/Other/HpExpBars/12 Cell Green Blank.png<>uid://b4nmw5jgh24sd::::res://Assets/Other/HpExpBars/12 Cell Green.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://3cal17cwogsp::::res://Scenes/pause_menu.tscn<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png
-::res://Scripts/::1703519350
+Hero.tscn::PackedScene::4556841033185178656::1703696612::0::1::::<><>::res://Scripts/Hero.gd<>uid://wb4sdmvkyv3n::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png<>uid://ljpq82wonmvy::::res://Scenes/bullet.tscn<>uid://oscj6jc8u2eu::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Idle_4.png<>uid://kiy23d7tqtpb::::res://Assets/Character/3 Dude_Monster/Dude_Monster_Run_6.png<>uid://d4j3dxww3c2xf::::res://Assets/Other/Music/Steps.mp3<>uid://c0a2gafq8i4u0::::res://Scenes/pistol.tscn<>uid://dvi00f6f3nyb2::::res://Assets/Other/Music/Pistol_fire.mp3
+menu.tscn::PackedScene::1813844558757638732::1703529702::0::1::::<><>::res://Scripts/Menu.gd<>uid://dc2o1q08tqv8d::::res://Scenes/bg.tscn<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://nv2k23m1lp0g::::res://Assets/Other/Music/Menu_Music.wav<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
+pause_menu.tscn::PackedScene::1969437436267653275::1703696612::0::1::::<><>::uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
+pistol.tscn::PackedScene::6529212540400572229::1703696612::0::1::::<><>::res://Scripts/pistol.gd<>uid://3cyrblc32oik::::res://Assets/Other/Guns/pistol2.png
+shop_level_menu.tscn::PackedScene::4942444410366270124::1703696612::0::1::::<><>::res://Scripts/Shop_Level_Menu.gd<>uid://cyej12gqhb8m6::::res://Assets/Other/Gui/Frame_Kit_Atlas.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://ltyl4w34d655::::res://Assets/Other/Music/prees_button_sound.mp3
+world.tscn::PackedScene::1073439588951805401::1703696611::0::1::::<><>::res://Scripts/Manager.gd<>uid://ctew7784bgw8t::::res://Assets/Map/Cliff-Water.png<>uid://bqwkqj0gptshh::::res://Assets/Map/Cliff.png<>uid://px7bs3j5xeia::::res://Assets/Map/Grass.png<>uid://6wqmdxdr3cm6::::res://Assets/Map/Shore.png<>uid://cp2fa550w3db0::::res://Assets/Map/TexturedGrass.png<>uid://b56mrg8633ijo::::res://Scenes/Hero.tscn<>uid://b7le2ceg7r8wp::::res://Assets/Other/Music/Game_Music.wav<>uid://mbilghcsnguj::::res://Assets/Other/Music/numbers.mp3<>uid://bv8q2w35x0lb1::::res://Assets/Other/Music/GO!.mp3<>uid://dswv5g0iabqow::::res://Assets/Other/HpExpBars/HP Orb empty.png<>uid://cfjq87thhhw7j::::res://Assets/Other/HpExpBars/HP Orb.png<>uid://bva88qtbggrto::::res://Assets/Other/HpExpBars/12 Cell Green Blank.png<>uid://b4nmw5jgh24sd::::res://Assets/Other/HpExpBars/12 Cell Green.png<>uid://1lwd7qjkjc2f::::res://Assets/Other/Kurland.otf<>uid://3cal17cwogsp::::res://Scenes/pause_menu.tscn<>uid://0oln872qjaix::::res://Assets/Other/Gui/Button.png<>uid://ccoflp70w3bce::::res://Scenes/shop_level_menu.tscn
+::res://Scripts/::1703696612
 bg.gd::GDScript::-1::1703437694::0::1::::<>ParallaxBackground<>::
-CharacterBody2D.gd::GDScript::-1::1703517255::0::1::::<>CharacterBody2D<>::
-enemy_1.gd::GDScript::-1::1703519350::0::1::::<>CharacterBody2D<>::
-guide.gd::GDScript::-1::1703508293::0::1::::<>Node2D<>::
-Manager.gd::GDScript::-1::1703519312::0::1::::<>Node<>::
+bullet.gd::GDScript::-1::1703696611::0::1::::<>Area2D<>::
+enemy_1.gd::GDScript::-1::1703696191::0::1::::<>CharacterBody2D<>::
+global.gd::GDScript::-1::1703696477::0::1::::<>Node<>::
+guide.gd::GDScript::-1::1703633233::0::1::::<>Node2D<>::
+Hero.gd::GDScript::-1::1703696612::0::1::::<>CharacterBody2D<>::
+Manager.gd::GDScript::-1::1703695261::0::1::::<>Node<>::
 Menu.gd::GDScript::-1::1703517858::0::1::::<>Node2D<>::
+pistol.gd::GDScript::-1::1703627550::0::1::::<>CharacterBody2D<>::
+Shop_Level_Menu.gd::GDScript::-1::1703690552::0::1::::<>Control<>::
+signals.gd::GDScript::-1::1703696191::0::1::::<>Node<>::

@@ -1,10 +1,13 @@
-[gd_scene load_steps=26 format=3 uid="uid://b56mrg8633ijo"]
+[gd_scene load_steps=30 format=3 uid="uid://b56mrg8633ijo"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterBody2D.gd" id="1_afdn4"]
+[ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_nhwvj"]
 [ext_resource type="Texture2D" uid="uid://wb4sdmvkyv3n" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png" id="2_depky"]
+[ext_resource type="PackedScene" uid="uid://ljpq82wonmvy" path="res://Scenes/bullet.tscn" id="2_goyec"]
 [ext_resource type="Texture2D" uid="uid://oscj6jc8u2eu" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Idle_4.png" id="2_o5m7i"]
 [ext_resource type="Texture2D" uid="uid://kiy23d7tqtpb" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Run_6.png" id="3_sqi35"]
 [ext_resource type="AudioStream" uid="uid://d4j3dxww3c2xf" path="res://Assets/Other/Music/Steps.mp3" id="5_d2v2l"]
+[ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="6_nb3on"]
+[ext_resource type="AudioStream" uid="uid://dvi00f6f3nyb2" path="res://Assets/Other/Music/Pistol_fire.mp3" id="8_n31pp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cdkg"]
 atlas = ExtResource("2_depky")
@@ -151,10 +154,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qwn10"]
-height = 26.0
+radius = 7.0
+height = 14.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jn807"]
 
 [node name="Hero" type="CharacterBody2D"]
-script = ExtResource("1_afdn4")
+script = ExtResource("1_nhwvj")
+bullet_scene = ExtResource("2_goyec")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -164,7 +171,7 @@ autoplay = "idle"
 frame_progress = 0.713386
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -13)
+position = Vector2(-2, -8)
 shape = SubResource("CapsuleShape2D_qwn10")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -177,9 +184,34 @@ wait_time = 2.3
 wait_time = 2.0
 autostart = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="hitbox" type="Area2D" parent="."]
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_jn807")
+
+[node name="Pistol" parent="." instance=ExtResource("6_nb3on")]
+position = Vector2(12, -25)
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(15, -25)
+
+[node name="TimersWeapon" type="Node2D" parent="."]
+
+[node name="PistolTimer" type="Timer" parent="TimersWeapon"]
+autostart = true
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Pistol" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("8_n31pp")
+volume_db = -15.0
+
+[node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_d2v2l")
 
 [connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="HpRegen" to="." method="_on_hp_regen_timeout"]
+[connection signal="timeout" from="TimersWeapon/PistolTimer" to="." method="_on_pistol_timer_timeout"]

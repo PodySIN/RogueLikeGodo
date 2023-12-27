@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://brdl2ojabd16f"]
+[gd_scene load_steps=27 format=3 uid="uid://brdl2ojabd16f"]
 
 [ext_resource type="Texture2D" uid="uid://f2tidigiacy4" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png" id="1_cyd7t"]
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_x54oi"]
 [ext_resource type="Texture2D" uid="uid://o4075rbs07er" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Attack1_4.png" id="2_fl1lh"]
+[ext_resource type="Texture2D" uid="uid://dkbcss06wq741" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Death_8.png" id="3_wolx3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxgej"]
 atlas = ExtResource("2_fl1lh")
@@ -19,6 +20,38 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7dsv"]
 atlas = ExtResource("2_fl1lh")
 region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sqh2"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pao2x"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_46e4x"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6perh"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1lipk"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffkwn"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4oqxh"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e7j57"]
+atlas = ExtResource("3_wolx3")
+region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_swk7v"]
 atlas = ExtResource("1_cyd7t")
@@ -64,6 +97,35 @@ animations = [{
 "speed": 7.0
 }, {
 "frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_8sqh2")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_pao2x")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_46e4x")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_6perh")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_1lipk")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_ffkwn")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_4oqxh")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_e7j57")
+}],
+"loop": true,
+"name": &"death",
+"speed": 12.0
+}, {
+"frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_swk7v")
 }, {
@@ -87,12 +149,16 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8frxi"]
-height = 24.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjw51"]
+size = Vector2(14, 9.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3tfp"]
 radius = 16.0
 height = 36.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvpy3"]
+radius = 14.0
+height = 32.0
 
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_x54oi")
@@ -101,12 +167,12 @@ damage = 20
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_wttd3")
-animation = &"attack"
-frame_progress = 0.626767
+animation = &"run"
+frame_progress = 0.920581
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -12)
-shape = SubResource("CapsuleShape2D_8frxi")
+position = Vector2(0, -5.25)
+shape = SubResource("RectangleShape2D_cjw51")
 
 [node name="hit_area" type="Area2D" parent="."]
 
@@ -117,6 +183,18 @@ shape = SubResource("CapsuleShape2D_f3tfp")
 [node name="attack_cd" type="Timer" parent="."]
 wait_time = 0.6
 
+[node name="Enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_cvpy3")
+
+[node name="death_timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]
 [connection signal="timeout" from="attack_cd" to="." method="_on_attack_cd_timeout"]
+[connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
+[connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

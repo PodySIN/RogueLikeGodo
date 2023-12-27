@@ -1,14 +1,14 @@
 extends Node
 
-var game_paused: bool = false
 @onready var pause_menu = $"../UI/PauseMenu"
 
 
 func _process(delta):
 	if Input.is_action_just_pressed('ui_cancel'):
-		game_paused = !game_paused
+		Global.game_paused = !Global.game_paused
 		pause_menu.show()
-	if game_paused:
+	
+	if Global.game_paused:
 		get_tree().paused = true
 	else:
 		get_tree().paused = false
@@ -18,7 +18,7 @@ func _process(delta):
 func _on_resume_pressed():
 	$"../UI/PauseMenu/PressButtonSound".play()
 	await $"../UI/PauseMenu/PressButtonSound".finished
-	game_paused = !game_paused
+	Global.game_paused = !Global.game_paused
 
 
 func _on_quit_pressed():
@@ -29,5 +29,5 @@ func _on_quit_pressed():
 
 
 func _on_menu_button_pressed():
-	game_paused = !game_paused
+	Global.game_paused = !Global.game_paused
 	pause_menu.show()
