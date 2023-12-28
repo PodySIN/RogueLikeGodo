@@ -13,11 +13,11 @@ var player_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
-@export var damage = 40
+@export var enemy1_damage = 40
 @export var speed = 100
 @export var health = 100
-@export var EXP_cost = 2
-@export var GOLD_cost = randi_range(1,2)
+@export var EXP_cost = 8
+var GOLD_cost = randi_range(1,2)
 #-----stats-------------------------
 func _ready():
 	Signals.connect('bullet_hit', Callable (self, 'on_damage_received'))
@@ -55,6 +55,8 @@ func get_death():
 	$Enemy_hitbox.collision_layer = 8
 	$CollisionShape2D.disabled = true
 	ap.play("death")
+	Global.EXP += EXP_cost
+	Global.GOLD += GOLD_cost
 	$death_timer.start()
 	
 func _on_hit_area_body_entered(body):
@@ -67,17 +69,15 @@ func _on_hit_area_body_entered(body):
 func _on_hit_area_body_exited(body):
 	if body.name == 'Hero' and alive:
 		if $attack_cd.time_left < 0.3:
-			player.health -= damage / 2
+			Global.player_health -= enemy1_damage / 2
 		attacking = false
 		$attack_cd.stop()
 
 func _on_attack_cd_timeout():
 	if alive:
-		player.health -= damage
+		Global.player_health -= enemy1_damage
 
 func _on_death_timer_timeout():
-	Global.EXP += EXP_cost
-	Global.GOLD += GOLD_cost
 	queue_free()
 
 func on_damage_received(player_damage):

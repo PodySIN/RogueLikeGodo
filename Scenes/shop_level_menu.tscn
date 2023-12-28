@@ -1,14 +1,17 @@
-[gd_scene load_steps=12 format=3 uid="uid://ccoflp70w3bce"]
+[gd_scene load_steps=29 format=3 uid="uid://ccoflp70w3bce"]
 
-[ext_resource type="Script" path="res://Scripts/Shop_Level_Menu.gd" id="1_b3pcv"]
-[ext_resource type="Texture2D" uid="uid://cyej12gqhb8m6" path="res://Assets/Other/Gui/Frame_Kit_Atlas.png" id="2_62u8p"]
+[ext_resource type="Script" path="res://Scenes/shop_level_menu.gd" id="1_vpsxg"]
+[ext_resource type="Texture2D" uid="uid://cmf7ye4ys0hsn" path="res://Assets/Other/Gui/ShopBG.jpg" id="2_xd2rn"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="3_cau25"]
 [ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="4_tb7n2"]
 [ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="5_82xg0"]
+[ext_resource type="Texture2D" uid="uid://bmvha4wxs5mwb" path="res://Assets/Other/Gui/Banners.png" id="5_t1orw"]
+[ext_resource type="Texture2D" uid="uid://bi8ggcj4dw4p2" path="res://Assets/Other/Gui/Icons.png" id="6_e2iqx"]
+[ext_resource type="Texture2D" uid="uid://b2adxnk1v1p7d" path="res://Assets/Other/Gui/Buttons.png" id="6_rdsdq"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vaqym"]
-texture = ExtResource("2_62u8p")
-region_rect = Rect2(10.9877, 515.511, 485.737, 488.095)
+texture = ExtResource("2_xd2rn")
+region_rect = Rect2(-13.209, -2.78549, 1948.12, 1287.35)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yed8u"]
 texture = ExtResource("4_tb7n2")
@@ -30,14 +33,64 @@ region_rect = Rect2(2045.56, 1562.79, 53.1469, 102.751)
 texture = ExtResource("4_tb7n2")
 region_rect = Rect2(2024.3, 1649.6, 19.4871, 63.7761)
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dm73m"]
+texture = ExtResource("5_t1orw")
+region_rect = Rect2(289.634, 32.7629, 28.5976, 30.3961)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fbrro"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(265.397, 385.123, 45.1446, 30.0364)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ia0ha"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(199.917, 385.08, 47.566, 29.8639)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2b8ap"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(328.268, 385.162, 47.2957, 29.999)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4phu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dak86"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ethuc"]
+texture = ExtResource("6_e2iqx")
+region_rect = Rect2(47.7013, 48.3233, 16.2157, 16.2157)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ihmah"]
+texture = ExtResource("6_e2iqx")
+region_rect = Rect2(0.161083, 0.837575, 15.1346, 15.1346)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5rnnn"]
+texture = ExtResource("6_e2iqx")
+region_rect = Rect2(48.7554, 161.837, 14.7292, 12.9725)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rn2fu"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(321.053, 289.594, 29.999, 29.1882)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tv3lq"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(320.621, 289.081, 30.6747, 29.8639)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_7ks7f"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(352.985, 289.135, 30.3233, 29.4314)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ncslw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3fpv"]
+
 [node name="Shop_Level_Menu" type="Control"]
+process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b3pcv")
+script = ExtResource("1_vpsxg")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -46,48 +99,27 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -934.0
-offset_top = -566.0
-offset_right = 898.0
-offset_bottom = 543.0
+offset_left = -1082.5
+offset_top = -655.0
+offset_right = 1082.5
+offset_bottom = 655.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_vaqym")
 
-[node name="Shop" type="Label" parent="."]
-layout_mode = 0
-offset_left = 65.0
-offset_top = 27.0
-offset_right = 388.0
-offset_bottom = 132.0
-theme_override_fonts/font = ExtResource("3_cau25")
-theme_override_font_sizes/font_size = 100
-text = "SHOP"
-
-[node name="LVL" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1208.0
-offset_top = 12.0
-offset_right = 1531.0
-offset_bottom = 117.0
-theme_override_fonts/font = ExtResource("3_cau25")
-theme_override_font_sizes/font_size = 100
-text = "LVL"
-horizontal_alignment = 2
-
-[node name="Quit" type="Button" parent="."]
+[node name="QuitShop" type="Button" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 600.0
-offset_top = 337.0
-offset_right = 719.0
-offset_bottom = 395.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -205.0
+offset_top = -95.9999
+offset_right = -38.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(1.2, 1.2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
@@ -105,7 +137,295 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_kix5o")
 theme_override_styles/focus = SubResource("StyleBoxTexture_f7ekh")
 text = "QUIT"
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="Shop" type="Label" parent="."]
+layout_mode = 0
+offset_left = 460.0
+offset_right = 976.0
+offset_bottom = 209.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 200
+text = "SHOP"
+
+[node name="Item1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 250.0
+offset_right = 310.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="Item2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 400.0
+offset_top = 250.0
+offset_right = 660.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="Item3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 250.0
+offset_right = 1010.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="Item4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1100.0
+offset_top = 250.0
+offset_right = 1360.0
+offset_bottom = 550.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="BuyItem1" type="Button" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 570.0
+offset_right = 280.0
+offset_bottom = 695.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fbrro")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ia0ha")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2b8ap")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_v4phu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dak86")
+
+[node name="BuyItem2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 570.0
+offset_right = 630.0
+offset_bottom = 695.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fbrro")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ia0ha")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2b8ap")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_v4phu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dak86")
+
+[node name="BuyItem3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 570.0
+offset_right = 980.0
+offset_bottom = 695.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fbrro")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ia0ha")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2b8ap")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_v4phu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dak86")
+
+[node name="BuyItem4" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1130.0
+offset_top = 570.0
+offset_right = 1330.0
+offset_bottom = 695.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_fbrro")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ia0ha")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_2b8ap")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_v4phu")
+theme_override_styles/focus = SubResource("StyleBoxTexture_dak86")
+
+[node name="CostItem1" type="Label" parent="."]
+layout_mode = 0
+offset_left = 137.0
+offset_top = 694.0
+offset_right = 222.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+
+[node name="CostItem2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 694.0
+offset_right = 571.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+
+[node name="CostItem3" type="Label" parent="."]
+layout_mode = 0
+offset_left = 840.0
+offset_top = 694.0
+offset_right = 925.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+
+[node name="CostItem4" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1191.0
+offset_top = 694.0
+offset_right = 1276.0
+offset_bottom = 752.0
+theme_override_colors/font_color = Color(0, 0.560784, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 50
+text = "$30"
+
+[node name="LVL" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -441.0
+offset_right = -116.0
+offset_bottom = 209.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 200
+text = "LVL"
+horizontal_alignment = 2
+
+[node name="HealthIcon" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1390.0
+offset_top = 300.0
+offset_right = 1480.0
+offset_bottom = 390.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ethuc")
+
+[node name="AttackIcon" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1390.0
+offset_top = 450.0
+offset_right = 1480.0
+offset_bottom = 540.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_ihmah")
+
+[node name="SpeedIcon" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 1390.0
+offset_top = 600.0
+offset_right = 1480.0
+offset_bottom = 690.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_5rnnn")
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1382.0
+offset_top = 261.0
+offset_right = 1496.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 40
+text = "Health"
+
+[node name="AttackLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1383.0
+offset_top = 408.0
+offset_right = 1497.0
+offset_bottom = 451.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 40
+text = "Attack"
+
+[node name="SpeedLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1384.0
+offset_top = 558.0
+offset_right = 1498.0
+offset_bottom = 601.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 40
+text = "Speed"
+
+[node name="Health+" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1550.0
+offset_top = 300.0
+offset_right = 1640.0
+offset_bottom = 390.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_rn2fu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tv3lq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7ks7f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ncslw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_q3fpv")
+
+[node name="Attack+" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1550.0
+offset_top = 450.0
+offset_right = 1640.0
+offset_bottom = 540.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_rn2fu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tv3lq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7ks7f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ncslw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_q3fpv")
+
+[node name="Speed+" type="Button" parent="."]
+layout_mode = 0
+offset_left = 1550.0
+offset_top = 600.0
+offset_right = 1640.0
+offset_bottom = 690.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_rn2fu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_tv3lq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_7ks7f")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_ncslw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_q3fpv")
+
+[node name="ButtonSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("5_82xg0")
 
-[connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]
+[node name="HpLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 314.0
+offset_right = 1776.0
+offset_bottom = 378.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 60
+text = "10HP"
+
+[node name="AttackLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 462.0
+offset_right = 1779.0
+offset_bottom = 526.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 60
+text = "5ATK"
+
+[node name="SpeedLabel2" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1640.0
+offset_top = 610.0
+offset_right = 1782.0
+offset_bottom = 674.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 60
+text = "25MS"
+
+[node name="UpgradesCounter" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1392.0
+offset_top = 182.0
+offset_right = 1913.0
+offset_bottom = 246.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 60
+text = "2"
+
+[connection signal="pressed" from="Health+" to="." method="_on_health_pressed"]
+[connection signal="pressed" from="Attack+" to="." method="_on_attack_pressed"]
+[connection signal="pressed" from="Speed+" to="." method="_on_speed_pressed"]
