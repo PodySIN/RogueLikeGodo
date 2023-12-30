@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c2odkge0vc44k"]
+
+[ext_resource type="Texture2D" uid="uid://dxiiyng1x04ir" path="res://Assets/Other/Guns/UZI.png" id="1_uwfma"]
+
+[sub_resource type="GDScript" id="GDScript_270o6"]
+script/source = "extends CharacterBody2D
+
+func _physics_process(delta):
+	if ((global_position - get_global_mouse_position()).x < 0):
+		$Sprite2D.flip_v = false
+		look_at(get_global_mouse_position())
+	else:
+		$Sprite2D.flip_v = true
+		look_at(get_global_mouse_position())
+	move_and_slide()
+"
+
+[node name="Uzi" type="CharacterBody2D"]
+script = SubResource("GDScript_270o6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 0)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("1_uwfma")

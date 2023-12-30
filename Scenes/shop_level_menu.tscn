@@ -1,8 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://ccoflp70w3bce"]
+[gd_scene load_steps=32 format=3 uid="uid://ccoflp70w3bce"]
 
-[ext_resource type="Script" path="res://Scenes/shop_level_menu.gd" id="1_vpsxg"]
+[ext_resource type="Script" path="res://Scripts/shop_level_menu.gd" id="1_sk62r"]
+[ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="2_28on7"]
 [ext_resource type="Texture2D" uid="uid://cmf7ye4ys0hsn" path="res://Assets/Other/Gui/ShopBG.jpg" id="2_xd2rn"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="3_cau25"]
+[ext_resource type="PackedScene" uid="uid://csydrk7i0gprq" path="res://Scenes/rifle.tscn" id="3_uu08y"]
+[ext_resource type="PackedScene" uid="uid://c2odkge0vc44k" path="res://Scenes/Uzi.tscn" id="4_adr0y"]
 [ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="4_tb7n2"]
 [ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="5_82xg0"]
 [ext_resource type="Texture2D" uid="uid://bmvha4wxs5mwb" path="res://Assets/Other/Gui/Banners.png" id="5_t1orw"]
@@ -90,7 +93,10 @@ anchor_bottom = 1.0
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_vpsxg")
+script = ExtResource("1_sk62r")
+Pistol_scene = ExtResource("2_28on7")
+Rifle_scene = ExtResource("3_uu08y")
+Uzi_scene = ExtResource("4_adr0y")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -155,6 +161,14 @@ offset_right = 310.0
 offset_bottom = 550.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
 
+[node name="Itemtexture1" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 281.0
+offset_right = 281.0
+offset_bottom = 450.0
+expand_mode = 1
+
 [node name="Item2" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 400.0
@@ -162,6 +176,14 @@ offset_top = 250.0
 offset_right = 660.0
 offset_bottom = 550.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="Itemtexture2" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 430.0
+offset_top = 281.0
+offset_right = 631.0
+offset_bottom = 450.0
+expand_mode = 1
 
 [node name="Item3" type="Panel" parent="."]
 layout_mode = 0
@@ -171,6 +193,14 @@ offset_right = 1010.0
 offset_bottom = 550.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
 
+[node name="Itemtexture3" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 780.0
+offset_top = 281.0
+offset_right = 981.0
+offset_bottom = 450.0
+expand_mode = 1
+
 [node name="Item4" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1100.0
@@ -178,6 +208,21 @@ offset_top = 250.0
 offset_right = 1360.0
 offset_bottom = 550.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_dm73m")
+
+[node name="Itemtexture4" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 169.5
+offset_top = -799.0
+offset_right = 371.5
+offset_bottom = -629.0
+grow_horizontal = 2
+grow_vertical = 0
+expand_mode = 1
 
 [node name="BuyItem1" type="Button" parent="."]
 layout_mode = 0
@@ -286,6 +331,17 @@ theme_override_font_sizes/font_size = 200
 text = "LVL"
 horizontal_alignment = 2
 
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1382.0
+offset_top = 261.0
+offset_right = 1496.0
+offset_bottom = 304.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 40
+text = "Health"
+
 [node name="HealthIcon" type="Panel" parent="."]
 layout_mode = 0
 offset_left = 1390.0
@@ -309,17 +365,6 @@ offset_top = 600.0
 offset_right = 1480.0
 offset_bottom = 690.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_5rnnn")
-
-[node name="HealthLabel" type="Label" parent="."]
-layout_mode = 0
-offset_left = 1382.0
-offset_top = 261.0
-offset_right = 1496.0
-offset_bottom = 304.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_cau25")
-theme_override_font_sizes/font_size = 40
-text = "Health"
 
 [node name="AttackLabel" type="Label" parent="."]
 layout_mode = 0
@@ -426,6 +471,10 @@ theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 60
 text = "2"
 
+[connection signal="pressed" from="BuyItem1" to="." method="_on_buy_item_1_pressed"]
+[connection signal="pressed" from="BuyItem2" to="." method="_on_buy_item_2_pressed"]
+[connection signal="pressed" from="BuyItem3" to="." method="_on_buy_item_3_pressed"]
+[connection signal="pressed" from="BuyItem4" to="." method="_on_buy_item_4_pressed"]
 [connection signal="pressed" from="Health+" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="Attack+" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Speed+" to="." method="_on_speed_pressed"]

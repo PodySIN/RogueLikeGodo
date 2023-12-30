@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://csydrk7i0gprq"]
+
+[ext_resource type="Texture2D" uid="uid://bkcdrf36psea7" path="res://Assets/Other/Guns/M16.png" id="1_rds2i"]
+
+[sub_resource type="GDScript" id="GDScript_46ukr"]
+script/source = "extends CharacterBody2D
+
+func _physics_process(delta):
+	if ((global_position - get_global_mouse_position()).x < 0):
+		$Sprite2D.flip_v = false
+		look_at(get_global_mouse_position())
+	else:
+		$Sprite2D.flip_v = true
+		look_at(get_global_mouse_position())
+	move_and_slide()
+"
+
+[node name="rifle" type="CharacterBody2D"]
+script = SubResource("GDScript_46ukr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_rds2i")

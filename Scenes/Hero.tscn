@@ -1,13 +1,17 @@
-[gd_scene load_steps=30 format=3 uid="uid://b56mrg8633ijo"]
+[gd_scene load_steps=34 format=3 uid="uid://b56mrg8633ijo"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_nhwvj"]
 [ext_resource type="Texture2D" uid="uid://wb4sdmvkyv3n" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png" id="2_depky"]
 [ext_resource type="PackedScene" uid="uid://ljpq82wonmvy" path="res://Scenes/bullet.tscn" id="2_goyec"]
 [ext_resource type="Texture2D" uid="uid://oscj6jc8u2eu" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Idle_4.png" id="2_o5m7i"]
+[ext_resource type="PackedScene" uid="uid://cj1bsv1m2omfh" path="res://Scenes/rifle_bullet.tscn" id="3_07xmy"]
 [ext_resource type="Texture2D" uid="uid://kiy23d7tqtpb" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Run_6.png" id="3_sqi35"]
+[ext_resource type="PackedScene" uid="uid://gvdqq8apotb2" path="res://Scenes/uzi_bullet.tscn" id="4_cp2uq"]
 [ext_resource type="AudioStream" uid="uid://d4j3dxww3c2xf" path="res://Assets/Other/Music/Steps.mp3" id="5_d2v2l"]
 [ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="6_nb3on"]
 [ext_resource type="AudioStream" uid="uid://dvi00f6f3nyb2" path="res://Assets/Other/Music/Pistol_fire.mp3" id="8_n31pp"]
+[ext_resource type="AudioStream" uid="uid://bphtk88f08da5" path="res://Assets/Other/Music/RifleSound.mp3" id="10_eekoo"]
+[ext_resource type="AudioStream" uid="uid://dgkj8k3lp0l0b" path="res://Assets/Other/Music/UziSound.mp3" id="12_d2be2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cdkg"]
 atlas = ExtResource("2_depky")
@@ -162,6 +166,8 @@ height = 14.0
 [node name="Hero" type="CharacterBody2D"]
 script = ExtResource("1_nhwvj")
 bullet_scene = ExtResource("2_goyec")
+riflebullet_scene = ExtResource("3_07xmy")
+uzibullet_scene = ExtResource("4_cp2uq")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
@@ -191,27 +197,70 @@ collision_mask = 32
 position = Vector2(0, -13)
 shape = SubResource("CapsuleShape2D_jn807")
 
-[node name="Pistol" parent="." instance=ExtResource("6_nb3on")]
-position = Vector2(12, -25)
-
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(15, -25)
-
 [node name="TimersWeapon" type="Node2D" parent="."]
 
 [node name="PistolTimer" type="Timer" parent="TimersWeapon"]
+wait_time = 2.0
+autostart = true
+
+[node name="RifleTimer" type="Timer" parent="TimersWeapon"]
+wait_time = 2.75
+autostart = true
+
+[node name="UziTimer" type="Timer" parent="TimersWeapon"]
+wait_time = 1.25
 autostart = true
 
 [node name="Sounds" type="Node2D" parent="."]
+
+[node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("5_d2v2l")
 
 [node name="Pistol" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_n31pp")
 volume_db = -15.0
 
-[node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("5_d2v2l")
+[node name="RiffleSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("10_eekoo")
+volume_db = -10.0
 
-[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[node name="UziSound" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("12_d2be2")
+volume_db = -15.0
+
+[node name="Muzzles" type="Node2D" parent="."]
+
+[node name="Muzzle1" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(15, -25)
+
+[node name="Muzzle2" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(-15, -25)
+
+[node name="Muzzle3" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(15, -15)
+
+[node name="Muzzle4" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(-15, -15)
+
+[node name="Muzzle5" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(15, -7)
+
+[node name="Muzzle6" type="Marker2D" parent="Muzzles"]
+unique_name_in_owner = true
+position = Vector2(-15, -7)
+
+[node name="Weapons" type="Node2D" parent="."]
+
+[node name="Pistol" parent="Weapons" instance=ExtResource("6_nb3on")]
+position = Vector2(13, -23)
+
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="HpRegen" to="." method="_on_hp_regen_timeout"]
 [connection signal="timeout" from="TimersWeapon/PistolTimer" to="." method="_on_pistol_timer_timeout"]
+[connection signal="timeout" from="TimersWeapon/RifleTimer" to="." method="_on_rifle_timer_timeout"]
+[connection signal="timeout" from="TimersWeapon/UziTimer" to="." method="_on_uzi_timer_timeout"]

@@ -92,7 +92,6 @@ func first_timer():
 		$UI/GO.visible = true
 	elif ST.timeout:
 		$UI/GO.visible = false
-		
 
 func _on_hero_health_changed(new_health):
 	HpBar.value = new_health
@@ -132,7 +131,6 @@ func _on_second_timer_sonder_timeout():
 	else:
 		$Sounds/Numbers.play()
 		$Timers/SecondTimerSonder.start()
-
 
 func _on_main_timer_timeout():
 	Global.Game_Time += 1
@@ -466,47 +464,69 @@ offset_top = -109.0
 offset_right = -41.9999
 offset_bottom = -28.0002
 
-[node name="CostItem1" parent="UI/Shop_Level_Menu" index="11"]
+[node name="Itemtexture2" parent="UI/Shop_Level_Menu" index="6"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1491.0
+offset_top = -799.0
+offset_right = -1290.0
+offset_bottom = -630.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Itemtexture3" parent="UI/Shop_Level_Menu" index="8"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -1141.0
+offset_top = -259.0
+offset_right = -940.0
+offset_bottom = -90.0001
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="CostItem1" parent="UI/Shop_Level_Menu" index="15"]
 offset_left = 139.0
 offset_right = 224.0
 
-[node name="CostItem2" parent="UI/Shop_Level_Menu" index="12"]
+[node name="CostItem2" parent="UI/Shop_Level_Menu" index="16"]
 offset_left = 491.0
 offset_top = 695.0
 offset_right = 576.0
 offset_bottom = 753.0
 
-[node name="CostItem3" parent="UI/Shop_Level_Menu" index="13"]
+[node name="CostItem3" parent="UI/Shop_Level_Menu" index="17"]
 offset_left = 841.0
 offset_top = 695.0
 offset_right = 926.0
 offset_bottom = 753.0
 
-[node name="CostItem4" parent="UI/Shop_Level_Menu" index="14"]
+[node name="CostItem4" parent="UI/Shop_Level_Menu" index="18"]
 offset_left = 1187.0
 offset_right = 1272.0
 
-[node name="HealthLabel" parent="UI/Shop_Level_Menu" index="19"]
-offset_top = 262.0
-offset_bottom = 305.0
-
-[node name="AttackLabel" parent="UI/Shop_Level_Menu" index="20"]
+[node name="AttackLabel" parent="UI/Shop_Level_Menu" index="24"]
 offset_left = 1388.0
 offset_right = 1502.0
 
-[node name="SpeedLabel" parent="UI/Shop_Level_Menu" index="21"]
+[node name="SpeedLabel" parent="UI/Shop_Level_Menu" index="25"]
 offset_right = 1492.0
 offset_bottom = 558.0
 
-[node name="AttackLabel2" parent="UI/Shop_Level_Menu" index="27"]
-layout_mode = 0
+[node name="AttackLabel2" parent="UI/Shop_Level_Menu" index="31"]
 offset_left = 1639.0
 offset_top = 460.0
 offset_right = 1778.0
 offset_bottom = 524.0
 
-[node name="SpeedLabel2" parent="UI/Shop_Level_Menu" index="28"]
-layout_mode = 0
+[node name="SpeedLabel2" parent="UI/Shop_Level_Menu" index="32"]
 offset_left = 1639.0
 offset_top = 611.0
 offset_right = 1781.0
@@ -539,6 +559,5 @@ autostart = true
 [connection signal="timeout" from="Timers/MainTimer" to="." method="_on_main_timer_timeout"]
 
 [editable path="Hero/Hero"]
-[editable path="Hero/Hero/Pistol"]
 [editable path="UI/Shop_Level_Menu"]
 [editable path="UI/PauseMenu"]

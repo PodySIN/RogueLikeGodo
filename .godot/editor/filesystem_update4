@@ -2,8 +2,7 @@ res://Scenes/world.tscn
 res://Scripts/enemy_1.gd
 res://Scenes/Hero.tscn
 res://Scenes/enemy_1.tscn
-res://Scenes/bullet.tscn
-res://Scenes/pistol.tscn
 res://Scenes/shop_level_menu.tscn
 res://Scenes/pause_menu.tscn
-res://Scenes/menu.tscn
+res://Scenes/end_screen.tscn
+res://Scripts/global.gd

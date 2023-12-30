@@ -37,10 +37,7 @@ func _on_resume_pressed():
 func _on_quit_pressed():
 	$"../UI/PauseMenu/PressButtonSound".play()
 	await $"../UI/PauseMenu/PressButtonSound".finished
-	get_tree().paused = false
-	Global.game_paused_menu = !Global.game_paused_menu
-	Global.game_paused_shop = !Global.game_paused_shop
-	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	get_tree().quit()
 
 func _on_menu_button_pressed():
 	Global.game_paused_menu = !Global.game_paused_menu
@@ -63,8 +60,10 @@ func update_player_level():
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
 		Global.player_health = Global.player_max_health
+		Global.item1 = randi_range(0,5)
+		Global.item2 = randi_range(0,5)
+		Global.item3 = randi_range(0,5)
+		Global.item4 = randi_range(0,5)
 		LVLED_UP = true
 
 
-func _on_health_pressed():
-	pass # Replace with function body.

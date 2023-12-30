@@ -1,9 +1,10 @@
-[gd_scene load_steps=27 format=3 uid="uid://brdl2ojabd16f"]
+[gd_scene load_steps=30 format=3 uid="uid://brdl2ojabd16f"]
 
 [ext_resource type="Texture2D" uid="uid://f2tidigiacy4" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png" id="1_cyd7t"]
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_x54oi"]
 [ext_resource type="Texture2D" uid="uid://o4075rbs07er" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Attack1_4.png" id="2_fl1lh"]
 [ext_resource type="Texture2D" uid="uid://dkbcss06wq741" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Death_8.png" id="3_wolx3"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="5_xbbk7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxgej"]
 atlas = ExtResource("2_fl1lh")
@@ -160,6 +161,12 @@ height = 36.0
 radius = 14.0
 height = 32.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqwlr"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn1r2"]
+bg_color = Color(0.780392, 0.0470588, 0, 1)
+
 [node name="Enemy1" type="CharacterBody2D"]
 script = ExtResource("1_x54oi")
 
@@ -192,8 +199,56 @@ shape = SubResource("CapsuleShape2D_cvpy3")
 
 [node name="death_timer" type="Timer" parent="."]
 
+[node name="Damage_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -29.0
+offset_right = 210.0
+offset_bottom = -2.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_oqwlr")
+theme_override_styles/fill = SubResource("StyleBoxFlat_gn1r2")
+value = 10.0
+show_percentage = false
+
+[node name="Damage_label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = -7.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0.14902, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xbbk7")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_rifle" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -26.0
+offset_right = 23.0
+offset_bottom = -14.0
+theme_override_colors/font_color = Color(0.211765, 0.180392, 1, 1)
+theme_override_fonts/font = ExtResource("5_xbbk7")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_uzi" type="Label" parent="."]
+visible = false
+offset_left = 7.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.568627, 0, 1, 1)
+theme_override_fonts/font = ExtResource("5_xbbk7")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]
 [connection signal="timeout" from="attack_cd" to="." method="_on_attack_cd_timeout"]
 [connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Damage_timer" to="." method="_on_damage_timer_timeout"]

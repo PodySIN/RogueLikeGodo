@@ -51,6 +51,7 @@ region_rect = Rect2(2024.3, 1649.6, 19.4871, 63.7761)
 script = SubResource("GDScript_12wdg")
 
 [node name="GameOverBg" type="Sprite2D" parent="."]
+texture_filter = 2
 position = Vector2(961, 546)
 scale = Vector2(1.53333, 1.53333)
 texture = ExtResource("1_apese")
