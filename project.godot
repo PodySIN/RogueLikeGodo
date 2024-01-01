@@ -11,9 +11,11 @@ config_version=5
 [application]
 
 config/name="MySchoolProject"
+config/version="1"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)
+boot_splash/image="res://Assets/Other/GameLogo.png"
 config/icon="res://Assets/Other/GameLogo.png"
 
 [autoload]
@@ -25,6 +27,9 @@ Global="*res://Scripts/global.gd"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/window_width_override=1600
+window/size/window_height_override=900
+window/stretch/mode="canvas_items"
 
 [input]
 

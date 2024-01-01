@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ccoflp70w3bce"]
+[gd_scene load_steps=34 format=3 uid="uid://ccoflp70w3bce"]
 
 [ext_resource type="Script" path="res://Scripts/shop_level_menu.gd" id="1_sk62r"]
 [ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="2_28on7"]
@@ -6,11 +6,13 @@
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="3_cau25"]
 [ext_resource type="PackedScene" uid="uid://csydrk7i0gprq" path="res://Scenes/rifle.tscn" id="3_uu08y"]
 [ext_resource type="PackedScene" uid="uid://c2odkge0vc44k" path="res://Scenes/Uzi.tscn" id="4_adr0y"]
+[ext_resource type="PackedScene" uid="uid://cqs50kpiwdv4r" path="res://Scenes/kar_98k.tscn" id="4_taxhd"]
 [ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="4_tb7n2"]
 [ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="5_82xg0"]
 [ext_resource type="Texture2D" uid="uid://bmvha4wxs5mwb" path="res://Assets/Other/Gui/Banners.png" id="5_t1orw"]
 [ext_resource type="Texture2D" uid="uid://bi8ggcj4dw4p2" path="res://Assets/Other/Gui/Icons.png" id="6_e2iqx"]
 [ext_resource type="Texture2D" uid="uid://b2adxnk1v1p7d" path="res://Assets/Other/Gui/Buttons.png" id="6_rdsdq"]
+[ext_resource type="PackedScene" uid="uid://2iun7dnnjvke" path="res://Scenes/coin.tscn" id="12_k61nw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vaqym"]
 texture = ExtResource("2_xd2rn")
@@ -94,9 +96,10 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sk62r")
-Pistol_scene = ExtResource("2_28on7")
 Rifle_scene = ExtResource("3_uu08y")
 Uzi_scene = ExtResource("4_adr0y")
+Kar_scene = ExtResource("4_taxhd")
+Pistol_scene = ExtResource("2_28on7")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
@@ -470,6 +473,21 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 60
 text = "2"
+
+[node name="coin" parent="." instance=ExtResource("12_k61nw")]
+position = Vector2(88, 141)
+scale = Vector2(4, 4)
+
+[node name="Gold" type="Label" parent="."]
+layout_mode = 0
+offset_left = 139.0
+offset_top = 47.0
+offset_right = 273.0
+offset_bottom = 152.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 100
+text = "25"
 
 [connection signal="pressed" from="BuyItem1" to="." method="_on_buy_item_1_pressed"]
 [connection signal="pressed" from="BuyItem2" to="." method="_on_buy_item_2_pressed"]

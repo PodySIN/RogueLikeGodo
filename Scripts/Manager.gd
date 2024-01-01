@@ -60,10 +60,20 @@ func update_player_level():
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
 		Global.player_health = Global.player_max_health
-		Global.item1 = randi_range(0,5)
-		Global.item2 = randi_range(0,5)
-		Global.item3 = randi_range(0,5)
-		Global.item4 = randi_range(0,5)
+		Global.item1 = randi_range(0,6)
+		Global.item2 = randi_range(0,6)
+		Global.item3 = randi_range(0,6)
+		Global.item4 = randi_range(0,6)
 		LVLED_UP = true
 
 
+
+
+func _on_exit_menu_pressed():
+	$"../UI/PauseMenu/PressButtonSound".play()
+	await $"../UI/PauseMenu/PressButtonSound".finished
+	Global.game_paused_menu = false
+	Global.game_paused_shop = false
+	get_tree().paused = false
+	Global.zero_stats()
+	get_tree().change_scene_to_file("res://Scenes/menu.tscn")

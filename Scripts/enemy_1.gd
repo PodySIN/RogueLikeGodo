@@ -12,6 +12,7 @@ var counter_of_death = 0
 var player_dmg = 0
 var playerrifle_dmg = 0
 var playeruzi_dmg = 0
+var playerkar_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
@@ -19,13 +20,14 @@ var playeruzi_dmg = 0
 @export var speed = 100
 @export var enemy1_health = 100
 @export var enemy1_max_health = 100
-@export var EXP_cost = 16
-var GOLD_cost = randi_range(1,2)
+@export var EXP_cost = 4
+var GOLD_cost = randi_range(1,3)
 #-----stats-------------------------
 func _ready():
 	Signals.connect('bullet_hit', Callable (self, 'on_damage_received'))
 	Signals.connect('Riflebullet_hit', Callable(self, 'on_rifledamage_received'))
 	Signals.connect('Uzibullet_hit', Callable(self, 'on_uzidamage_received'))
+	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
 	$HealthBar.min_value = 0
 	$HealthBar.max_value = enemy1_max_health
 	$HealthBar.value = enemy1_health
@@ -61,6 +63,13 @@ func helth_control():
 			get_death()
 
 func get_death():
+	var random_death = randi_range(0,2)
+	if random_death == 0:
+		$Music/Dead1.play()
+	elif random_death == 1:
+		$Music/Dead2.play()
+	elif random_death == 2:
+		$Music/Dead3.play()
 	$Enemy_hitbox.collision_layer = 8
 	$CollisionShape2D.disabled = true
 	ap.play("death")
@@ -79,12 +88,14 @@ func _on_hit_area_body_entered(body):
 func _on_hit_area_body_exited(body):
 	if body.name == 'Hero' and alive:
 		if $attack_cd.time_left < 0.3:
+			$Music/HitSound.play()
 			Global.player_health -= enemy1_damage / 2
 		attacking = false
 		$attack_cd.stop()
 
 func _on_attack_cd_timeout():
 	if alive:
+		$Music/HitSound.play()
 		Global.player_health -= enemy1_damage
 
 func _on_death_timer_timeout():
@@ -98,6 +109,9 @@ func on_rifledamage_received(playerrifle_damage):
 
 func on_uzidamage_received(playeruzi_damage):
 	playeruzi_dmg = playeruzi_damage
+
+func on_kardamage_received(playerkar_damage):
+	playerkar_dmg = playerkar_damage
 
 func _on_enemy_hitbox_area_entered(area):
 	if area.name == 'Bullet':
@@ -121,8 +135,16 @@ func _on_enemy_hitbox_area_entered(area):
 		enemy1_health -= playeruzi_dmg
 		Global.ALL_DAMAGE_IN_GAME += playeruzi_dmg
 		$Damage_timer.start()
-		
+	elif area.name == 'kar98k_bullet':
+		await get_tree().create_timer(0.02).timeout
+		$Damage_label_kar.text = str(playerkar_dmg)
+		$Damage_label_kar.visible = true
+		enemy1_health -= playerkar_dmg
+		Global.ALL_DAMAGE_IN_GAME += playerkar_dmg
+		$Damage_timer.start()
+
 func _on_damage_timer_timeout():
 	$Damage_label.visible = false
 	$Damage_label_rifle.visible = false
 	$Damage_label_uzi.visible = false
+	$Damage_label_kar.visible = false

@@ -1,12 +1,12 @@
 extends CharacterBody2D
 
-
 #-----подгрузка-------------------------
 @onready var ap = $AnimatedSprite2D
 var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muzzle5','%Muzzle6']
 @export var bullet_scene: PackedScene
 @export var riflebullet_scene: PackedScene
 @export var uzibullet_scene: PackedScene
+@export var karbullet_scene: PackedScene
 #-----подгрузка-------------------------
 
 #-----vars-------------------------
@@ -16,6 +16,7 @@ var counter_of_death = 0
 
 
 func _ready():
+
 	Global.player_health = Global.player_max_health
 	
 func _physics_process(delta):
@@ -53,12 +54,14 @@ func control_state():
 
 func PistolShoot(MuzzleNumber):
 	$Sounds/Pistol.play()
+	Signals.emit_signal('pistol_fire')
 	var bullet = bullet_scene.instantiate()
 	bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
 	get_tree().root.add_child(bullet)
 
 func RifleShoot(MuzzleNumber):
 	$Sounds/RiffleSound.play()
+	Signals.emit_signal('rifle_fire')
 	var rifle_bullet = riflebullet_scene.instantiate()
 	rifle_bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
 	get_tree().root.add_child(rifle_bullet)
@@ -68,7 +71,14 @@ func UziShoot(MuzzleNumber):
 	var uzi_bullet = uzibullet_scene.instantiate()
 	uzi_bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
 	get_tree().root.add_child(uzi_bullet)
-	
+
+func KarShoot(MuzzleNumber):
+	$Sounds/KarSound.play()
+	Signals.emit_signal('kar98k_fire')
+	var Kar_bullet = karbullet_scene.instantiate()
+	Kar_bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
+	get_tree().root.add_child(Kar_bullet)
+
 func _on_pistol_timer_timeout():
 	var coll = 0
 	var arr_of_muzzle_numbers = []
@@ -104,6 +114,19 @@ func _on_uzi_timer_timeout():
 			arr_of_muzzle_numbers.append(i)
 	for i in range(coll):
 		UziShoot(arr_of_muzzle_numbers[i])
+		await get_tree().create_timer(0.6).timeout
+	coll = 0
+	arr_of_muzzle_numbers = []
+
+func _on_kar_timer_timeout():
+	var coll = 0
+	var arr_of_muzzle_numbers = []
+	for i in range(len(Global.array_players_guns)):
+		if Global.array_players_guns[i] == 'Kar':
+			coll+=1
+			arr_of_muzzle_numbers.append(i)
+	for i in range(coll):
+		KarShoot(arr_of_muzzle_numbers[i])
 		await get_tree().create_timer(0.6).timeout
 	coll = 0
 	arr_of_muzzle_numbers = []

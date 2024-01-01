@@ -1,10 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://brdl2ojabd16f"]
+[gd_scene load_steps=34 format=3 uid="uid://brdl2ojabd16f"]
 
 [ext_resource type="Texture2D" uid="uid://f2tidigiacy4" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png" id="1_cyd7t"]
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_x54oi"]
 [ext_resource type="Texture2D" uid="uid://o4075rbs07er" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Attack1_4.png" id="2_fl1lh"]
 [ext_resource type="Texture2D" uid="uid://dkbcss06wq741" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Death_8.png" id="3_wolx3"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="5_xbbk7"]
+[ext_resource type="AudioStream" uid="uid://d1b1l883j15dx" path="res://Assets/Other/Music/DeadSheepSound.mp3" id="6_jfbqd"]
+[ext_resource type="AudioStream" uid="uid://cdlgjy31il0nu" path="res://Assets/Other/Music/DeadSheepSound2.mp3" id="7_80l7p"]
+[ext_resource type="AudioStream" uid="uid://r6koq341mn8p" path="res://Assets/Other/Music/DeadSheepSound3.mp3" id="8_emkac"]
+[ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="8_mp0td"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_kxgej"]
 atlas = ExtResource("2_fl1lh")
@@ -151,7 +155,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjw51"]
-size = Vector2(14, 9.5)
+size = Vector2(12, 4.25)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3tfp"]
 radius = 16.0
@@ -177,7 +181,7 @@ animation = &"run"
 frame_progress = 0.920581
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5.25)
+position = Vector2(-1, -4.875)
 shape = SubResource("RectangleShape2D_cjw51")
 
 [node name="hit_area" type="Area2D" parent="."]
@@ -245,6 +249,34 @@ theme_override_colors/font_color = Color(0.568627, 0, 1, 1)
 theme_override_fonts/font = ExtResource("5_xbbk7")
 theme_override_font_sizes/font_size = 10
 text = "12"
+
+[node name="Damage_label_kar" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 3.0
+offset_bottom = -3.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_xbbk7")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="Music" type="Node2D" parent="."]
+
+[node name="Dead1" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("6_jfbqd")
+volume_db = -5.0
+
+[node name="Dead2" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("7_80l7p")
+volume_db = -7.0
+
+[node name="Dead3" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("8_emkac")
+volume_db = -7.0
+
+[node name="HitSound" type="AudioStreamPlayer" parent="Music"]
+stream = ExtResource("8_mp0td")
 
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]

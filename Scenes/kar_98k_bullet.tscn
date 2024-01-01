@@ -1,0 +1,95 @@
+[gd_scene load_steps=19 format=3 uid="uid://df6mea0qlptte"]
+
+[ext_resource type="Script" path="res://Scripts/kar98k_bullet.gd" id="1_0y8ei"]
+[ext_resource type="Texture2D" uid="uid://crydrs4ivq6b8" path="res://Assets/Other/Guns/kar/1_0.png" id="2_yc68e"]
+[ext_resource type="Texture2D" uid="uid://cn3trgx03qciq" path="res://Assets/Other/Guns/kar/1_1.png" id="3_13hqb"]
+[ext_resource type="Texture2D" uid="uid://dfnfsgwf5wktt" path="res://Assets/Other/Guns/kar/1_2.png" id="4_3yi7l"]
+[ext_resource type="Texture2D" uid="uid://chccl3vlbc0tl" path="res://Assets/Other/Guns/kar/1_3.png" id="5_06eu1"]
+[ext_resource type="Texture2D" uid="uid://bsfhhw6tx7acs" path="res://Assets/Other/Guns/kar/1_4.png" id="6_b5r2o"]
+[ext_resource type="Texture2D" uid="uid://diyrjc6y4lixd" path="res://Assets/Other/Guns/kar/1_5.png" id="7_4koxc"]
+[ext_resource type="Texture2D" uid="uid://cdgjnbt5yrx8m" path="res://Assets/Other/Guns/kar/1_6.png" id="8_0hqse"]
+[ext_resource type="Texture2D" uid="uid://dbjor8x0w3km" path="res://Assets/Other/Guns/kar/1_7.png" id="9_qbpwd"]
+[ext_resource type="Texture2D" uid="uid://bgy5mxol4b72a" path="res://Assets/Other/Guns/kar/1_8.png" id="10_ik64y"]
+[ext_resource type="Texture2D" uid="uid://d2yayp0244enc" path="res://Assets/Other/Guns/kar/1_9.png" id="11_5cgkd"]
+[ext_resource type="Texture2D" uid="uid://b8hfw4g8601dw" path="res://Assets/Other/Guns/kar/1_10.png" id="12_3klxp"]
+[ext_resource type="Texture2D" uid="uid://drudjh5w3aai7" path="res://Assets/Other/Guns/kar/1_11.png" id="13_rww72"]
+[ext_resource type="Texture2D" uid="uid://dh7x4bh0appai" path="res://Assets/Other/Guns/kar/1_12.png" id="14_2kscp"]
+[ext_resource type="Texture2D" uid="uid://bnl70lbtjtsl6" path="res://Assets/Other/Guns/kar/1_13.png" id="15_5w1sw"]
+[ext_resource type="Texture2D" uid="uid://elby5jd7sf6c" path="res://Assets/Other/Guns/kar/1_14.png" id="16_lil15"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_q75qi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_yc68e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_13hqb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_3yi7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_06eu1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_b5r2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_4koxc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_0hqse")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_qbpwd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ik64y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_5cgkd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_3klxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_rww72")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_2kscp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5w1sw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_lil15")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8ahm"]
+size = Vector2(18, 9)
+
+[node name="kar98k_bullet" type="Area2D"]
+collision_layer = 64
+collision_mask = 32
+script = ExtResource("1_0y8ei")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_q75qi")
+animation = &"fire"
+frame_progress = 0.496041
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_b8ahm")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+position = Vector2(0, -0.5)
+scale = Vector2(1, 0.65)
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

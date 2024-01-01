@@ -1,12 +1,106 @@
-[gd_scene load_steps=3 format=3 uid="uid://c0a2gafq8i4u0"]
+[gd_scene load_steps=16 format=3 uid="uid://c0a2gafq8i4u0"]
 
 [ext_resource type="Script" path="res://Scripts/pistol.gd" id="1_d67kr"]
-[ext_resource type="Texture2D" uid="uid://3cyrblc32oik" path="res://Assets/Other/Guns/pistol2.png" id="2_uq3gq"]
+[ext_resource type="Texture2D" uid="uid://cec2b17yskdue" path="res://Assets/Other/Guns/Glock.png" id="2_l7d2r"]
 
-[node name="Pistol" type="CharacterBody2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_ig13s"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwpqp"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n1xt5"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(128, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_535xj"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(192, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rts2q"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(256, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tsle5"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(320, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibq04"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(384, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_40kmd"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(448, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gf518"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(512, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojppb"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(576, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28s6j"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(640, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qx3g7"]
+atlas = ExtResource("2_l7d2r")
+region = Rect2(704, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gopx2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ig13s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwpqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1xt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_535xj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rts2q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tsle5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibq04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_40kmd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gf518")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojppb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28s6j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qx3g7")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 15.0
+}]
+
+[node name="pistol" type="CharacterBody2D"]
+scale = Vector2(0.8, 0.8)
 script = ExtResource("1_d67kr")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -4)
-scale = Vector2(0.1, 0.1)
-texture = ExtResource("2_uq3gq")
+[node name="pistol_anim" type="AnimatedSprite2D" parent="."]
+position = Vector2(16, 0)
+sprite_frames = SubResource("SpriteFrames_gopx2")
+animation = &"fire"
+frame_progress = 0.716247

@@ -55,13 +55,13 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_2ducc")
 text = "PLAY"
 
 [node name="GAME_NAME" type="Label" parent="."]
-offset_left = 331.0
-offset_top = 2.0
-offset_right = 1555.0
-offset_bottom = 211.0
+offset_left = 98.0
+offset_top = 58.0
+offset_right = 1810.0
+offset_bottom = 267.0
 theme_override_fonts/font = ExtResource("3_dgd4g")
-theme_override_font_sizes/font_size = 200
-text = "MATHBRAWL"
+theme_override_font_sizes/font_size = 125
+text = "ComponentsUnificationMutton"
 
 [node name="EXIT" type="Button" parent="."]
 offset_left = 750.0
