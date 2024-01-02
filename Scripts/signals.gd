@@ -10,3 +10,4 @@ signal Karbullet_hit (player_damage)
 signal rifle_fire ()
 signal pistol_fire ()
 signal kar98k_fire ()
+signal Stump_hit

@@ -461,7 +461,7 @@ offset_bottom = 674.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 60
-text = "25MS"
+text = "15MS"
 
 [node name="UpgradesCounter" type="Label" parent="."]
 layout_mode = 0

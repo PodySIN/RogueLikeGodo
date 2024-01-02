@@ -66,9 +66,6 @@ func update_player_level():
 		Global.item4 = randi_range(0,6)
 		LVLED_UP = true
 
-
-
-
 func _on_exit_menu_pressed():
 	$"../UI/PauseMenu/PressButtonSound".play()
 	await $"../UI/PauseMenu/PressButtonSound".finished

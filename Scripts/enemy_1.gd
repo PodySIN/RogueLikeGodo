@@ -16,11 +16,11 @@ var playerkar_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
-@export var enemy1_damage = 40
-@export var speed = 100
+@export var enemy1_damage = 30
+@export var speed = 130
 @export var enemy1_health = 100
 @export var enemy1_max_health = 100
-@export var EXP_cost = 4
+@export var EXP_cost = 3
 var GOLD_cost = randi_range(1,3)
 #-----stats-------------------------
 func _ready():
@@ -87,7 +87,7 @@ func _on_hit_area_body_entered(body):
 
 func _on_hit_area_body_exited(body):
 	if body.name == 'Hero' and alive:
-		if $attack_cd.time_left < 0.3:
+		if $attack_cd.time_left < 0.15:
 			$Music/HitSound.play()
 			Global.player_health -= enemy1_damage / 2
 		attacking = false

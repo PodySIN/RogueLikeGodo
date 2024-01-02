@@ -99,7 +99,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 7.0
+"speed": 14.0
 }, {
 "frames": [{
 "duration": 2.0,
@@ -155,15 +155,15 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cjw51"]
-size = Vector2(12, 4.25)
+size = Vector2(14, 17)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f3tfp"]
 radius = 16.0
 height = 36.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvpy3"]
-radius = 14.0
-height = 32.0
+radius = 6.0
+height = 20.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oqwlr"]
 bg_color = Color(0, 0, 0, 1)
@@ -172,26 +172,32 @@ bg_color = Color(0, 0, 0, 1)
 bg_color = Color(0.780392, 0.0470588, 0, 1)
 
 [node name="Enemy1" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 8
 script = ExtResource("1_x54oi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_wttd3")
-animation = &"run"
-frame_progress = 0.920581
+animation = &"attack"
+frame = 2
+frame_progress = 0.821541
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -4.875)
+position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_cjw51")
 
 [node name="hit_area" type="Area2D" parent="."]
+visible = false
+collision_layer = 4
+collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area"]
 position = Vector2(0, -12)
 shape = SubResource("CapsuleShape2D_f3tfp")
 
 [node name="attack_cd" type="Timer" parent="."]
-wait_time = 0.6
+wait_time = 0.3
 
 [node name="Enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 32
@@ -265,18 +271,19 @@ text = "21"
 
 [node name="Dead1" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("6_jfbqd")
-volume_db = -5.0
+volume_db = -13.0
 
 [node name="Dead2" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("7_80l7p")
-volume_db = -7.0
+volume_db = -16.0
 
 [node name="Dead3" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("8_emkac")
-volume_db = -7.0
+volume_db = -14.0
 
 [node name="HitSound" type="AudioStreamPlayer" parent="Music"]
 stream = ExtResource("8_mp0td")
+volume_db = -3.0
 
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
 [connection signal="body_exited" from="hit_area" to="." method="_on_hit_area_body_exited"]

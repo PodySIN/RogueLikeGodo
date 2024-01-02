@@ -38,7 +38,7 @@ var array_players_guns: Array = ['Pistol']
 #--------------------player_stats-------------------------------
 var player_max_health: int = 100
 var player_health: int = 100
-var player_speed: int = 300
+var player_speed: int = 225
 var player_hp_regen: int = 10
 var player_crit_chance: int = 17
 var player_crit_damage: float = 1.5
@@ -73,6 +73,6 @@ func zero_stats():
 	Global.player_max_health = 100
 	Global.player_health = 100
 	Global.player_hp_regen = 10
-	Global.player_speed = 300
+	Global.player_speed = 225
 	Global.player_crit_damage = 1.5
 #------------------------funcs-----------------------------------

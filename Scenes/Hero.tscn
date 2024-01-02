@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://b56mrg8633ijo"]
+[gd_scene load_steps=37 format=3 uid="uid://b56mrg8633ijo"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_nhwvj"]
 [ext_resource type="Texture2D" uid="uid://wb4sdmvkyv3n" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png" id="2_depky"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://bphtk88f08da5" path="res://Assets/Other/Music/RifleSound.mp3" id="10_eekoo"]
 [ext_resource type="AudioStream" uid="uid://dgkj8k3lp0l0b" path="res://Assets/Other/Music/UziSound.mp3" id="12_d2be2"]
 [ext_resource type="AudioStream" uid="uid://bqpk13o0j0gys" path="res://Assets/Other/Music/Kar98kSound.mp3" id="13_wtkno"]
+[ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="14_4mbau"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cdkg"]
 atlas = ExtResource("2_depky")
@@ -160,12 +161,14 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qwn10"]
-radius = 4.0
-height = 12.0
+radius = 6.0
+height = 22.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jn807"]
 
 [node name="Hero" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 4
 script = ExtResource("1_nhwvj")
 bullet_scene = ExtResource("2_goyec")
 riflebullet_scene = ExtResource("3_07xmy")
@@ -180,7 +183,7 @@ autoplay = "idle"
 frame_progress = 0.713386
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, -9)
+position = Vector2(-2, -13)
 shape = SubResource("CapsuleShape2D_qwn10")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -194,7 +197,8 @@ wait_time = 2.0
 autostart = true
 
 [node name="hitbox" type="Area2D" parent="."]
-collision_mask = 32
+collision_layer = 2
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox"]
 position = Vector2(0, -13)
@@ -239,6 +243,10 @@ volume_db = -15.0
 stream = ExtResource("13_wtkno")
 volume_db = -3.0
 
+[node name="GetHit" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("14_4mbau")
+volume_db = -5.0
+
 [node name="Muzzles" type="Node2D" parent="."]
 
 [node name="Muzzle1" type="Marker2D" parent="Muzzles"]
@@ -273,6 +281,7 @@ scale = Vector2(0.7, 0.7)
 
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="HpRegen" to="." method="_on_hp_regen_timeout"]
+[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
 [connection signal="timeout" from="TimersWeapon/PistolTimer" to="." method="_on_pistol_timer_timeout"]
 [connection signal="timeout" from="TimersWeapon/RifleTimer" to="." method="_on_rifle_timer_timeout"]
 [connection signal="timeout" from="TimersWeapon/UziTimer" to="." method="_on_uzi_timer_timeout"]

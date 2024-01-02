@@ -43,7 +43,7 @@ func _on_attack_pressed():
 func _on_speed_pressed():
 	if Global.UpgradesCounter > 0:
 		Global.UpgradesCounter -= 1
-		Global.player_speed += 25
+		Global.player_speed += 15
 
 
 

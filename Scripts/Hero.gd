@@ -11,12 +11,13 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 
 #-----vars-------------------------
 var alive = true
+var Stump_dmg = 40
 var counter_of_death = 0
 #-----vars-------------------------
 
 
 func _ready():
-
+	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
 	Global.player_health = Global.player_max_health
 	
 func _physics_process(delta):
@@ -131,6 +132,14 @@ func _on_kar_timer_timeout():
 	coll = 0
 	arr_of_muzzle_numbers = []
 
+func on_stump_bullet_damage_received(Stump_damage):
+	Stump_dmg = Stump_damage
+
+func _on_hitbox_area_entered(area):
+	if area.name == 'StumpBullet':
+		$Sounds/GetHit.play()
+		Global.player_health -= Stump_dmg
+
 func helth_control():
 	if Global.player_health > Global.player_max_health:
 		Global.player_health = Global.player_max_health
@@ -152,3 +161,4 @@ func _on_death_timer_timeout():
 
 func _on_hp_regen_timeout():
 	Global.player_health += Global.player_hp_regen
+
