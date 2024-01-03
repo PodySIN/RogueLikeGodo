@@ -491,11 +491,11 @@ autostart = true
 
 [node name="damage_timer" type="Timer" parent="."]
 
-[node name="Muzzle" type="Marker2D" parent="."]
-position = Vector2(0, -10)
-
 [node name="attack_anim_cd" type="Timer" parent="."]
 wait_time = 0.4
+
+[node name="Muzzle" type="Marker2D" parent="."]
+position = Vector2(0, -10)
 
 [node name="Player_in_area" type="Area2D" parent="."]
 collision_mask = 2

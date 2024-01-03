@@ -18,18 +18,21 @@ var playerkar_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
-@export var Stump_damage = 60
-@export var Stump_speed = 80
-@export var Stump_health = 150
-@export var Stump_max_health = 150
-@export var Stump_EXP_cost = 6
-var Stump_GOLD_cost = randi_range(2,5)
+var Stump_speed = 60
+var Stump_health = 170
+var Stump_max_health = 170
+var Stump_EXP_cost = 10
+var Stump_left_gold = 4
+var Stump_right_gold = 7
+var Stump_GOLD_cost = randi_range(Stump_left_gold,Stump_right_gold)
 #-----stats-------------------------
+
 func _ready():
 	Signals.connect('bullet_hit', Callable (self, 'on_damage_received'))
 	Signals.connect('Riflebullet_hit', Callable(self, 'on_rifledamage_received'))
 	Signals.connect('Uzibullet_hit', Callable(self, 'on_uzidamage_received'))
 	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
+	Signals.connect('Upgradetime',Callable(self,'_on_main_upgrade_timer_timeout'))
 	$HealthBar.min_value = 0
 	$HealthBar.max_value = Stump_max_health
 	$HealthBar.value = Stump_health
@@ -78,6 +81,7 @@ func get_death():
 	$CollisionShape2D.disabled = true
 	ap.play("death")
 	Global.EXP += Stump_EXP_cost
+	Stump_GOLD_cost = randi_range(4,7)
 	Global.GOLD += Stump_GOLD_cost
 	Global.ALL_KILLS_IN_GAME += 1
 	$death_timer.start()
@@ -163,3 +167,12 @@ func _on_player_in_area_body_exited(body):
 	if body.name == 'Hero' and alive:
 		await get_tree().create_timer(0.4).timeout
 		in_area = false
+
+func _on_main_upgrade_timer_timeout():
+	Global.Stump_damage = int(Global.Stump_damage * 1.15)
+	Stump_max_health = int(Stump_max_health * 1.15)
+	Stump_health = int(Stump_health * 1.15)
+	Stump_speed = int(Stump_speed * 1.05)
+	Stump_EXP_cost = int(Stump_EXP_cost * 1.2)
+	Stump_left_gold += 1
+	Stump_right_gold += 1

@@ -14,26 +14,28 @@ var playerrifle_dmg = 0
 var playeruzi_dmg = 0
 var playerkar_dmg = 0
 #-----vars-------------------------
+#-----stats-------------------------
+var Sheep_speed = 140
+var Sheep_health = 110
+var Sheep_max_health = 110
+var Sheep_EXP_cost = 4
+var Sheep_left_gold = 1
+var Sheep_right_gold = 3
+var Sheep_GOLD_cost = randi_range(Sheep_left_gold,Sheep_right_gold)
+#-----stats-------------------------
 
-#-----stats-------------------------
-@export var enemy1_damage = 30
-@export var speed = 130
-@export var enemy1_health = 100
-@export var enemy1_max_health = 100
-@export var EXP_cost = 3
-var GOLD_cost = randi_range(1,3)
-#-----stats-------------------------
 func _ready():
 	Signals.connect('bullet_hit', Callable (self, 'on_damage_received'))
 	Signals.connect('Riflebullet_hit', Callable(self, 'on_rifledamage_received'))
 	Signals.connect('Uzibullet_hit', Callable(self, 'on_uzidamage_received'))
 	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
+	Signals.connect('Upgradetime',Callable(self,'_on_main_upgrade_timer_timeout'))
 	$HealthBar.min_value = 0
-	$HealthBar.max_value = enemy1_max_health
-	$HealthBar.value = enemy1_health
+	$HealthBar.max_value = Sheep_max_health
+	$HealthBar.value = Sheep_health
 
 func _physics_process(delta):
-	$HealthBar.value = enemy1_health
+	$HealthBar.value = Sheep_health
 	helth_control()
 	state_control()
 	move_and_slide()
@@ -46,7 +48,7 @@ func state_control():
 
 func movement():
 	var direction = (player.position - self.position).normalized()
-	velocity = direction * speed
+	velocity = direction * Sheep_speed
 	if chase and attacking == false:
 		ap.play('run')
 		if direction.x < 0:
@@ -55,8 +57,8 @@ func movement():
 			ap.flip_h = false
 
 func helth_control():
-	if enemy1_health <= 0:
-		enemy1_health = 0
+	if Sheep_health <= 0:
+		Sheep_health = 0
 		counter_of_death+=1
 		alive = false
 		if counter_of_death == 1:
@@ -73,8 +75,9 @@ func get_death():
 	$Enemy_hitbox.collision_layer = 8
 	$CollisionShape2D.disabled = true
 	ap.play("death")
-	Global.EXP += EXP_cost
-	Global.GOLD += GOLD_cost
+	Global.EXP += Sheep_EXP_cost
+	Sheep_GOLD_cost = randi_range(1,3)
+	Global.GOLD += Sheep_GOLD_cost
 	Global.ALL_KILLS_IN_GAME += 1
 	$death_timer.start()
 	
@@ -89,14 +92,14 @@ func _on_hit_area_body_exited(body):
 	if body.name == 'Hero' and alive:
 		if $attack_cd.time_left < 0.15:
 			$Music/HitSound.play()
-			Global.player_health -= enemy1_damage / 2
+			Global.player_health -= Global.Sheep_damage / 2
 		attacking = false
 		$attack_cd.stop()
 
 func _on_attack_cd_timeout():
 	if alive:
 		$Music/HitSound.play()
-		Global.player_health -= enemy1_damage
+		Global.player_health -= Global.Sheep_damage
 
 func _on_death_timer_timeout():
 	queue_free()
@@ -118,28 +121,28 @@ func _on_enemy_hitbox_area_entered(area):
 		await get_tree().create_timer(0.02).timeout
 		$Damage_label.text = str(player_dmg)
 		$Damage_label.visible = true
-		enemy1_health -= player_dmg
+		Sheep_health -= player_dmg
 		Global.ALL_DAMAGE_IN_GAME += player_dmg
 		$Damage_timer.start()
 	elif area.name == 'rifle_bullet':
 		await get_tree().create_timer(0.02).timeout
 		$Damage_label_rifle.text = str(playerrifle_dmg)
 		$Damage_label_rifle.visible = true
-		enemy1_health -= playerrifle_dmg
+		Sheep_health -= playerrifle_dmg
 		Global.ALL_DAMAGE_IN_GAME += playerrifle_dmg
 		$Damage_timer.start()
 	elif area.name == 'UziBullet':
 		await get_tree().create_timer(0.02).timeout
 		$Damage_label_uzi.text = str(playeruzi_dmg)
 		$Damage_label_uzi.visible = true
-		enemy1_health -= playeruzi_dmg
+		Sheep_health -= playeruzi_dmg
 		Global.ALL_DAMAGE_IN_GAME += playeruzi_dmg
 		$Damage_timer.start()
 	elif area.name == 'kar98k_bullet':
 		await get_tree().create_timer(0.02).timeout
 		$Damage_label_kar.text = str(playerkar_dmg)
 		$Damage_label_kar.visible = true
-		enemy1_health -= playerkar_dmg
+		Sheep_health -= playerkar_dmg
 		Global.ALL_DAMAGE_IN_GAME += playerkar_dmg
 		$Damage_timer.start()
 
@@ -148,3 +151,12 @@ func _on_damage_timer_timeout():
 	$Damage_label_rifle.visible = false
 	$Damage_label_uzi.visible = false
 	$Damage_label_kar.visible = false
+
+func _on_main_upgrade_timer_timeout():
+	Global.Sheep_damage = int(Global.Sheep_damage * 1.15)
+	Sheep_max_health = int(Sheep_max_health * 1.15)
+	Sheep_health = int(Sheep_health * 1.15)
+	Sheep_speed = int(Sheep_speed * 1.05)
+	Sheep_EXP_cost = int(Sheep_EXP_cost * 1.2)
+	Sheep_left_gold += 1
+	Sheep_right_gold += 1
