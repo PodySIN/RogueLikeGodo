@@ -11,7 +11,7 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 
 #-----vars-------------------------
 var alive = true
-var Stump_dmg = 40
+var Stump_dmg = 60
 var counter_of_death = 0
 #-----vars-------------------------
 

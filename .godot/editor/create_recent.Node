@@ -1,6 +1,6 @@
+Timer
 CollisionShape2D
 Area2D
-Timer
 Marker2D
 AudioStreamPlayer
 VisibleOnScreenNotifier2D

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://ccoflp70w3bce"]
+[gd_scene load_steps=35 format=3 uid="uid://ccoflp70w3bce"]
 
 [ext_resource type="Script" path="res://Scripts/shop_level_menu.gd" id="1_sk62r"]
 [ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="2_28on7"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmvha4wxs5mwb" path="res://Assets/Other/Gui/Banners.png" id="5_t1orw"]
 [ext_resource type="Texture2D" uid="uid://bi8ggcj4dw4p2" path="res://Assets/Other/Gui/Icons.png" id="6_e2iqx"]
 [ext_resource type="Texture2D" uid="uid://b2adxnk1v1p7d" path="res://Assets/Other/Gui/Buttons.png" id="6_rdsdq"]
+[ext_resource type="Texture2D" uid="uid://bqcmeoqr6i860" path="res://Assets/Other/Guns/Kar98kImage.png" id="10_m4vyt"]
 [ext_resource type="PackedScene" uid="uid://2iun7dnnjvke" path="res://Scenes/coin.tscn" id="12_k61nw"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vaqym"]
@@ -170,7 +171,9 @@ offset_left = 80.0
 offset_top = 281.0
 offset_right = 281.0
 offset_bottom = 450.0
+texture = ExtResource("10_m4vyt")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Item2" type="Panel" parent="."]
 layout_mode = 0
@@ -186,7 +189,9 @@ offset_left = 430.0
 offset_top = 281.0
 offset_right = 631.0
 offset_bottom = 450.0
+texture = ExtResource("10_m4vyt")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Item3" type="Panel" parent="."]
 layout_mode = 0
@@ -202,7 +207,9 @@ offset_left = 780.0
 offset_top = 281.0
 offset_right = 981.0
 offset_bottom = 450.0
+texture = ExtResource("10_m4vyt")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="Item4" type="Panel" parent="."]
 layout_mode = 0
@@ -225,7 +232,9 @@ offset_right = 371.5
 offset_bottom = -629.0
 grow_horizontal = 2
 grow_vertical = 0
+texture = ExtResource("10_m4vyt")
 expand_mode = 1
+stretch_mode = 5
 
 [node name="BuyItem1" type="Button" parent="."]
 layout_mode = 0

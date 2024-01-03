@@ -1,12 +1,12 @@
-res://Scenes/world.tscn
+res://Scenes/shop_level_menu.tscn
 res://Scripts/enemy_1.gd
 res://Scripts/Stump.gd
+res://Scenes/world.tscn
 res://Scenes/Hero.tscn
 res://Scenes/enemy_1.tscn
-res://Scenes/kar_98k_bullet.tscn
-res://Scenes/shop_level_menu.tscn
 res://Scenes/stump.tscn
+res://Scripts/Hero.gd
+res://Scripts/global.gd
+res://Scripts/shop_level_menu.gd
 res://Scenes/stump_bullet.tscn
-res://Scenes/bullet.tscn
 res://Scripts/signals.gd
-res://Scripts/kar98k_bullet.gd
