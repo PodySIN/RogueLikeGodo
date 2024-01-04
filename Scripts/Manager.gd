@@ -64,6 +64,7 @@ func update_player_level():
 		Global.item2 = randi_range(0,6)
 		Global.item3 = randi_range(0,6)
 		Global.item4 = randi_range(0,6)
+		Global.buy_oportunity = [true,true,true,true]
 		LVLED_UP = true
 
 func _on_exit_menu_pressed():

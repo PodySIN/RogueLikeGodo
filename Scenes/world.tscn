@@ -34,6 +34,7 @@ var colling2 = 0
 var random_pos = 0
 var enemy1_preload = preload(\"res://Scenes/enemy_1.tscn\")
 var stump_preload = preload(\"res://Scenes/stump.tscn\")
+var hameleon_preload = preload(\"res://Scenes/hameleon.tscn\")
 var coller = 0
 
 func _ready():
@@ -109,6 +110,7 @@ func enemy_spawn():
 	random_pos = randi_range(1,4)
 	var enemy1 = enemy1_preload.instantiate()
 	var Stump = stump_preload.instantiate()
+	var Hameleon = hameleon_preload.instantiate()
 	if random_pos == 1:
 		enemy1.position = Vector2(randi_range(750,1150),930)
 		coller+=1
@@ -122,7 +124,7 @@ func enemy_spawn():
 		enemy1.position = Vector2(1480,randi_range(400,725))
 		coller+=1
 	$Mobs.add_child(enemy1)
-	if coller == 5:
+	if coller % 5 == 0:
 		if random_pos == 1:
 			Stump.position = Vector2(randi_range(750,1150),150)
 		elif random_pos == 2:
@@ -132,8 +134,16 @@ func enemy_spawn():
 		elif random_pos == 4:
 			Stump.position = Vector2(450,randi_range(440,655))
 		$Mobs.add_child(Stump)
-		coller = 0
-		
+	if coller % 3 == 0:
+		if random_pos == 1:
+			Hameleon.position = Vector2(randi_range(750,1150),150)
+		elif random_pos == 2:
+			Hameleon.position = Vector2(1480,randi_range(400,725))
+		elif random_pos == 3:
+			Hameleon.position = Vector2(randi_range(750,1150),930)
+		elif random_pos == 4:
+			Hameleon.position = Vector2(450,randi_range(440,655))
+		$Mobs.add_child(Hameleon)
 
 func _on_second_timer_timeout():
 	ST.stop()
@@ -598,7 +608,7 @@ autostart = true
 autostart = true
 
 [node name="StatUpgradeTimer" type="Timer" parent="Timers"]
-wait_time = 90.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="timeout" from="Mobs/Spawner" to="." method="_on_spawner_timeout"]

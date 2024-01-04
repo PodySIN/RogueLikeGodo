@@ -27,7 +27,7 @@ var ALL_KILLS_IN_GAME: int = 0
 
 #--------------------global_stats-------------------------------
 var EXP: int = 0
-var GOLD: int = 10
+var GOLD: int = 1000
 var Level: int = 1
 var owner_damage: int = 0
 var UpgradesCounter: int = 0
@@ -60,19 +60,19 @@ var item1: int = 0
 var item2: int = 0
 var item3: int = 0
 var item4: int = 0
+var buy_oportunity: Array = [true,true,true,true]
 var array_of_costs: Array = [20,35,25,40,15,30,20]
 var array_of_names_items: Array = ['Glock','M4A4','Uzi','Kar98k',
 'Shield','StrenghtPotion','SharkOmulet']
 #--------------------shop-----------------------------------------------
 
 #--------------------enemy-----------------------------------------------
-#--------------------SHEEP-----------------------------------------------
-var Sheep_damage = 30
-#--------------------SHEEP-----------------------------------------------
 
-#--------------------STUMP-----------------------------------------------
-var Stump_damage = 60
-#--------------------STUMP-----------------------------------------------
+var Sheep_damage = 30
+
+var Stump_damage = 50
+
+var Hameleon_damage = 70
 #--------------------enemy-----------------------------------------------
 
 #------------------------funcs-----------------------------------
@@ -99,4 +99,7 @@ func zero_stats():
 	player_hp_regen = 10
 	player_speed = 225
 	player_crit_damage = 1.5
+	Sheep_damage = 30
+	Stump_damage = 60
+	Hameleon_damage = 40
 #------------------------funcs-----------------------------------
