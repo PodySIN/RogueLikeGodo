@@ -19,7 +19,7 @@ var Sheep_speed = 140
 var Sheep_health = 110
 var Sheep_max_health = 110
 var Sheep_EXP_cost = 4
-var Sheep_left_gold = 1
+var Sheep_left_gold = 2
 var Sheep_right_gold = 3
 var Sheep_GOLD_cost = randi_range(Sheep_left_gold,Sheep_right_gold)
 #-----stats-------------------------
@@ -76,7 +76,7 @@ func get_death():
 	$CollisionShape2D.disabled = true
 	ap.play("death")
 	Global.EXP += Sheep_EXP_cost
-	Sheep_GOLD_cost = randi_range(1,3)
+	Sheep_GOLD_cost = randi_range(Sheep_left_gold,Sheep_right_gold)
 	Global.GOLD += Sheep_GOLD_cost
 	Global.ALL_KILLS_IN_GAME += 1
 	$death_timer.start()
