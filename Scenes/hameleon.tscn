@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bovp7giadg5km"]
+[gd_scene load_steps=44 format=3 uid="uid://bovp7giadg5km"]
 
 [ext_resource type="Script" path="res://Scripts/Hameleon.gd" id="1_0vprd"]
 [ext_resource type="Texture2D" uid="uid://b6t5s3ma0il2b" path="res://Assets/Enemy/Chameleon/Attack (84x38).png" id="2_6xm01"]
@@ -9,6 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://ctq5qnwl8oflr" path="res://Assets/Other/Music/Hameleon_death_sound_2.mp3" id="7_2mmao"]
 [ext_resource type="AudioStream" uid="uid://bghexovpmngil" path="res://Assets/Other/Music/Hameleon_attack_sound.mp3" id="8_l45do"]
 [ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="9_dh0ei"]
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="10_2mrh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v5wq"]
 atlas = ExtResource("2_6xm01")
@@ -194,7 +195,8 @@ radius = 6.0
 height = 12.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r8wia"]
-height = 32.0
+radius = 6.0
+height = 24.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8x6d4"]
 size = Vector2(53.5, 32)
@@ -207,6 +209,28 @@ bg_color = Color(0, 0, 0, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvaoq"]
 bg_color = Color(0.698039, 0, 0.0156863, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
+atlas = ExtResource("10_2mrh7")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7ln"]
+atlas = ExtResource("10_2mrh7")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4hv8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7ln")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 3.0
+}]
 
 [node name="Hameleon" type="CharacterBody2D"]
 collision_layer = 8
@@ -229,7 +253,7 @@ collision_layer = 32
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
-position = Vector2(2, -17)
+position = Vector2(-1, -16)
 shape = SubResource("CapsuleShape2D_r8wia")
 
 [node name="hit_area" type="Area2D" parent="."]
@@ -310,6 +334,7 @@ stream = ExtResource("6_7dolg")
 
 [node name="Death_sound2" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("7_2mmao")
+volume_db = -10.0
 
 [node name="AttackSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_l45do")
@@ -327,6 +352,24 @@ wait_time = 0.75
 [node name="Damage_timer" type="Timer" parent="Timers"]
 
 [node name="death_timer" type="Timer" parent="Timers"]
+
+[node name="Damage_label_shotgun" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 4.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("5_ftawx")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -12)
+scale = Vector2(1.01563, 1.01563)
+sprite_frames = SubResource("SpriteFrames_4hv8y")
+animation = &"fire"
 
 [connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]

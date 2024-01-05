@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://c6yi3c05281ik"]
+
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="1_05ue0"]
+
+[sub_resource type="GDScript" id="GDScript_r3vhl"]
+script/source = "extends Area2D
+
+@export var speed = 950
+
+func _process(delta):
+	position += transform.x * speed * delta
+	$AnimatedSprite2D.play()
+
+func _on_area_entered(area):
+	Global.Shotgun_damage_crit = Global.Shotgun_damage
+	Global.player_get_random_crit = randi_range(0,100)
+	if Global.player_get_random_crit <= Global.player_crit_chance:
+		Global.Shotgun_damage_crit *= Global.player_crit_damage
+	Signals.emit_signal('Shotgunbullet_hit', Global.Shotgun_damage_crit)
+	queue_free()
+	
+func _on_visible_on_screen_notifier_2d_screen_exited():
+	queue_free()
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ofgc"]
+size = Vector2(35, 30)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1auhl"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(480, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wtdch"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(496, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2hihq"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(512, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yhebr"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(528, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7janr"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(544, 160, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47i3l"]
+atlas = ExtResource("1_05ue0")
+region = Rect2(560, 160, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_f2urn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1auhl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wtdch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2hihq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yhebr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7janr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47i3l")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 5.0
+}]
+
+[node name="Shotgun_bullet" type="Area2D"]
+collision_layer = 64
+collision_mask = 32
+script = SubResource("GDScript_r3vhl")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_0ofgc")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.09375, 1.09375)
+sprite_frames = SubResource("SpriteFrames_f2urn")
+animation = &"fire"
+frame_progress = 0.0239428
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

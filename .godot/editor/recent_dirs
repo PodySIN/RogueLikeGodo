@@ -1,4 +1,9 @@
+res://Assets/Other/Guns/Shotgun
 res://Scenes
+res://Assets/Other/Guns/Shotgun/FX
+res://Assets/Other/Guns/Shotgun/Weapon
+res://Assets/Other/Gui
+res://Assets/Enemy/Bunny
 res://Assets/Enemy/Chameleon
 res://Assets/Enemy/Trunk
 res://Assets/Other/Guns
@@ -10,7 +15,6 @@ D:/GodotProjects/MySchoolProject/RogueLikeGodo
 D:/ComponentsUnificationMutton
 res://
 res://Assets/Other/Guns/4
-res://Assets/Other/Gui
 res://Assets/Enemy/2 Owlet_Monster
 res://Assets/Character/3 Dude_Monster
 res://Assets/Character

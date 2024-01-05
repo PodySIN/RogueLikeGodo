@@ -60,10 +60,11 @@ func update_player_level():
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
 		Global.player_health = Global.player_max_health
-		Global.item1 = randi_range(0,6)
-		Global.item2 = randi_range(0,6)
-		Global.item3 = randi_range(0,6)
-		Global.item4 = randi_range(0,6)
+		Global.item1 = randi_range(0,7)
+		Global.item2 = randi_range(0,7)
+		Global.item3 = randi_range(0,7)
+		Global.item4 = randi_range(0,7)
+		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]
 		LVLED_UP = true
 

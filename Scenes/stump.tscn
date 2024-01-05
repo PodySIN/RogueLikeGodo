@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://b6ij8bq7j2eur"]
+[gd_scene load_steps=70 format=3 uid="uid://b6ij8bq7j2eur"]
 
 [ext_resource type="Script" path="res://Scripts/Stump.gd" id="1_0uxgq"]
 [ext_resource type="PackedScene" uid="uid://bp7bqyqlc4e7i" path="res://Scenes/stump_bullet.tscn" id="2_bim0m"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://8ycaqydro58y" path="res://Assets/Other/Music/StumpHitted.mp3" id="8_q7itd"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="9_1ahjx"]
 [ext_resource type="AudioStream" uid="uid://byh6kitl7mbfe" path="res://Assets/Other/Music/Stump_fire.mp3" id="9_yxtx6"]
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="12_2hlhi"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pb0hg"]
 atlas = ExtResource("2_fcbch")
@@ -386,6 +387,28 @@ bg_color = Color(0.701961, 0, 0.129412, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_ikaa5"]
 radius = 233.002
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
+atlas = ExtResource("12_2hlhi")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7ln"]
+atlas = ExtResource("12_2hlhi")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qs7ss"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7ln")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 3.0
+}]
+
 [node name="Stump" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 8
@@ -483,6 +506,17 @@ theme_override_fonts/font = ExtResource("9_1ahjx")
 theme_override_font_sizes/font_size = 10
 text = "12"
 
+[node name="Damage_label_shotgun" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 4.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("9_1ahjx")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
 [node name="death_timer" type="Timer" parent="."]
 
 [node name="attack_cd" type="Timer" parent="."]
@@ -503,6 +537,13 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player_in_area"]
 position = Vector2(1, -12)
 shape = SubResource("CircleShape2D_ikaa5")
+
+[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -12)
+scale = Vector2(1.01563, 1.01563)
+sprite_frames = SubResource("SpriteFrames_qs7ss")
+animation = &"fire"
 
 [connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]

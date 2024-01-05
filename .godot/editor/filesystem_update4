@@ -5,9 +5,3 @@ res://Scenes/Hero.tscn
 res://Scenes/enemy_1.tscn
 res://Scenes/stump.tscn
 res://Scenes/shop_level_menu.tscn
-res://Scenes/stump_bullet.tscn
-res://Scenes/hameleon.tscn
-res://Scripts/Hameleon.gd
-res://Scripts/shop_level_menu.gd
-res://Scripts/global.gd
-res://Scripts/Manager.gd

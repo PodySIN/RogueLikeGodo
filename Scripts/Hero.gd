@@ -7,6 +7,7 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 @export var riflebullet_scene: PackedScene
 @export var uzibullet_scene: PackedScene
 @export var karbullet_scene: PackedScene
+@export var Shotgunbullet_scene: PackedScene
 #-----подгрузка-------------------------
 
 #-----vars-------------------------
@@ -80,6 +81,13 @@ func KarShoot(MuzzleNumber):
 	Kar_bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
 	get_tree().root.add_child(Kar_bullet)
 
+func ShotgunShoot(MuzzleNumber):
+	$Sounds/ShotgunSound.play()
+	Signals.emit_signal('shotgun_fire')
+	var Shotgun_bullet = Shotgunbullet_scene.instantiate()
+	Shotgun_bullet.transform = get_node(array_of_muzzles[MuzzleNumber]).global_transform
+	get_tree().root.add_child(Shotgun_bullet)
+
 func _on_pistol_timer_timeout():
 	var coll = 0
 	var arr_of_muzzle_numbers = []
@@ -89,6 +97,19 @@ func _on_pistol_timer_timeout():
 			arr_of_muzzle_numbers.append(i)
 	for i in range(coll):
 		PistolShoot(arr_of_muzzle_numbers[i])
+		await get_tree().create_timer(0.6).timeout
+	coll = 0
+	arr_of_muzzle_numbers = []
+
+func _on_shotgun_timer_timeout():
+	var coll = 0
+	var arr_of_muzzle_numbers = []
+	for i in range(len(Global.array_players_guns)):
+		if Global.array_players_guns[i] == 'Shotgun':
+			coll+=1
+			arr_of_muzzle_numbers.append(i)
+	for i in range(coll):
+		ShotgunShoot(arr_of_muzzle_numbers[i])
 		await get_tree().create_timer(0.6).timeout
 	coll = 0
 	arr_of_muzzle_numbers = []
@@ -161,4 +182,3 @@ func _on_death_timer_timeout():
 
 func _on_hp_regen_timeout():
 	Global.player_health += Global.player_hp_regen
-
