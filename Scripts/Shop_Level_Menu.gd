@@ -4,8 +4,9 @@ extends Control
 @export var Uzi_scene: PackedScene
 @export var Kar_scene: PackedScene
 @export var Pistol_scene: PackedScene
+@onready var Shotgun_scene = preload("res://Scenes/shotgun.tscn")
 var weapon
-
+var buy_oportunity_number = 0
 func _process(delta):
 	visible_UpgradesCounter()
 	visible_texture_and_texts()
@@ -46,201 +47,77 @@ func _on_speed_pressed():
 		Global.UpgradesCounter -= 1
 		Global.player_speed += 15
 
-
-
 func _on_buy_item_1_pressed():
-	if Global.buy_oportunity[0] == true and Global.item1 == 0 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		#$"../../Hero/Hero/Weapons"
-		weapon = Pistol_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Pistol')
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 1 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		weapon = Rifle_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Rifle')
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 2 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		weapon = Uzi_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Uzi')
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 3 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		weapon = Kar_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Kar')
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 4 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		Global.player_max_health += 25
-		Global.player_health = Global.player_max_health
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 5 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		Global.owner_damage += 15
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.buy_oportunity[0] = false
-	elif Global.buy_oportunity[0] == true and Global.item1 == 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
-		Global.player_crit_chance += 2
-		Global.GOLD -= Global.array_of_costs[Global.item1]
-		Global.buy_oportunity[0] = false
+	buy_oportunity_number = 0
+	buy_items(buy_oportunity_number, Global.buying_item_array[0])
 
 func _on_buy_item_2_pressed():
-	if Global.buy_oportunity[1] == true and Global.item2 == 0 and Global.counter_guns < 6 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+	buy_oportunity_number = 1
+	buy_items(buy_oportunity_number, Global.buying_item_array[1])
+
+func _on_buy_item_3_pressed():
+	buy_oportunity_number = 2
+	buy_items(buy_oportunity_number, Global.buying_item_array[2])
+
+func _on_buy_item_4_pressed():
+	buy_oportunity_number = 3
+	buy_items(buy_oportunity_number, Global.buying_item_array[3])
+
+func buy_items(buy_oportunity_number, item):
+	if Global.buy_oportunity[buy_oportunity_number] == true and item == 0 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		#$"../../Hero/Hero/Weapons"
 		weapon = Pistol_scene.instantiate()
 		position_for_gun()
 		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item2]
+		Global.GOLD -= Global.array_of_costs[item]
 		Global.counter_guns += 1
 		Global.array_players_guns.append('Pistol')
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 1 and Global.counter_guns < 6 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 1 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		weapon = Rifle_scene.instantiate()
 		position_for_gun()
 		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item2]
+		Global.GOLD -= Global.array_of_costs[item]
 		Global.counter_guns += 1
 		Global.array_players_guns.append('Rifle')
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 2 and Global.counter_guns < 6 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 2 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		weapon = Uzi_scene.instantiate()
 		position_for_gun()
 		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item2]
+		Global.GOLD -= Global.array_of_costs[item]
 		Global.counter_guns += 1
 		Global.array_players_guns.append('Uzi')
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 3 and Global.counter_guns < 6 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 3 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		weapon = Kar_scene.instantiate()
 		position_for_gun()
 		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item2]
+		Global.GOLD -= Global.array_of_costs[item]
 		Global.counter_guns += 1
 		Global.array_players_guns.append('Kar')
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 4 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 4 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 25
 		Global.player_health = Global.player_max_health
-		Global.GOLD -= Global.array_of_costs[Global.item2]
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 5 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 5 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.owner_damage += 15
-		Global.GOLD -= Global.array_of_costs[Global.item2]
-		Global.buy_oportunity[1] = false
-	elif Global.buy_oportunity[1] == true and Global.item2 == 6 and Global.array_of_costs[Global.item2] <= Global.GOLD:
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_crit_chance += 2
-		Global.GOLD -= Global.array_of_costs[Global.item2]
-		Global.buy_oportunity[1] = false
-
-
-func _on_buy_item_3_pressed():
-	if Global.buy_oportunity[2] == true and Global.item3 == 0 and Global.counter_guns < 6 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		#$"../../Hero/Hero/Weapons"
-		weapon = Pistol_scene.instantiate()
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
+		weapon = Shotgun_scene.instantiate()
 		position_for_gun()
 		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item3]
+		Global.GOLD -= Global.array_of_costs[item]
 		Global.counter_guns += 1
-		Global.array_players_guns.append('Pistol')
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 1 and Global.counter_guns < 6 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		weapon = Rifle_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -=  Global.array_of_costs[Global.item3]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Rifle')
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 2 and Global.counter_guns < 6 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		weapon =Uzi_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -=  Global.array_of_costs[Global.item3]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Uzi')
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 3 and Global.counter_guns < 6 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		weapon = Kar_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item3]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Kar')
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 4 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		Global.player_max_health += 25
-		Global.player_health = Global.player_max_health
-		Global.GOLD -= Global.array_of_costs[Global.item3]
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 5 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		Global.owner_damage += 15
-		Global.GOLD -= Global.array_of_costs[Global.item3]
-		Global.buy_oportunity[2] = false
-	elif Global.buy_oportunity[2] == true and Global.item3 == 6 and Global.array_of_costs[Global.item3] <= Global.GOLD:
-		Global.player_crit_chance += 2
-		Global.GOLD -= Global.array_of_costs[Global.item3]
-		Global.buy_oportunity[2] = false
-
-
-func _on_buy_item_4_pressed():
-	if Global.buy_oportunity[3] == true and Global.item4 == 0 and Global.counter_guns < 6 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		#$"../../Hero/Hero/Weapons"
-		weapon = Pistol_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Pistol')
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 1 and Global.counter_guns < 6 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		weapon = Rifle_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Rifle')
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 2 and Global.counter_guns < 6 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		weapon =Uzi_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Uzi')
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 3 and Global.counter_guns < 6 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		weapon = Kar_scene.instantiate()
-		position_for_gun()
-		$"../../Hero/Hero/Weapons".add_child(weapon)
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.counter_guns += 1
-		Global.array_players_guns.append('Kar')
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 4 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		Global.player_max_health += 25
-		Global.player_health = Global.player_max_health
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 5 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		Global.owner_damage += 15
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.buy_oportunity[3] = false
-	elif Global.buy_oportunity[3] == true and Global.item4 == 6 and Global.array_of_costs[Global.item4] <= Global.GOLD:
-		Global.player_crit_chance += 2
-		Global.GOLD -= Global.array_of_costs[Global.item4]
-		Global.buy_oportunity[3] = false
+		Global.array_players_guns.append('Shotgun')
+		Global.buy_oportunity[buy_oportunity_number] = false
 
 func position_for_gun():
 	if Global.counter_guns == 1:

@@ -41,7 +41,7 @@ theme_override_font_sizes/font_size = 175
 text = "1) Убивать монстров
 2) Выживать
 3) Собирать экспу
-3) Прокачиваться
+4) Прокачиваться
 5) ПОБЕДИТЬ!"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

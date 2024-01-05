@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://brdl2ojabd16f"]
+[gd_scene load_steps=38 format=3 uid="uid://brdl2ojabd16f"]
 
 [ext_resource type="Texture2D" uid="uid://f2tidigiacy4" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Run_6.png" id="1_cyd7t"]
 [ext_resource type="Script" path="res://Scripts/enemy_1.gd" id="1_x54oi"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dkbcss06wq741" path="res://Assets/Enemy/2 Owlet_Monster/Owlet_Monster_Death_8.png" id="3_wolx3"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="5_xbbk7"]
 [ext_resource type="AudioStream" uid="uid://d1b1l883j15dx" path="res://Assets/Other/Music/DeadSheepSound.mp3" id="6_jfbqd"]
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="6_oe6mc"]
 [ext_resource type="AudioStream" uid="uid://cdlgjy31il0nu" path="res://Assets/Other/Music/DeadSheepSound2.mp3" id="7_80l7p"]
 [ext_resource type="AudioStream" uid="uid://r6koq341mn8p" path="res://Assets/Other/Music/DeadSheepSound3.mp3" id="8_emkac"]
 [ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="8_mp0td"]
@@ -171,6 +172,28 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gn1r2"]
 bg_color = Color(0.780392, 0.0470588, 0, 1)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
+atlas = ExtResource("6_oe6mc")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7ln"]
+atlas = ExtResource("6_oe6mc")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvi0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7ln")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 3.0
+}]
+
 [node name="Enemy1" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 8
@@ -266,6 +289,25 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("5_xbbk7")
 theme_override_font_sizes/font_size = 10
 text = "21"
+
+[node name="Damage_label_shotgun" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 4.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("5_xbbk7")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -12)
+scale = Vector2(1.01563, 1.01563)
+sprite_frames = SubResource("SpriteFrames_qvi0v")
+animation = &"fire"
+frame_progress = 0.526928
 
 [node name="Music" type="Node2D" parent="."]
 

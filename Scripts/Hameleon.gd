@@ -14,6 +14,7 @@ var player_dmg = 0
 var playerrifle_dmg = 0
 var playeruzi_dmg = 0
 var playerkar_dmg = 0
+var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
 var Hameleon_speed = 150
@@ -31,6 +32,7 @@ func _ready():
 	Signals.connect('Uzibullet_hit', Callable(self, 'on_uzidamage_received'))
 	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
 	Signals.connect('Upgradetime',Callable(self,'_on_main_upgrade_timer_timeout'))
+	Signals.connect('Shotgunbullet_hit', Callable(self,'on_Shotgundamage_received'))
 	$HealthBar.min_value = 0
 	$HealthBar.max_value = Hameleon_max_health
 	$HealthBar.value = Hameleon_health
@@ -128,6 +130,9 @@ func on_uzidamage_received(playeruzi_damage):
 func on_kardamage_received(playerkar_damage):
 	playerkar_dmg = playerkar_damage
 
+func on_Shotgundamage_received(playerkar_damage):
+	playershotgun_dmg = playerkar_damage
+	
 func _on_enemy_hitbox_area_entered(area):
 	if area.name == 'Bullet':
 		await get_tree().create_timer(0.02).timeout
@@ -157,12 +162,24 @@ func _on_enemy_hitbox_area_entered(area):
 		Hameleon_health -= playerkar_dmg
 		Global.ALL_DAMAGE_IN_GAME += playerkar_dmg
 		$Timers/Damage_timer.start()
+	elif area.name == 'Shotgun_bullet':
+		await get_tree().create_timer(0.02).timeout
+		$ShotgunBullet.visible = true
+		$ShotgunBullet.play('fire')
+		$Damage_label_shotgun.text = str(playershotgun_dmg)
+		$Damage_label_shotgun.visible = true
+		Hameleon_health -= playershotgun_dmg
+		Global.ALL_DAMAGE_IN_GAME += playershotgun_dmg
+		$Timers/Damage_timer.start()
 
 func _on_damage_timer_timeout():
+	$ShotgunBullet.stop()
+	$ShotgunBullet.visible = false
 	$Damage_label.visible = false
 	$Damage_label_rifle.visible = false
 	$Damage_label_uzi.visible = false
 	$Damage_label_kar.visible = false
+	$Damage_label_shotgun.visible = false
 
 func _on_main_upgrade_timer_timeout():
 	Global.Hameleon_damage = int(Global.Hameleon_damage * 1.2)
