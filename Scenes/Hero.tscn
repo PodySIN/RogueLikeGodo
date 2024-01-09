@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b56mrg8633ijo"]
+[gd_scene load_steps=38 format=3 uid="uid://b56mrg8633ijo"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_nhwvj"]
 [ext_resource type="Texture2D" uid="uid://wb4sdmvkyv3n" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png" id="2_depky"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://gvdqq8apotb2" path="res://Scenes/uzi_bullet.tscn" id="4_cp2uq"]
 [ext_resource type="PackedScene" uid="uid://df6mea0qlptte" path="res://Scenes/kar_98k_bullet.tscn" id="5_532u8"]
 [ext_resource type="AudioStream" uid="uid://d4j3dxww3c2xf" path="res://Assets/Other/Music/Steps.mp3" id="5_d2v2l"]
-[ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="6_nb3on"]
 [ext_resource type="PackedScene" uid="uid://c6yi3c05281ik" path="res://Scenes/shotgun_bullet.tscn" id="6_r2jf2"]
 [ext_resource type="AudioStream" uid="uid://dvi00f6f3nyb2" path="res://Assets/Other/Music/Pistol_fire.mp3" id="8_n31pp"]
 [ext_resource type="AudioStream" uid="uid://bphtk88f08da5" path="res://Assets/Other/Music/RifleSound.mp3" id="10_eekoo"]
@@ -226,17 +225,18 @@ wait_time = 3.25
 autostart = true
 
 [node name="ShotgunTimer" type="Timer" parent="TimersWeapon"]
-wait_time = 4.0
+wait_time = 2.75
 autostart = true
 
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("5_d2v2l")
+volume_db = -8.0
 
 [node name="Pistol" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_n31pp")
-volume_db = -15.0
+volume_db = -20.0
 
 [node name="RiffleSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("10_eekoo")
@@ -285,10 +285,6 @@ unique_name_in_owner = true
 position = Vector2(-15, -7)
 
 [node name="Weapons" type="Node2D" parent="."]
-
-[node name="Pistol" parent="Weapons" instance=ExtResource("6_nb3on")]
-position = Vector2(13, -23)
-scale = Vector2(0.7, 0.7)
 
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="HpRegen" to="." method="_on_hp_regen_timeout"]

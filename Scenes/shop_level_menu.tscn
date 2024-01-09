@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://ccoflp70w3bce"]
+[gd_scene load_steps=68 format=3 uid="uid://ccoflp70w3bce"]
 
 [ext_resource type="Script" path="res://Scripts/shop_level_menu.gd" id="1_sk62r"]
 [ext_resource type="PackedScene" uid="uid://c0a2gafq8i4u0" path="res://Scenes/pistol.tscn" id="2_28on7"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://b2adxnk1v1p7d" path="res://Assets/Other/Gui/Buttons.png" id="6_rdsdq"]
 [ext_resource type="Texture2D" uid="uid://bqcmeoqr6i860" path="res://Assets/Other/Guns/Kar98kImage.png" id="10_m4vyt"]
 [ext_resource type="PackedScene" uid="uid://2iun7dnnjvke" path="res://Scenes/coin.tscn" id="12_k61nw"]
+[ext_resource type="Texture2D" uid="uid://c7wf8fgnsfxmd" path="res://Styles_and_ETC/Texture.tres" id="15_sbn8l"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_vaqym"]
 texture = ExtResource("2_xd2rn")
@@ -87,13 +88,142 @@ region_rect = Rect2(352.985, 289.135, 30.3233, 29.4314)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_q3fpv"]
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i0awt"]
+texture = ExtResource("5_t1orw")
+texture_margin_left = 3.0
+region_rect = Rect2(207.876, 176.236, 46.6096, 48.1896)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wbmgn"]
+texture = ExtResource("5_t1orw")
+region_rect = Rect2(174.879, 35.9756, 49.3878, 29.9513)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uj75f"]
+texture = ExtResource("5_t1orw")
+region_rect = Rect2(224.484, 0.515659, 30.6746, 31.08)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o6epu"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.161, 160.215, 47.1606, 31.3503)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgjuv"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.336, 192.339, 47.0079, 31.3386)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_icy2m"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.567, 192.297, 46.6201, 31.4854)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phr3e"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.14, 160.504, 47.4828, 30.666)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f8bmt"]
+texture = ExtResource("6_rdsdq")
+texture_margin_left = 3.0
+region_rect = Rect2(832.591, 416.821, 62.5909, 30.576)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mcaks"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.66, 416.389, 61.9254, 30.2702)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uxqri"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.513, 416.378, 62.5655, 31.3503)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_r85k2"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.16, 416.756, 62.9708, 30.4044)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_sqp3y"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.444, 416.382, 62.7168, 30.6659)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fabwj"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.746, 192.495, 46.5726, 30.2505)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kqrgv"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.296, 160.086, 47.3996, 31.0731)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2p4o5"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.214, 416.27, 63.2383, 30.6743)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kf3ew"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(832.405, 416.486, 63.2411, 31.4854)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0ang8"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.027, 192.297, 47.1606, 31.3503)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hv4sr"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.378, 160.648, 46.9714, 30.6206)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_638wv"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.154, 416.832, 63.3301, 30.2505)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_l2d0r"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(832.41, 416.422, 62.8436, 30.4579)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ksbv"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.063, 192.642, 47.3996, 30.6422)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_rakc7"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.024, 160.218, 47.4308, 31.2152)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lugv5"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.045, 416.95, 63.1124, 30.2702)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_p56ij"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(832.67, 416.403, 62.5908, 31.2954)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_n3utf"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.449, 192.504, 47.2255, 30.6857)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_dalu5"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.508, 160.87, 47.505, 30.1251)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_f0aru"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.556, 416.126, 62.6772, 31.1209)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_uwpl3"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(832.225, 416.644, 63.3301, 30.0328)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ud626"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.476, 192.921, 46.7633, 31.1156)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8qmuy"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(128.269, 160.027, 46.7552, 31.2152)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1k8nx"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(896.081, 416.602, 64.0158, 30.4148)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2u6sf"]
+texture = ExtResource("6_rdsdq")
+region_rect = Rect2(832.716, 416.54, 62.8572, 30.4148)
+
 [node name="Shop_Level_Menu" type="Control"]
 process_mode = 2
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_sk62r")
@@ -498,6 +628,564 @@ theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 100
 text = "25"
 
+[node name="Item1Info" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 100.0
+offset_top = 30.0
+offset_right = 400.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
+
+[node name="Label1Info" type="Label" parent="Item1Info"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 23.0
+offset_right = 284.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 25
+text = "Дробовик
+Урон 60
+Перезарядка 4,5"
+horizontal_alignment = 1
+
+[node name="Item2Info" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 480.0
+offset_top = 30.0
+offset_right = 780.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
+
+[node name="Label2Info" type="Label" parent="Item2Info"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 23.0
+offset_right = 284.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 25
+text = "Дробовик
+Урон 60
+Перезарядка 4,5"
+horizontal_alignment = 1
+
+[node name="Item3Info" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 860.0
+offset_top = 30.0
+offset_right = 1160.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
+
+[node name="Label3Info" type="Label" parent="Item3Info"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 23.0
+offset_right = 284.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 25
+text = "Дробовик
+Урон 60
+Перезарядка 4,5"
+horizontal_alignment = 1
+
+[node name="Item4Info" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1240.0
+offset_top = 30.0
+offset_right = 1540.0
+offset_bottom = 330.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
+
+[node name="Label4Info" type="Label" parent="Item4Info"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 23.0
+offset_right = 284.0
+offset_bottom = 222.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 25
+text = "Дробовик
+Урон 60
+Перезарядка 4,5"
+horizontal_alignment = 1
+
+[node name="Weapon1" type="Panel" parent="."]
+layout_mode = 0
+offset_left = -4.0
+offset_top = 938.0
+offset_right = 196.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture1" type="TextureRect" parent="Weapon1"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+texture = ExtResource("15_sbn8l")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon2" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 186.0
+offset_top = 938.0
+offset_right = 386.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture2" type="TextureRect" parent="Weapon2"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon3" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 376.0
+offset_top = 938.0
+offset_right = 576.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture3" type="TextureRect" parent="Weapon3"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon4" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 567.0
+offset_top = 938.0
+offset_right = 767.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture4" type="TextureRect" parent="Weapon4"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon5" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 758.0
+offset_top = 938.0
+offset_right = 958.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture5" type="TextureRect" parent="Weapon5"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Weapon6" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 949.0
+offset_top = 938.0
+offset_right = 1149.0
+offset_bottom = 1078.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_wbmgn")
+
+[node name="WeaponTexture6" type="TextureRect" parent="Weapon6"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 53.0
+offset_top = 24.0
+offset_right = 150.0
+offset_bottom = 98.0
+expand_mode = 1
+stretch_mode = 5
+
+[node name="WeaponInfo1" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 40.0
+offset_top = 800.0
+offset_right = 215.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo1"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton1" type="Button" parent="WeaponInfo1"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_wgjuv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_phr3e")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo1"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton1" type="Button" parent="WeaponInfo1"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_mcaks")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_r85k2")
+theme_override_styles/focus = SubResource("StyleBoxTexture_sqp3y")
+
+[node name="WeaponInfo2" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 240.0
+offset_top = 800.0
+offset_right = 415.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo2"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton2" type="Button" parent="WeaponInfo2"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_fabwj")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_kqrgv")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo2"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton2" type="Button" parent="WeaponInfo2"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_2p4o5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_kf3ew")
+
+[node name="WeaponInfo3" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 440.0
+offset_top = 800.0
+offset_right = 615.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo3"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton3" type="Button" parent="WeaponInfo3"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0ang8")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_hv4sr")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo3"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton3" type="Button" parent="WeaponInfo3"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_638wv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_l2d0r")
+
+[node name="WeaponInfo4" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 640.0
+offset_top = 800.0
+offset_right = 815.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo4"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton4" type="Button" parent="WeaponInfo4"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_5ksbv")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_rakc7")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo4"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton4" type="Button" parent="WeaponInfo4"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_lugv5")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_p56ij")
+
+[node name="WeaponInfo5" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 840.0
+offset_top = 800.0
+offset_right = 1015.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo5"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton5" type="Button" parent="WeaponInfo5"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_n3utf")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_dalu5")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo5"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton5" type="Button" parent="WeaponInfo5"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_f0aru")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_uwpl3")
+
+[node name="WeaponInfo6" type="Panel" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1040.0
+offset_top = 800.0
+offset_right = 1215.0
+offset_bottom = 975.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_uj75f")
+
+[node name="Sell" type="Label" parent="WeaponInfo6"]
+layout_mode = 0
+offset_left = 60.0
+offset_top = 17.0
+offset_right = 163.0
+offset_bottom = 44.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Продать"
+horizontal_alignment = 1
+
+[node name="SellButton6" type="Button" parent="WeaponInfo6"]
+layout_mode = 0
+offset_left = 57.0
+offset_top = 44.0
+offset_right = 163.0
+offset_bottom = 86.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_o6epu")
+theme_override_styles/hover = SubResource("StyleBoxTexture_ud626")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_icy2m")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_8qmuy")
+text = "$25"
+
+[node name="Close" type="Label" parent="WeaponInfo6"]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 86.0
+offset_right = 165.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_cau25")
+theme_override_font_sizes/font_size = 26
+text = "Закрыть"
+horizontal_alignment = 1
+
+[node name="CloseButton6" type="Button" parent="WeaponInfo6"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 112.0
+offset_right = 160.0
+offset_bottom = 155.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_f8bmt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_1k8nx")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_uxqri")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_2u6sf")
+
+[connection signal="mouse_entered" from="Itemtexture1" to="." method="_on_itemtexture_1_mouse_entered"]
+[connection signal="mouse_exited" from="Itemtexture1" to="." method="_on_itemtexture_1_mouse_exited"]
+[connection signal="mouse_entered" from="Itemtexture2" to="." method="_on_itemtexture_2_mouse_entered"]
+[connection signal="mouse_exited" from="Itemtexture2" to="." method="_on_itemtexture_2_mouse_exited"]
+[connection signal="mouse_entered" from="Itemtexture3" to="." method="_on_itemtexture_3_mouse_entered"]
+[connection signal="mouse_exited" from="Itemtexture3" to="." method="_on_itemtexture_3_mouse_exited"]
+[connection signal="mouse_entered" from="Itemtexture4" to="." method="_on_itemtexture_4_mouse_entered"]
+[connection signal="mouse_exited" from="Itemtexture4" to="." method="_on_itemtexture_4_mouse_exited"]
 [connection signal="pressed" from="BuyItem1" to="." method="_on_buy_item_1_pressed"]
 [connection signal="pressed" from="BuyItem2" to="." method="_on_buy_item_2_pressed"]
 [connection signal="pressed" from="BuyItem3" to="." method="_on_buy_item_3_pressed"]
@@ -505,3 +1193,27 @@ text = "25"
 [connection signal="pressed" from="Health+" to="." method="_on_health_pressed"]
 [connection signal="pressed" from="Attack+" to="." method="_on_attack_pressed"]
 [connection signal="pressed" from="Speed+" to="." method="_on_speed_pressed"]
+[connection signal="mouse_entered" from="Weapon1/WeaponTexture1" to="." method="_on_weapon_texture_1_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon1/WeaponTexture1" to="." method="_on_weapon_texture_1_mouse_exited"]
+[connection signal="mouse_entered" from="Weapon2/WeaponTexture2" to="." method="_on_weapon_texture_2_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon2/WeaponTexture2" to="." method="_on_weapon_texture_2_mouse_exited"]
+[connection signal="mouse_entered" from="Weapon3/WeaponTexture3" to="." method="_on_weapon_texture_3_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon3/WeaponTexture3" to="." method="_on_weapon_texture_3_mouse_exited"]
+[connection signal="mouse_entered" from="Weapon4/WeaponTexture4" to="." method="_on_weapon_texture_4_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon4/WeaponTexture4" to="." method="_on_weapon_texture_4_mouse_exited"]
+[connection signal="mouse_entered" from="Weapon5/WeaponTexture5" to="." method="_on_weapon_texture_5_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon5/WeaponTexture5" to="." method="_on_weapon_texture_5_mouse_exited"]
+[connection signal="mouse_entered" from="Weapon6/WeaponTexture6" to="." method="_on_weapon_texture_6_mouse_entered"]
+[connection signal="mouse_exited" from="Weapon6/WeaponTexture6" to="." method="_on_weapon_texture_6_mouse_exited"]
+[connection signal="pressed" from="WeaponInfo1/SellButton1" to="." method="_on_sell_button_1_pressed"]
+[connection signal="pressed" from="WeaponInfo1/CloseButton1" to="." method="_on_close_button_1_pressed"]
+[connection signal="pressed" from="WeaponInfo2/SellButton2" to="." method="_on_sell_button_2_pressed"]
+[connection signal="pressed" from="WeaponInfo2/CloseButton2" to="." method="_on_close_button_2_pressed"]
+[connection signal="pressed" from="WeaponInfo3/SellButton3" to="." method="_on_sell_button_3_pressed"]
+[connection signal="pressed" from="WeaponInfo3/CloseButton3" to="." method="_on_close_button_3_pressed"]
+[connection signal="pressed" from="WeaponInfo4/SellButton4" to="." method="_on_sell_button_4_pressed"]
+[connection signal="pressed" from="WeaponInfo4/CloseButton4" to="." method="_on_close_button_4_pressed"]
+[connection signal="pressed" from="WeaponInfo5/SellButton5" to="." method="_on_sell_button_5_pressed"]
+[connection signal="pressed" from="WeaponInfo5/CloseButton5" to="." method="_on_close_button_5_pressed"]
+[connection signal="pressed" from="WeaponInfo6/SellButton6" to="." method="_on_sell_button_6_pressed"]
+[connection signal="pressed" from="WeaponInfo6/CloseButton6" to="." method="_on_close_button_6_pressed"]

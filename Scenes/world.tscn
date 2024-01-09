@@ -7,15 +7,15 @@
 [ext_resource type="Texture2D" uid="uid://6wqmdxdr3cm6" path="res://Assets/Map/Shore.png" id="4_ohml3"]
 [ext_resource type="Texture2D" uid="uid://cp2fa550w3db0" path="res://Assets/Map/TexturedGrass.png" id="5_4wejt"]
 [ext_resource type="PackedScene" uid="uid://b56mrg8633ijo" path="res://Scenes/Hero.tscn" id="6_v8l8l"]
-[ext_resource type="AudioStream" uid="uid://b7le2ceg7r8wp" path="res://Assets/Other/Music/Game_Music.wav" id="7_bkmnf"]
 [ext_resource type="Texture2D" uid="uid://db5vtssvcn4b" path="res://Assets/Map/spring farm tilemap.png" id="7_ppgya"]
 [ext_resource type="AudioStream" uid="uid://mbilghcsnguj" path="res://Assets/Other/Music/numbers.mp3" id="8_defwh"]
 [ext_resource type="Texture2D" uid="uid://dalclsbclpp41" path="res://Assets/Map/farm objects free.png" id="8_wdg7x"]
 [ext_resource type="AudioStream" uid="uid://bv8q2w35x0lb1" path="res://Assets/Other/Music/GO!.mp3" id="9_iu2jm"]
+[ext_resource type="AudioStream" uid="uid://bh0j5m3yjcire" path="res://Assets/Other/Music/Game_Music.mp3" id="9_iye3a"]
 [ext_resource type="Texture2D" uid="uid://dswv5g0iabqow" path="res://Assets/Other/HpExpBars/HP Orb empty.png" id="9_wjpt2"]
-[ext_resource type="AudioStream" uid="uid://nv2k23m1lp0g" path="res://Assets/Other/Music/Menu_Music.wav" id="10_s2v6x"]
 [ext_resource type="Texture2D" uid="uid://cfjq87thhhw7j" path="res://Assets/Other/HpExpBars/HP Orb.png" id="10_tn36e"]
 [ext_resource type="Texture2D" uid="uid://bva88qtbggrto" path="res://Assets/Other/HpExpBars/12 Cell Green Blank.png" id="11_558je"]
+[ext_resource type="AudioStream" uid="uid://3bsd3ktfnbgp" path="res://Assets/Other/Music/Menu_Music.mp3" id="12_6i1y8"]
 [ext_resource type="Texture2D" uid="uid://b4nmw5jgh24sd" path="res://Assets/Other/HpExpBars/12 Cell Green.png" id="12_jujha"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="14_0o3tb"]
 [ext_resource type="PackedScene" uid="uid://3cal17cwogsp" path="res://Scenes/pause_menu.tscn" id="14_tm8fo"]
@@ -215,7 +215,6 @@ func _on_stat_upgrade_timer_timeout():
 	Signals.emit_signal('Upgradetime')
 
 func _on_area_polygon_area_entered(area):
-	print('yes')
 	area.queue_free()
 "
 
@@ -970,13 +969,11 @@ collision_layer = 8
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions/FarmCollision"]
 polygon = PackedVector2Array(3, 2, 1916, 3, 1923, 1085, -1, 1085, 1, 8, 277, 117, 275, 952, 1759, 957, 1757, 119, 279, 117, 1, 6)
 
-[node name="Area2D" type="Area2D" parent="Collisions"]
-
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="BGMUSIC" type="AudioStreamPlayer" parent="Sounds"]
-stream = ExtResource("7_bkmnf")
-volume_db = -10.0
+stream = ExtResource("9_iye3a")
+volume_db = -18.0
 
 [node name="Numbers" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("8_defwh")
@@ -988,7 +985,7 @@ volume_db = -24.0
 
 [node name="ShopMusic" type="AudioStreamPlayer" parent="Sounds"]
 process_mode = 2
-stream = ExtResource("10_s2v6x")
+stream = ExtResource("12_6i1y8")
 volume_db = -20.0
 autoplay = true
 
@@ -1125,7 +1122,6 @@ horizontal_alignment = 1
 position = Vector2(31, 258)
 
 [node name="Shop_Level_Menu" parent="UI" instance=ExtResource("17_ec1v8")]
-visible = false
 offset_bottom = 0.00012207
 
 [node name="QuitShop" parent="UI/Shop_Level_Menu" index="1"]
@@ -1201,6 +1197,130 @@ offset_left = 1639.0
 offset_top = 611.0
 offset_right = 1781.0
 offset_bottom = 675.0
+
+[node name="Item1Info" parent="UI/Shop_Level_Menu" index="36"]
+layout_direction = 1
+
+[node name="Label1Info" parent="UI/Shop_Level_Menu/Item1Info" index="0"]
+layout_direction = 1
+offset_left = 66.0
+offset_top = 24.0
+offset_right = 290.0
+offset_bottom = 260.0
+
+[node name="Item2Info" parent="UI/Shop_Level_Menu" index="37"]
+layout_direction = 1
+
+[node name="Label2Info" parent="UI/Shop_Level_Menu/Item2Info" index="0"]
+layout_direction = 1
+offset_left = 66.0
+offset_top = 24.0
+offset_right = 290.0
+offset_bottom = 259.0
+
+[node name="Item3Info" parent="UI/Shop_Level_Menu" index="38"]
+layout_direction = 1
+
+[node name="Label3Info" parent="UI/Shop_Level_Menu/Item3Info" index="0"]
+layout_direction = 1
+offset_top = 24.0
+offset_right = 290.0
+offset_bottom = 252.0
+
+[node name="Item4Info" parent="UI/Shop_Level_Menu" index="39"]
+layout_direction = 1
+
+[node name="Label4Info" parent="UI/Shop_Level_Menu/Item4Info" index="0"]
+layout_direction = 1
+offset_top = 25.0
+offset_right = 290.0
+offset_bottom = 248.0
+
+[node name="Weapon2" parent="UI/Shop_Level_Menu" index="41"]
+offset_left = 187.0
+offset_right = 387.0
+
+[node name="Weapon3" parent="UI/Shop_Level_Menu" index="42"]
+offset_left = 378.0
+offset_right = 578.0
+
+[node name="Weapon4" parent="UI/Shop_Level_Menu" index="43"]
+offset_left = 569.0
+offset_right = 769.0
+
+[node name="Weapon5" parent="UI/Shop_Level_Menu" index="44"]
+offset_left = 759.0
+offset_right = 959.0
+
+[node name="WeaponInfo2" parent="UI/Shop_Level_Menu" index="47"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -720.0
+offset_top = 260.0
+offset_right = -545.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponInfo3" parent="UI/Shop_Level_Menu" index="48"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -520.0
+offset_top = -280.0
+offset_right = -345.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="WeaponInfo4" parent="UI/Shop_Level_Menu" index="49"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -320.0
+offset_top = 260.0
+offset_right = -145.0
+offset_bottom = 435.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="WeaponInfo5" parent="UI/Shop_Level_Menu" index="50"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1080.0
+offset_top = -280.0
+offset_right = -905.0
+offset_bottom = -105.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="WeaponInfo6" parent="UI/Shop_Level_Menu" index="51"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -880.0
+offset_top = 260.0
+offset_right = -705.0
+offset_bottom = 435.0
+grow_horizontal = 0
+grow_vertical = 2
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("14_tm8fo")]
 process_mode = 2

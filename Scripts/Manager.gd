@@ -64,6 +64,7 @@ func update_player_level():
 		Global.item2 = randi_range(0,7)
 		Global.item3 = randi_range(0,7)
 		Global.item4 = randi_range(0,7)
+		Global.can_sell = true
 		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]
 		LVLED_UP = true

@@ -8,6 +8,7 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 @export var uzibullet_scene: PackedScene
 @export var karbullet_scene: PackedScene
 @export var Shotgunbullet_scene: PackedScene
+@onready var pistol_preload = preload("res://Scenes/pistol.tscn")
 #-----подгрузка-------------------------
 
 #-----vars-------------------------
@@ -18,9 +19,14 @@ var counter_of_death = 0
 
 
 func _ready():
+	Global.weapon_instances[0] = pistol_preload.instantiate()
+	if Global.array_players_guns[0] == 'Pistol':
+		Global.weapon_instances[0].position = Vector2(13,-23)
+		$Weapons.add_child(Global.weapon_instances[0])
+
 	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
 	Global.player_health = Global.player_max_health
-	
+
 func _physics_process(delta):
 	mousepos_andETC() # set mouse pos for guns
 	helth_control() # control live of character

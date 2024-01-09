@@ -28,9 +28,9 @@ var ALL_KILLS_IN_GAME: int = 0
 
 #--------------------global_stats-------------------------------
 var EXP: int = 0
-var GOLD: int = 10
+var GOLD: int = 1000
 var Level: int = 1
-var owner_damage: int = 0
+var owner_damage: int = 60
 var UpgradesCounter: int = 0
 #--------------------global_stats-------------------------------
 
@@ -47,6 +47,7 @@ var Uzi_damage_crit: int = Uzi_damage
 var Kar_damage_crit: int = Kar_damage
 var Shotgun_damage_crit: int = Shotgun_damage
 var array_players_guns: Array = ['Pistol']
+var weapon_instances = ['1','1','1','1','1','1']
 #--------------------guns_stats-------------------------------
 
 #--------------------player_stats-------------------------------
@@ -59,6 +60,7 @@ var player_crit_damage: float = 1.5
 #--------------------player_stats-------------------------------
 
 #--------------------shop-----------------------------------------------
+var can_sell: bool = true
 var item1: int = 0
 var item2: int = 0
 var item3: int = 0
@@ -66,8 +68,39 @@ var item4: int = 0
 var buy_oportunity: Array = [true,true,true,true]
 var buying_item_array = [item1 ,item2 ,item3 ,item4]
 var array_of_costs: Array = [20,35,25,40,15,30,20,30]
-var array_of_names_items: Array = ['Glock','M4A4','Uzi','Kar98k',
+var array_of_names_items: Array = ['Pistol','Rifle','Uzi','Kar',
 'Shield','StrenghtPotion','SharkOmulet','Shotgun']
+var array_of_texts_items: Array = [
+'Deagle
+Урон 20
+Перезарядка 1,25',
+
+'M4A4
+Урон 40
+Перезарядка 2',
+
+'Mac10
+Урон 10
+Перезарядка 0,75',
+
+'Kar98k
+Урон 100
+Перезарядка 3,25',
+
+'Щит героя
+Здоровье +25',
+
+'Зелье силы
+Урон +15',
+
+'Омулет из зубов
+Крит.Шанс +2%',
+
+'Saved off
+Урон 60
+Перезарядка 2,75',
+
+]
 #--------------------shop-----------------------------------------------
 
 #--------------------enemy-----------------------------------------------
