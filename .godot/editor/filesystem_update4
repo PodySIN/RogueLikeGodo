@@ -1,7 +1,13 @@
 res://Scenes/world.tscn
 res://Scripts/enemy_1.gd
 res://Scripts/Stump.gd
+res://Scripts/shop_level_menu.gd
 res://Scenes/Hero.tscn
 res://Scenes/enemy_1.tscn
 res://Scenes/stump.tscn
 res://Scenes/shop_level_menu.tscn
+res://Scenes/pause_menu.tscn
+res://Scenes/rifle.tscn
+res://Scripts/global.gd
+res://Scripts/Hero.gd
+res://Scripts/Manager.gd
