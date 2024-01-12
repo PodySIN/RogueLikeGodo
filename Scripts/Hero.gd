@@ -13,6 +13,7 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 
 #-----vars-------------------------
 var alive = true
+var run = 0
 var Stump_dmg = 60
 var counter_of_death = 0
 #-----vars-------------------------
@@ -43,21 +44,26 @@ func mousepos_andETC():
 	$Muzzles/Muzzle6.look_at(mouse_pos)
 
 func control_state():
+	var direction = Input.get_vector("Left","Right",'Up',"Down")
 	if alive:
-		var direction = Input.get_vector("Left","Right",'Up',"Down")
 		velocity = Global.player_speed * direction
 		if direction:
+			run += 1
 			ap.play('run')
-		else:
-			ap.play('idle')
-			if alive:
+			if run == 1:
 				$Sounds/Steps.play()
+		else:
+			run = 0
+			$Sounds/Steps.play()
+			ap.play('idle')
 		if direction.x < 0:
 			ap.flip_h = true
 		elif direction.x > 0:
 			ap.flip_h = false
 		velocity = velocity.normalized() * Global.player_speed
 	else:
+		$Sounds/Steps.stop()
+		direction = Vector2(0,0)
 		velocity = Vector2.ZERO
 
 func PistolShoot(MuzzleNumber):

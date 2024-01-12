@@ -195,8 +195,8 @@ animations = [{
 }]
 
 [node name="Enemy1" type="CharacterBody2D"]
-collision_layer = 8
-collision_mask = 8
+collision_layer = 4
+collision_mask = 12
 script = ExtResource("1_x54oi")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
