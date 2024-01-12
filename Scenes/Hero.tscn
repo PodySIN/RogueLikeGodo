@@ -189,7 +189,7 @@ position = Vector2(-2, -13)
 shape = SubResource("CapsuleShape2D_qwn10")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2.3, 2.3)
+zoom = Vector2(2.35, 2.35)
 
 [node name="death_timer" type="Timer" parent="."]
 wait_time = 2.3

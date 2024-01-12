@@ -50,6 +50,7 @@ func _on_quit_shop_pressed():
 	Global.game_paused_shop = !Global.game_paused_shop
 
 func update_player_level():
+
 	var previous_level = Global.Level
 	for i in range(len(Global.exp_brackers)):
 		if Global.EXP < Global.exp_brackers[i]:
@@ -57,6 +58,8 @@ func update_player_level():
 			break
 	if Global.Level > previous_level:
 		Global.UpgradesCounter += 1
+		if Global.UpgradesCounter >= 5:
+			Global.UpgradesCounter = 5
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
 		Global.player_health = Global.player_max_health
@@ -64,9 +67,22 @@ func update_player_level():
 		Global.item2 = randi_range(0,7)
 		Global.item3 = randi_range(0,7)
 		Global.item4 = randi_range(0,7)
+		Global.chances_on_lvl = [randi_range(0,100),randi_range(0,100),randi_range(0,100),randi_range(0,100)]
+		for i in range(len(Global.chances_on_lvl)):
+			if Global.chances_on_lvl[i] <= 60:
+				Global.level_stats[i] = randi_range(0,5)
+			elif Global.chances_on_lvl[i] > 60 and Global.chances_on_lvl[i] <= 85:
+				Global.level_stats[i] = randi_range(6,11)
+			elif Global.chances_on_lvl[i] > 85 and Global.chances_on_lvl[i] <= 95:
+				Global.level_stats[i] = randi_range(12,17)
+			elif Global.chances_on_lvl[i] > 95 and Global.chances_on_lvl[i] <= 99:
+				Global.level_stats[i] = randi_range(18,23)
+			elif Global.chances_on_lvl[i] == 100:
+				Global.level_stats[i] = randi_range(24,29)
 		Global.can_sell = true
 		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]
+		Global.level_buy_oportunity = [true,true,true,true]
 		LVLED_UP = true
 
 func _on_exit_menu_pressed():

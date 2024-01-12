@@ -1,4 +1,5 @@
 extends Control
+var on_information_window_mouse_entered = false
 @onready var player = preload("res://Scenes/Hero.tscn")
 @export var Rifle_scene: PackedScene
 @export var Uzi_scene: PackedScene
@@ -6,17 +7,34 @@ extends Control
 @export var Pistol_scene: PackedScene
 @onready var Shotgun_scene = preload("res://Scenes/shotgun.tscn")
 var array_of_WeaponTextures = ['%WeaponTexture1','%WeaponTexture2','%WeaponTexture3','%WeaponTexture4','%WeaponTexture5','%WeaponTexture6']
+
 var buy_oportunity_number = 0
+
 func _process(delta):
-	print(Global.counter_guns,'   ',Global.array_players_guns)
+	$InformationWindow/InformationWindowLabel.text = str('HP: ',Global.player_max_health,'\n','Attack: ',Global.owner_damage,'\n','Attack%: ',(Global.owner_damage_percentage * 100) - 100,'%','\n','MS: ',Global.player_speed,'\n','Crit.chance: ',Global.player_crit_chance,'%','\n','Crit.dmg: ',Global.player_crit_damage * 100,'%','\n','HP Regen: ',Global.player_hp_regen)
+	print('Hp_max: ',Global.player_max_health,'\n','HP: ',Global.player_health,'\n','Atck: ',Global.owner_damage,'\n','Attck%: ',Global.owner_damage_percentage,
+	'\n','Crit.chn: ',Global.player_crit_chance,'\n','Crit.dmg: ',Global.player_crit_damage,'\n','Ms: ',Global.player_speed)
 	visible_UpgradesCounter()
 	visible_texture_and_texts()
+	visible_level_system()
+
+func visible_level_system():
+	$LevelStatInfo.text = str(Global.array_level_stats_info[Global.level_stats[0]])
+	$LevelStatInfo2.text = str(Global.array_level_stats_info[Global.level_stats[1]])
+	$LevelStatInfo3.text = str(Global.array_level_stats_info[Global.level_stats[2]])
+	$LevelStatInfo4.text = str(Global.array_level_stats_info[Global.level_stats[3]])
+	$LevelIcon1.texture = load(Global.array_level_stats_textures[Global.level_stats[0]])
+	$LevelIcon2.texture = load(Global.array_level_stats_textures[Global.level_stats[1]])
+	$LevelIcon3.texture = load(Global.array_level_stats_textures[Global.level_stats[2]])
+	$LevelIcon4.texture = load(Global.array_level_stats_textures[Global.level_stats[3]])
 
 func visible_UpgradesCounter():
 	if Global.UpgradesCounter == 1:
-		$UpgradesCounter.text = str('You have: ' + str(Global.UpgradesCounter) + ' point')
+		$UpgradesCounter.text = str('You have: ' + str(Global.UpgradesCounter) + ' point','
+		 (max 5)')
 	else:
-		$UpgradesCounter.text = str('You have: ' + str(Global.UpgradesCounter) + ' points')
+		$UpgradesCounter.text = str('You have: ' + str(Global.UpgradesCounter) + ' points','
+		 (max 5)')
 
 func visible_texture_and_texts():
 	$Gold.text = str(Global.GOLD)
@@ -32,25 +50,6 @@ func visible_texture_and_texts():
 		for j in range(len(Global.array_of_names_items)):
 			if Global.array_players_guns[i] == Global.array_of_names_items[j]:
 				get_node(array_of_WeaponTextures[i]).texture = load(Global.array_of_items[j])
-	
-func _on_health_pressed():
-	if Global.UpgradesCounter > 0:
-		Global.UpgradesCounter -= 1
-		Global.player_max_health += 10
-		Global.player_health = Global.player_max_health
-		Signals.emit_signal("health_upgraded", Global.player_health)
-	elif Global.UpgradesCounter == 0:
-		pass
-
-func _on_attack_pressed():
-	if Global.UpgradesCounter > 0:
-		Global.UpgradesCounter -= 1
-		Global.owner_damage += 5
-
-func _on_speed_pressed():
-	if Global.UpgradesCounter > 0:
-		Global.UpgradesCounter -= 1
-		Global.player_speed += 15
 
 func _on_buy_item_1_pressed():
 	buy_oportunity_number = 0
@@ -91,11 +90,19 @@ func instantiate_weapons(weapon_name):
 			position_for_gun(Global.weapon_instances[i],i)
 			$"../../Hero/Hero/Weapons".add_child(Global.weapon_instances[i])
 
+func weapon_free():
+	for i in range(len(Global.array_players_guns)):
+		if Global.array_players_guns[i] != 'Empty':
+			print(Global.array_players_guns)
+			print(Global.weapon_instances)
+			Global.weapon_instances[i].queue_free()
+
 func buy_items(buy_oportunity_number, item):
 	if Global.array_players_guns.count('Pistol') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 0 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		#$"../../Hero/Hero/Weapons"
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
+			weapon_free()
 			Global.array_players_guns.append('Pistol')
 			instantiate_weapons('Pistol')
 		elif len(Global.array_players_guns) == 6:
@@ -111,6 +118,7 @@ func buy_items(buy_oportunity_number, item):
 	elif Global.array_players_guns.count('Rifle') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 1 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
+			weapon_free()
 			Global.array_players_guns.append('Rifle')
 			instantiate_weapons('Rifle')
 		elif len(Global.array_players_guns) == 6:
@@ -124,9 +132,9 @@ func buy_items(buy_oportunity_number, item):
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.array_players_guns.count('Uzi') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 2 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
-		
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
+			weapon_free()
 			Global.array_players_guns.append('Uzi')
 			instantiate_weapons('Uzi')
 		elif len(Global.array_players_guns) == 6:
@@ -140,9 +148,9 @@ func buy_items(buy_oportunity_number, item):
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.array_players_guns.count('Kar') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 3 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
-		
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
+			weapon_free()
 			Global.array_players_guns.append('Kar')
 			instantiate_weapons('Kar')
 		elif len(Global.array_players_guns) == 6:
@@ -158,6 +166,7 @@ func buy_items(buy_oportunity_number, item):
 	elif Global.array_players_guns.count('Shotgun') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
+			weapon_free()
 			Global.array_players_guns.append('Shotgun')
 			instantiate_weapons('Shotgun')
 		elif len(Global.array_players_guns) == 6:
@@ -172,15 +181,20 @@ func buy_items(buy_oportunity_number, item):
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 4 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 25
+		Global.player_speed -= 10
 		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 5 and Global.array_of_costs[item] <= Global.GOLD:
-		Global.owner_damage += 15
+		Global.owner_damage += 5
+		Global.owner_damage_percentage += 0.05
+		Global.player_max_health -= 5
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_crit_chance += 2
+		Global.player_crit_damage += 0.04
+		Global.owner_damage_percentage -= 0.01
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 	
@@ -372,3 +386,55 @@ func _on_weapon_texture_5_mouse_exited():
 func _on_weapon_texture_6_mouse_exited():
 	await get_tree().create_timer(12).timeout
 	$WeaponInfo6.visible = false
+
+func _on_button_level_pressed():
+	if Global.level_buy_oportunity[0] == true:
+		var a = Global.level_stats[0]
+		Global.level_buy_oportunity[0] == false
+		buy(a)
+
+func _on_button_level_1_pressed():
+	if Global.level_buy_oportunity[1] == true:
+		var a = Global.level_stats[1]
+		Global.level_buy_oportunity[1] == false
+		buy(a)
+
+func _on_button_level_2_pressed():
+	if Global.level_buy_oportunity[2] == true:
+		var a = Global.level_stats[2]
+		Global.level_buy_oportunity[2] == false
+		buy(a)
+
+func _on_button_level_3_pressed():
+	if Global.level_buy_oportunity[3] == true:
+		var a = Global.level_stats[3]
+		Global.level_buy_oportunity[3] == false
+		buy(a)
+
+func buy(a):
+	if Global.UpgradesCounter > 0:
+		if a == 0 or a == 6 or a == 12 or a == 18 or a == 24:
+			Global.owner_damage += Global.array_level_stats_upgrade[a]
+		elif a == 1 or a == 7 or a == 13 or a == 19 or a == 25:
+			Global.owner_damage_percentage += Global.array_level_stats_upgrade[a]
+		elif a == 2 or a == 8 or a == 14 or a == 20 or a == 26:
+			Global.player_max_health += Global.array_level_stats_upgrade[a]
+			Global.player_health = Global.player_max_health
+			Signals.emit_signal("health_upgraded", Global.player_health)
+		elif a == 3 or a == 9 or a == 15 or a == 21 or a == 27:
+			Global.player_crit_chance += Global.array_level_stats_upgrade[a]
+		elif a == 4 or a == 10 or a == 16 or a == 22 or a == 28:
+			Global.player_speed += Global.array_level_stats_upgrade[a]
+		elif a == 5 or a == 11 or a == 17 or a == 23 or a == 29:
+			Global.player_crit_damage += Global.array_level_stats_upgrade[a]
+		Global.UpgradesCounter -= 1
+
+func _on_information_window_button_pressed():
+	if on_information_window_mouse_entered == true:
+		$InformationWindow.visible = true
+
+func _on_information_window_button_mouse_entered():
+	on_information_window_mouse_entered = true
+
+func _on_information_window_button_mouse_exited():
+	$InformationWindow.visible = false
