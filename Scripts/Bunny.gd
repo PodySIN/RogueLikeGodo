@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var player = $"../../Hero/Hero"
 #-----onready-------------------------
 #-----vars-------------------------
+var upgrade_times = 0
 var chase = true
 var attacking = false
 var alive = true
@@ -153,13 +154,35 @@ func _on_damage_timer_timeout():
 	$Damage_label_shotgun.visible = false
 
 func _on_main_upgrade_timer_timeout():
-	Global.Sheep_damage = int(Global.Sheep_damage * 1.15)
-	Bunny_max_health = int(Bunny_max_health * 1.15)
-	Bunny_health = int(Bunny_health * 1.15)
-	Bunny_speed = int(Bunny_speed * 1.05)
-	Bunny_EXP_cost = int(Bunny_EXP_cost * 1.2)
-	Bunny_left_gold = int(Bunny_left_gold * 1.2)
-	Bunny_right_gold = int(Bunny_left_gold * 1.2)
+	upgrade_times += 1
+	if upgrade_times < 4:
+		Bunny_max_health = int(Bunny_max_health * 1.15)
+		Bunny_health = int(Bunny_health * 1.15)
+		Bunny_speed = int(Bunny_speed * 1.05)
+		Bunny_EXP_cost = int(Bunny_EXP_cost * 1.2)
+		Bunny_left_gold += 2
+		Bunny_right_gold += 2
+	elif upgrade_times > 4 and upgrade_times < 10:
+		Bunny_max_health = int(Bunny_max_health * 1.4)
+		Bunny_health = int(Bunny_health * 1.4)
+		Bunny_speed = int(Bunny_speed * 1.15)
+		Bunny_EXP_cost = int(Bunny_EXP_cost * 1.6)
+		Bunny_left_gold += 6
+		Bunny_right_gold += 6
+	elif upgrade_times > 10 and upgrade_times < 20:
+		Bunny_max_health = int(Bunny_max_health * 1.8)
+		Bunny_health = int(Bunny_health * 1.8)
+		Bunny_speed = int(Bunny_speed * 1.3)
+		Bunny_EXP_cost = int(Bunny_EXP_cost * 2.5)
+		Bunny_left_gold += 15
+		Bunny_right_gold += 15
+	elif upgrade_times > 20:
+		Bunny_max_health = int(Bunny_max_health * 3)
+		Bunny_health = int(Bunny_health * 3)
+		Bunny_speed = int(Bunny_speed * 2)
+		Bunny_EXP_cost = int(Bunny_EXP_cost * 5)
+		Bunny_left_gold += 30
+		Bunny_right_gold += 30
 
 func _on_dissapear_timer_timeout():
 	queue_free()

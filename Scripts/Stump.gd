@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var Stumpbullet_preload: PackedScene
 #-----onready-------------------------
 #-----vars-------------------------
+var upgrade_times = 0
 var in_area = false
 var chase = true
 var attacking = false
@@ -185,10 +186,36 @@ func _on_player_in_area_body_exited(body):
 		in_area = false
 
 func _on_main_upgrade_timer_timeout():
-	Global.Stump_damage = int(Global.Stump_damage * 1.15)
-	Stump_max_health = int(Stump_max_health * 1.15)
-	Stump_health = int(Stump_health * 1.15)
-	Stump_speed = int(Stump_speed * 1.05)
-	Stump_EXP_cost = int(Stump_EXP_cost * 1.2)
-	Stump_left_gold += 1
-	Stump_right_gold += 1
+	upgrade_times += 1
+	if upgrade_times < 4:
+		Global.Stump_damage = int(Global.Stump_damage * 1.15)
+		Stump_max_health = int(Stump_max_health * 1.15)
+		Stump_health = int(Stump_health * 1.15)
+		Stump_speed = int(Stump_speed * 1.05)
+		Stump_EXP_cost = int(Stump_EXP_cost * 1.2)
+		Stump_left_gold += 1
+		Stump_right_gold += 1
+	elif upgrade_times > 4 and upgrade_times < 10:
+		Global.Stump_damage = int(Global.Stump_damage * 1.4)
+		Stump_max_health = int(Stump_max_health * 1.4)
+		Stump_health = int(Stump_health * 1.4)
+		Stump_speed = int(Stump_speed * 1.15)
+		Stump_EXP_cost = int(Stump_EXP_cost * 1.6)
+		Stump_left_gold += 3
+		Stump_right_gold += 3
+	elif upgrade_times > 10 and upgrade_times < 20:
+		Global.Stump_damage = int(Global.Stump_damage * 1.8)
+		Stump_max_health = int(Stump_max_health * 1.8)
+		Stump_health = int(Stump_health * 1.8)
+		Stump_speed = int(Stump_speed * 1.3)
+		Stump_EXP_cost = int(Stump_EXP_cost * 2.5)
+		Stump_left_gold += 6
+		Stump_right_gold += 6
+	elif upgrade_times > 20:
+		Global.Stump_damage = int(Global.Stump_damage * 3)
+		Stump_max_health = int(Stump_max_health * 3)
+		Stump_health = int(Stump_health * 3)
+		Stump_speed = int(Stump_speed * 2)
+		Stump_EXP_cost = int(Stump_EXP_cost * 5)
+		Stump_left_gold += 15
+		Stump_right_gold += 15

@@ -1,0 +1,615 @@
+[gd_scene load_steps=68 format=3 uid="uid://767p7pl7olxb"]
+
+[ext_resource type="Script" path="res://Scripts/set_class_menu.gd" id="1_7uf5o"]
+[ext_resource type="PackedScene" uid="uid://dc2o1q08tqv8d" path="res://Scenes/bg.tscn" id="1_qqh0t"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_waxpp"]
+[ext_resource type="Texture2D" uid="uid://d2cdl6y250gal" path="res://Assets/Other/Items/Frames/4.png" id="3_v8v7l"]
+[ext_resource type="Texture2D" uid="uid://bwui5vv65eyox" path="res://Assets/Other/Items/ClassIcons/icBanner.png" id="4_eace8"]
+[ext_resource type="Texture2D" uid="uid://b6wuhwpprrvtr" path="res://Assets/Other/Items/ClassIcons/icContemplative.png" id="5_l6pdx"]
+[ext_resource type="Texture2D" uid="uid://cfmiep4baqblr" path="res://Assets/Other/Items/Frames/13.png" id="6_e86f8"]
+[ext_resource type="Texture2D" uid="uid://bl4dsb6wd0jag" path="res://Assets/Other/Items/ClassIcons/icHunter.png" id="6_fb6vr"]
+[ext_resource type="Texture2D" uid="uid://b2adxnk1v1p7d" path="res://Assets/Other/Gui/Buttons.png" id="7_6n6a7"]
+[ext_resource type="Texture2D" uid="uid://bh1o5510fgmmm" path="res://Assets/Other/Items/ClassIcons/icHonest.png" id="7_65it4"]
+[ext_resource type="Texture2D" uid="uid://ddbf8qsb5dyte" path="res://Assets/Other/Items/ClassIcons/icTreasure.png" id="8_rt260"]
+[ext_resource type="Texture2D" uid="uid://cc0ocl6ederup" path="res://Assets/Other/Items/ClassIcons/icExplore.png" id="9_b1wl2"]
+[ext_resource type="Texture2D" uid="uid://bf2rr0d27w1re" path="res://Assets/Other/Items/ClassIcons/icDanger.png" id="10_42bm7"]
+[ext_resource type="Texture2D" uid="uid://cmwmixopefqqb" path="res://Assets/Other/Items/ClassIcons/icTough.png" id="12_wep0k"]
+[ext_resource type="AudioStream" uid="uid://3bsd3ktfnbgp" path="res://Assets/Other/Music/Menu_Music.mp3" id="13_r46ms"]
+[ext_resource type="AudioStream" uid="uid://ltyl4w34d655" path="res://Assets/Other/Music/prees_button_sound.mp3" id="14_ib8fg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6nmaf"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_54ndy"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ybg68"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_won5j"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v2gr4"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4rdqv"]
+texture = ExtResource("3_v8v7l")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v0aiv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_li8wr"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c6dqp"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j15i4"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4mdkp"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_3i031"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x33uv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_eawq8"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j3hkd"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7fu07"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_aqmod"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_oxwm6"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_otmho"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1jh2x"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6upph"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_4ix5n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xf5nq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qjemh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_vuwju"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1dmji"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ovhw3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mv1o7"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0q0db"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nlt7w"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ykelm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rfdyw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v56lq"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_6jbce"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_llyid"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_phhpw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4y07"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lksnj"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_25ywr"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i1beo"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4n6ww"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_tmup0"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2hklw"]
+texture = ExtResource("6_e86f8")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v1x50"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(200.355, 416.464, 46.3463, 29.8354)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kgy4r"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(200.486, 416.892, 46.4849, 29.999)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1chdo"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(328.631, 416.677, 46.0978, 29.8745)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cuteh"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(200.404, 416.727, 47.123, 30.576)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_e7h68"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(0.592445, 416.486, 62.6113, 31.3857)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eljvq"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(0.403236, 416.526, 63.1604, 30.9179)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ss7sf"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(128.295, 416.405, 62.7007, 30.6747)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_x1a1j"]
+texture = ExtResource("7_6n6a7")
+region_rect = Rect2(0.674515, 416.27, 62.4304, 31.08)
+
+[node name="SetClassMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7uf5o")
+
+[node name="BG" parent="." instance=ExtResource("1_qqh0t")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+offset = Vector2(0, 50)
+transform = Transform2D(1, 0, 0, 1, 0, 50)
+
+[node name="GAME_NAME" type="Label" parent="UI"]
+offset_left = 4.0
+offset_top = -52.0
+offset_right = 1920.0
+offset_bottom = 79.0
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 125
+text = "Выберите свой класс!"
+horizontal_alignment = 1
+
+[node name="Balanced" type="Button" parent="UI"]
+offset_left = 70.0
+offset_top = 150.0
+offset_right = 478.0
+offset_bottom = 499.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_6nmaf")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_54ndy")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_ybg68")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_won5j")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_v2gr4")
+
+[node name="ClassPanel" type="Panel" parent="UI/Balanced"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Balanced"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("4_eace8")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Balanced"]
+layout_mode = 0
+offset_left = -58.0
+offset_top = 305.0
+offset_right = 456.0
+offset_bottom = 353.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "Сбалансированный"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Fatty" type="Button" parent="UI"]
+offset_left = 530.0
+offset_top = 150.0
+offset_right = 938.0
+offset_bottom = 499.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_v0aiv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_li8wr")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_c6dqp")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_j15i4")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4mdkp")
+
+[node name="ClassPanel" type="Panel" parent="UI/Fatty"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Fatty"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("5_l6pdx")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Fatty"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_constants/line_spacing = 0
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+theme_override_styles/normal = SubResource("StyleBoxTexture_3i031")
+text = "Толстяк"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="Warrior" type="Button" parent="UI"]
+offset_left = 990.0
+offset_top = 150.0
+offset_right = 1398.0
+offset_bottom = 499.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x33uv")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_eawq8")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_j3hkd")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_7fu07")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_aqmod")
+
+[node name="ClassPanel" type="Panel" parent="UI/Warrior"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Warrior"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("6_fb6vr")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Warrior"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "Воин"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Speedy" type="Button" parent="UI"]
+offset_left = 1450.0
+offset_top = 150.0
+offset_right = 1858.0
+offset_bottom = 499.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_oxwm6")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_otmho")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1jh2x")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_6upph")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_4ix5n")
+
+[node name="ClassPanel" type="Panel" parent="UI/Speedy"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Speedy"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("7_65it4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Speedy"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "шустрик"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Kapitalist" type="Button" parent="UI"]
+offset_left = 70.0
+offset_top = 600.0
+offset_right = 478.0
+offset_bottom = 949.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_xf5nq")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_qjemh")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_vuwju")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_1dmji")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_ovhw3")
+
+[node name="ClassPanel" type="Panel" parent="UI/Kapitalist"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Kapitalist"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("8_rt260")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Kapitalist"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "Капиталист"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Comander" type="Button" parent="UI"]
+offset_left = 530.0
+offset_top = 600.0
+offset_right = 938.0
+offset_bottom = 949.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_mv1o7")
+theme_override_styles/hover = SubResource("StyleBoxTexture_0q0db")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_nlt7w")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_ykelm")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_rfdyw")
+
+[node name="ClassPanel" type="Panel" parent="UI/Comander"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Comander"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("9_b1wl2")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Comander"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "Командир"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="Killer" type="Button" parent="UI"]
+offset_left = 990.0
+offset_top = 600.0
+offset_right = 1398.0
+offset_bottom = 949.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_v56lq")
+theme_override_styles/hover = SubResource("StyleBoxTexture_6jbce")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_llyid")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_phhpw")
+theme_override_styles/focus = SubResource("StyleBoxTexture_w4y07")
+
+[node name="ClassPanel" type="Panel" parent="UI/Killer"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = -7.0
+offset_right = 415.0
+offset_bottom = 316.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/Killer"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 4.0
+offset_right = 401.0
+offset_bottom = 305.0
+texture = ExtResource("10_42bm7")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/Killer"]
+layout_mode = 0
+offset_left = -10.0
+offset_top = 304.0
+offset_right = 415.0
+offset_bottom = 352.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "Убийца"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="lizard" type="Button" parent="UI"]
+offset_left = 1450.0
+offset_top = 600.0
+offset_right = 1872.0
+offset_bottom = 958.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_lksnj")
+theme_override_styles/hover = SubResource("StyleBoxTexture_25ywr")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i1beo")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_4n6ww")
+theme_override_styles/focus = SubResource("StyleBoxTexture_tmup0")
+
+[node name="ClassPanel" type="Panel" parent="UI/lizard"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 419.0
+offset_bottom = 321.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_4rdqv")
+
+[node name="ClassImage" type="TextureRect" parent="UI/lizard"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 9.0
+offset_right = 405.0
+offset_bottom = 310.0
+texture = ExtResource("12_wep0k")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="ClassLabel" type="Label" parent="UI/lizard"]
+layout_mode = 0
+offset_left = -6.0
+offset_top = 309.0
+offset_right = 419.0
+offset_bottom = 357.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 5
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 45
+text = "ящер"
+horizontal_alignment = 1
+vertical_alignment = 2
+uppercase = true
+
+[node name="ClassInfo" type="Panel" parent="UI"]
+visible = false
+offset_left = 525.0
+offset_top = 73.0
+offset_right = 1377.0
+offset_bottom = 1059.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_2hklw")
+
+[node name="Label" type="Label" parent="UI/ClassInfo"]
+layout_mode = 0
+offset_left = 117.0
+offset_top = 148.0
+offset_right = 759.0
+offset_bottom = 681.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 60
+text = "ы
+
+"
+uppercase = true
+
+[node name="Get" type="Button" parent="UI/ClassInfo"]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 716.0
+offset_right = 754.0
+offset_bottom = 866.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_waxpp")
+theme_override_font_sizes/font_size = 40
+theme_override_styles/normal = SubResource("StyleBoxTexture_v1x50")
+theme_override_styles/hover = SubResource("StyleBoxTexture_kgy4r")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_1chdo")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_cuteh")
+
+[node name="Back" type="Button" parent="UI/ClassInfo"]
+layout_mode = 0
+offset_left = 116.0
+offset_top = 719.0
+offset_right = 376.0
+offset_bottom = 869.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_e7h68")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eljvq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ss7sf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x1a1j")
+
+[node name="Back" type="Button" parent="UI"]
+offset_left = 1761.0
+offset_top = 936.0
+offset_right = 1910.0
+offset_bottom = 1022.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_e7h68")
+theme_override_styles/hover = SubResource("StyleBoxTexture_eljvq")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_ss7sf")
+theme_override_styles/disabled = SubResource("StyleBoxTexture_x1a1j")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_r46ms")
+volume_db = -20.0
+autoplay = true
+
+[node name="focus" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_ib8fg")
+
+[connection signal="mouse_entered" from="UI/Balanced" to="." method="_on_balanced_mouse_entered"]
+[connection signal="mouse_exited" from="UI/Balanced" to="." method="_on_balanced_mouse_exited"]
+[connection signal="pressed" from="UI/Balanced" to="." method="_on_balanced_pressed"]
+[connection signal="mouse_entered" from="UI/Fatty" to="." method="_on_fatty_mouse_entered"]
+[connection signal="pressed" from="UI/Fatty" to="." method="_on_fatty_pressed"]
+[connection signal="mouse_entered" from="UI/Warrior" to="." method="_on_warrior_mouse_entered"]
+[connection signal="pressed" from="UI/Warrior" to="." method="_on_warrior_pressed"]
+[connection signal="mouse_entered" from="UI/Speedy" to="." method="_on_speedy_mouse_entered"]
+[connection signal="pressed" from="UI/Speedy" to="." method="_on_speedy_pressed"]
+[connection signal="mouse_entered" from="UI/Kapitalist" to="." method="_on_kapitalist_mouse_entered"]
+[connection signal="pressed" from="UI/Kapitalist" to="." method="_on_kapitalist_pressed"]
+[connection signal="mouse_entered" from="UI/Comander" to="." method="_on_comander_mouse_entered"]
+[connection signal="pressed" from="UI/Comander" to="." method="_on_comander_pressed"]
+[connection signal="focus_entered" from="UI/Killer" to="." method="_on_killer_focus_entered"]
+[connection signal="mouse_entered" from="UI/Killer" to="." method="_on_killer_mouse_entered"]
+[connection signal="pressed" from="UI/Killer" to="." method="_on_killer_pressed"]
+[connection signal="focus_entered" from="UI/lizard" to="." method="_on_scientist_focus_entered"]
+[connection signal="mouse_entered" from="UI/lizard" to="." method="_on_scientist_mouse_entered"]
+[connection signal="pressed" from="UI/lizard" to="." method="_on_scientist_pressed"]
+[connection signal="pressed" from="UI/ClassInfo/Get" to="." method="_on_get_pressed"]
+[connection signal="pressed" from="UI/ClassInfo/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="UI/Back" to="." method="_on_back_pressed"]

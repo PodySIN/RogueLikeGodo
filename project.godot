@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="MySchoolProject"
-config/version="1"
+config/description="Игра в стиле RogueLike"
+config/version="1.0"
 run/main_scene="res://Scenes/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 boot_splash/bg_color=Color(0.141176, 0.141176, 0.141176, 1)

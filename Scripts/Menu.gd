@@ -11,7 +11,7 @@ func _process(delta):
 func _on_play_pressed():
 	$ChangeSceneMusic.play()
 	await $ChangeSceneMusic.finished
-	get_tree().change_scene_to_file("res://Scenes/world.tscn")
+	get_tree().change_scene_to_file("res://Scenes/set_class_menu.tscn")
 
 
 func _on_exit_pressed():
