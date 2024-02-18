@@ -41,6 +41,7 @@ var enemy1_preload = preload(\"res://Scenes/enemy_1.tscn\")
 var stump_preload = preload(\"res://Scenes/stump.tscn\")
 var hameleon_preload = preload(\"res://Scenes/hameleon.tscn\")
 var bunny_preload = preload(\"res://Scenes/bunny.tscn\")
+var worm_preload = preload(\"res://Scenes/worm_enemy.tscn\")
 var coller = 0
 var red_cross_pos = Vector2(0,0)
 
@@ -131,6 +132,7 @@ func enemy_spawn():
 	var Stump = stump_preload.instantiate()
 	var Hameleon = hameleon_preload.instantiate()
 	var Bunny = bunny_preload.instantiate()
+	var Worm = worm_preload.instantiate()
 	var red_cross = red_cross_preload.instantiate()
 	enemy1.position = red_cross_pos
 	coller+=1
@@ -150,6 +152,12 @@ func enemy_spawn():
 	if coller % 20 == 0:
 		Bunny.position = Vector2(1025,550)
 		$Mobs.add_child(Bunny)
+	if coller % 15 == 0:
+		red_cross.position = random_pos
+		$Mobs.add_child(red_cross)
+		await get_tree().create_timer(1).timeout
+		Worm.position = red_cross.position
+		$Mobs.add_child(Worm)
 
 func _on_second_timer_timeout():
 	ST.stop()
@@ -188,28 +196,6 @@ func _on_upgrade_timer_timeout():
 	elif Global.Game_Time == 420:
 		$Mobs/Spawner.wait_time = 2
 		$Mobs/red_cross_spawner.wait_time = 1
-	elif Global.Game_Time == 480:
-		$Mobs/Spawner.wait_time = 1.5
-		$Mobs/red_cross_spawner.wait_time = 0.7
-	elif Global.Game_Time == 540:
-		$Mobs/Spawner.wait_time = 1
-		$Mobs/red_cross_spawner.wait_time = 0.5
-	elif Global.Game_Time == 660:
-		$Mobs/Spawner.wait_time = 0.5
-		$Mobs/red_cross_spawner.wait_time = 0.3
-	elif Global.Game_Time == 720:
-		$Mobs/Spawner.wait_time = 0.1
-		$Mobs/red_cross_spawner.wait_time = 0.05
-	elif Global.Game_Time == 840:
-		$Mobs/Spawner.wait_time = 0.05
-		$Mobs/red_cross_spawner.wait_time = 0.02
-	elif Global.Game_Time == 1000:
-		$Mobs/Spawner.wait_time = 0.02
-		$Mobs/red_cross_spawner.wait_time = 0.01
-	elif Global.Game_Time == 1200:
-		$Mobs/Spawner.wait_time = 0.01
-		$Mobs/red_cross_spawner.wait_time = 0.005
-
 
 func _on_stat_upgrade_timer_timeout():
 	Signals.emit_signal('Upgradetime')
@@ -1180,19 +1166,28 @@ offset_left = 1187.0
 offset_right = 1272.0
 
 [node name="LevelIcon2" parent="UI/Shop_Level_Menu" index="21"]
-layout_mode = 0
+offset_left = 1404.0
+offset_right = 1498.0
 
 [node name="LevelIcon3" parent="UI/Shop_Level_Menu" index="22"]
-layout_mode = 0
+offset_top = 600.0
+offset_bottom = 694.0
 
 [node name="LevelIcon4" parent="UI/Shop_Level_Menu" index="23"]
-layout_mode = 0
+offset_left = 1399.0
+offset_top = 741.0
+offset_right = 1493.0
+offset_bottom = 835.0
 
 [node name="ButtonLevel3" parent="UI/Shop_Level_Menu" index="27"]
-layout_mode = 0
+offset_top = 745.0
+offset_bottom = 835.0
 
 [node name="LevelStatInfo4" parent="UI/Shop_Level_Menu" index="32"]
-layout_mode = 0
+offset_left = 1607.0
+offset_top = 760.0
+offset_right = 1749.0
+offset_bottom = 824.0
 
 [node name="Item1Info" parent="UI/Shop_Level_Menu" index="36"]
 layout_direction = 1
@@ -1317,6 +1312,12 @@ offset_right = -705.0
 offset_bottom = 435.0
 grow_horizontal = 0
 grow_vertical = 2
+
+[node name="InformationWindowButton" parent="UI/Shop_Level_Menu" index="52"]
+offset_left = 16.0
+offset_top = 15.0
+offset_right = 144.0
+offset_bottom = 133.0
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("14_tm8fo")]
 process_mode = 2

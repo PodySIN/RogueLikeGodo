@@ -1,10 +1,14 @@
-D:/ComponentsUnificationMutton/Third
-res://Assets/Other
+res://Scenes
+res://Assets/Other/Music
+res://Assets/Enemy/worm/Fire Ball
+res://Assets/Enemy/worm/Worm
 res://Assets/Enemy
+D:/SchoolProject/Game
+res://Assets/Other
+D:/ComponentsUnificationMutton/Third
 res://Styles_and_ETC
 res://Assets/Other/Gui
 res://Assets/Other/Guns/Shotgun
-res://Scenes
 res://Assets/Other/Guns/Shotgun/FX
 res://Assets/Other/Guns/Shotgun/Weapon
 res://Assets/Enemy/Bunny
@@ -16,8 +20,3 @@ D:/ComponentsUnificationMutton/Web
 D:/ComponentsUnificationMutton/SecondTry
 D:/GodotProjects/MySchoolProject/RogueLikeGodo
 D:/ComponentsUnificationMutton
-res://
-res://Assets/Other/Guns/4
-res://Assets/Enemy/2 Owlet_Monster
-res://Assets/Character/3 Dude_Monster
-res://Assets/Character

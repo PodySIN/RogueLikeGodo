@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dc2o1q08tqv8d" path="res://Scenes/bg.tscn" id="1_e43oi"]
 [ext_resource type="Script" path="res://Scripts/guide.gd" id="1_iw6ku"]
 [ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_8ex6x"]
-[ext_resource type="AudioStream" uid="uid://nv2k23m1lp0g" path="res://Assets/Other/Music/Menu_Music.wav" id="3_yewhq"]
+[ext_resource type="AudioStream" uid="uid://3bsd3ktfnbgp" path="res://Assets/Other/Music/Menu_Music.mp3" id="3_yewhq"]
 [ext_resource type="Texture2D" uid="uid://0oln872qjaix" path="res://Assets/Other/Gui/Button.png" id="5_54o61"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4r46q"]

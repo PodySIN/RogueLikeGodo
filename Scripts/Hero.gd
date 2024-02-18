@@ -15,6 +15,7 @@ var array_of_muzzles: Array = ['%Muzzle1','%Muzzle2','%Muzzle3','%Muzzle4','%Muz
 var alive = true
 var run = 0
 var Stump_dmg = 60
+var Worm_dmg = 90
 var counter_of_death = 0
 #-----vars-------------------------
 
@@ -26,6 +27,7 @@ func _ready():
 		$Weapons.add_child(Global.weapon_instances[0])
 
 	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
+	Signals.connect('Worm_hit', Callable(self, 'on_worm_bullet_damage_received'))
 	Global.player_health = Global.player_max_health
 
 func _physics_process(delta):
@@ -168,10 +170,17 @@ func _on_kar_timer_timeout():
 func on_stump_bullet_damage_received(Stump_damage):
 	Stump_dmg = Stump_damage
 
+func on_worm_bullet_damage_received(Worm_damage):
+	Worm_dmg = Worm_damage
+	
 func _on_hitbox_area_entered(area):
 	if area.name == 'StumpBullet':
 		$Sounds/GetHit.play()
 		Global.player_health -= Stump_dmg
+	if area.name == 'worm_bullet':
+		Signals.emit_signal('WormBulletHit')
+		$Sounds/GetHit.play()
+		Global.player_health -= Worm_dmg
 
 func helth_control():
 	if Global.player_health > Global.player_max_health:
@@ -193,4 +202,5 @@ func _on_death_timer_timeout():
 	get_tree().change_scene_to_file('res://Scenes/end_screen.tscn')
 
 func _on_hp_regen_timeout():
-	Global.player_health += Global.player_hp_regen
+	if Global.player_hp_regen > 0:
+		Global.player_health += Global.player_hp_regen

@@ -66,18 +66,16 @@ var ALL_KILLS_IN_GAME: int = 0
 var EXP: int = 0
 var GOLD: int = 10
 var Level: int = 1
-var owner_damage_percentage: float = 1
-var owner_damage: int = 0
 var UpgradesCounter: int = 0
 #--------------------global_stats-------------------------------
 
 #--------------------guns_stats_and_afrtifacts-------------------------------
 var counter_guns: int = 1
-var Pistol_damage: int = (20 + owner_damage) * owner_damage_percentage
-var Rifle_damage: int = (40 + owner_damage) * owner_damage_percentage
-var Uzi_damage: int = (10 + owner_damage) * owner_damage_percentage
-var Kar_damage: int = (100 + owner_damage) * owner_damage_percentage
-var Shotgun_damage: int = (60 + owner_damage) * owner_damage_percentage
+var Pistol_damage: int = (20 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+var Rifle_damage: int = (40 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+var Uzi_damage: int = (10 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+var Kar_damage: int = (100 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+var Shotgun_damage: int = (60 + owner_damage) * ((owner_damage_percentage + 100) / 100)
 var Pistol_damage_crit: int = Pistol_damage
 var Rifle_damage_crit: int = Rifle_damage
 var Uzi_damage_crit: int = Uzi_damage
@@ -88,12 +86,16 @@ var weapon_instances: Array = [0,1,2,3,4,5]
 #--------------------guns_stats-------------------------------
 
 #--------------------player_stats-------------------------------
+var owner_damage_percentage: float = 1
+var owner_damage: int = 0
 var player_max_health: int = 100
 var player_health: int = 100
 var player_speed: int = 200
-var player_hp_regen: int = 10
+var player_hp_regen: int = 0
 var player_crit_chance: int = 17
 var player_crit_damage: float = 1.5
+var player_gold_per_time: int = 0
+var player_return_damage: int = 0
 #--------------------player_stats-------------------------------
 
 #--------------------shop-----------------------------------------------
@@ -150,18 +152,20 @@ var array_of_texts_items: Array = [
 
 var Sheep_damage: int = 30
 
-var Stump_damage: int = 50
+var Stump_damage: int = 45
 
-var Hameleon_damage: int = 70
+var Hameleon_damage: int = 65
+
+var Worm_damage: int = 90
 #--------------------enemy-----------------------------------------------
 
 #------------------------funcs-----------------------------------
 func _process(delta):
-	Pistol_damage = (20 + owner_damage) * owner_damage_percentage
-	Rifle_damage = (40 + owner_damage) * owner_damage_percentage
-	Uzi_damage = (10 + owner_damage) * owner_damage_percentage
-	Kar_damage = (100 + owner_damage) * owner_damage_percentage
-	Shotgun_damage = (60 + owner_damage) * owner_damage_percentage
+	Pistol_damage = (20 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+	Rifle_damage = (40 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+	Uzi_damage = (10 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+	Kar_damage = (100 + owner_damage) * ((owner_damage_percentage + 100) / 100)
+	Shotgun_damage = (60 + owner_damage) * ((owner_damage_percentage + 100) / 100)
 
 func zero_stats():
 	GOLD = 10

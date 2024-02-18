@@ -495,6 +495,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="LevelIcon2" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 1400.0
 offset_top = 450.0
 offset_right = 1494.0
@@ -503,6 +504,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="LevelIcon3" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 1400.0
 offset_top = 590.0
 offset_right = 1494.0
@@ -511,6 +513,7 @@ expand_mode = 1
 stretch_mode = 5
 
 [node name="LevelIcon4" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 1401.0
 offset_top = 743.0
 offset_right = 1495.0
@@ -555,6 +558,7 @@ theme_override_styles/disabled = SubResource("StyleBoxTexture_ncslw")
 theme_override_styles/focus = SubResource("StyleBoxTexture_q3fpv")
 
 [node name="ButtonLevel3" type="Button" parent="."]
+layout_mode = 0
 offset_left = 1516.0
 offset_top = 751.0
 offset_right = 1606.0
@@ -602,6 +606,7 @@ theme_override_font_sizes/font_size = 60
 text = "15MS"
 
 [node name="LevelStatInfo4" type="Label" parent="."]
+layout_mode = 0
 offset_left = 1606.0
 offset_top = 765.0
 offset_right = 1748.0

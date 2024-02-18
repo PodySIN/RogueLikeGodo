@@ -211,7 +211,6 @@ position = Vector2(0, -9.5)
 shape = SubResource("RectangleShape2D_cjw51")
 
 [node name="hit_area" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 2
 
