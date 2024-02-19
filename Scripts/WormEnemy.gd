@@ -21,8 +21,8 @@ var playershotgun_dmg = 0
 
 #-----stats-------------------------
 var Worm_speed = 20
-var Worm_health = 450
-var Worm_max_health = 450
+var Worm_health = 600
+var Worm_max_health = 600
 var Worm_EXP_cost = 40
 var Worm_left_gold = 15
 var Worm_right_gold = 25
@@ -36,6 +36,7 @@ func _ready():
 	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
 	Signals.connect('Upgradetime',Callable(self,'_on_main_upgrade_timer_timeout'))
 	Signals.connect('Shotgunbullet_hit', Callable(self,'on_Shotgundamage_received'))
+	Signals.connect('Return_damage_worm', Callable(self,'on_return_damage_received'))
 	$HealthBar.min_value = 0
 	$HealthBar.max_value = Worm_max_health
 	$HealthBar.value = Worm_health
@@ -56,10 +57,8 @@ func state_control():
 func movement():
 	var direction = (player.position - global_position).normalized()
 	if in_area == false:
-		print('no')
 		velocity = direction * Worm_speed
 	elif in_area == true:
-		print('yes')
 		velocity = -1 * direction * (Worm_speed / 1.5)
 	if direction.x < 0:
 		ap.flip_h = true
@@ -151,6 +150,9 @@ func _on_enemy_hitbox_area_entered(area):
 		Global.ALL_DAMAGE_IN_GAME += playershotgun_dmg
 		$damage_timer.start()
 
+func on_return_damage_received(received_damage):
+	Worm_health -= received_damage
+
 func _on_damage_timer_timeout():
 	$ShotgunBullet.stop()
 	$ShotgunBullet.visible = false
@@ -189,7 +191,6 @@ func _on_main_upgrade_timer_timeout():
 	if upgrade_times < 4:
 		Global.Worm_damage = int(Global.Worm_damage * 1.2)
 		Worm_max_health = int(Worm_max_health * 1.15)
-		Worm_health = int(Worm_health * 1.15)
 		Worm_speed = int(Worm_speed * 1.05)
 		Worm_EXP_cost = int(Worm_EXP_cost * 1.2)
 		Worm_left_gold += 1
@@ -197,7 +198,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 4 and upgrade_times < 10:
 		Global.Worm_damage = int(Global.Worm_damage * 1.5)
 		Worm_max_health = int(Worm_max_health * 1.4)
-		Worm_health = int(Worm_health * 1.4)
 		Worm_speed = int(Worm_speed * 1.15)
 		Worm_EXP_cost = int(Worm_EXP_cost * 1.6)
 		Worm_left_gold += 3
@@ -205,7 +205,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 10 and upgrade_times < 20:
 		Global.Worm_damage = int(Global.Worm_damage * 2)
 		Worm_max_health = int(Worm_max_health * 1.8)
-		Worm_health = int(Worm_health * 1.8)
 		Worm_speed = int(Worm_speed * 1.3)
 		Worm_EXP_cost = int(Worm_EXP_cost * 2.5)
 		Worm_left_gold += 6
@@ -213,7 +212,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 20:
 		Global.Worm_damage = int(Global.Worm_damage * 4)
 		Worm_max_health = int(Worm_max_health * 3)
-		Worm_health = int(Worm_health * 3)
 		Worm_speed = int(Worm_speed * 2)
 		Worm_EXP_cost = int(Worm_EXP_cost * 5)
 		Worm_left_gold += 15

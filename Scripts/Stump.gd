@@ -20,9 +20,9 @@ var playershotgun_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
-var Stump_speed = 60
-var Stump_health = 170
-var Stump_max_health = 170
+var Stump_speed = 80
+var Stump_health = 240
+var Stump_max_health = 240
 var Stump_EXP_cost = 10
 var Stump_left_gold = 5
 var Stump_right_gold = 6
@@ -36,6 +36,7 @@ func _ready():
 	Signals.connect('Karbullet_hit', Callable(self, 'on_kardamage_received'))
 	Signals.connect('Upgradetime',Callable(self,'_on_main_upgrade_timer_timeout'))
 	Signals.connect('Shotgunbullet_hit', Callable(self,'on_Shotgundamage_received'))
+	Signals.connect('Return_damage_stump', Callable(self,'on_return_damage_received'))
 	$HealthBar.min_value = 0
 	$HealthBar.max_value = Stump_max_health
 	$HealthBar.value = Stump_health
@@ -152,6 +153,9 @@ func _on_enemy_hitbox_area_entered(area):
 		Global.ALL_DAMAGE_IN_GAME += playershotgun_dmg
 		$damage_timer.start()
 
+func on_return_damage_received(received_damage):
+	Stump_health -= received_damage
+
 func _on_damage_timer_timeout():
 	$ShotgunBullet.stop()
 	$ShotgunBullet.visible = false
@@ -190,7 +194,6 @@ func _on_main_upgrade_timer_timeout():
 	if upgrade_times < 4:
 		Global.Stump_damage = int(Global.Stump_damage * 1.15)
 		Stump_max_health = int(Stump_max_health * 1.15)
-		Stump_health = int(Stump_health * 1.15)
 		Stump_speed = int(Stump_speed * 1.05)
 		Stump_EXP_cost = int(Stump_EXP_cost * 1.2)
 		Stump_left_gold += 1
@@ -198,7 +201,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 4 and upgrade_times < 10:
 		Global.Stump_damage = int(Global.Stump_damage * 1.4)
 		Stump_max_health = int(Stump_max_health * 1.4)
-		Stump_health = int(Stump_health * 1.4)
 		Stump_speed = int(Stump_speed * 1.15)
 		Stump_EXP_cost = int(Stump_EXP_cost * 1.6)
 		Stump_left_gold += 3
@@ -206,7 +208,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 10 and upgrade_times < 20:
 		Global.Stump_damage = int(Global.Stump_damage * 1.8)
 		Stump_max_health = int(Stump_max_health * 1.8)
-		Stump_health = int(Stump_health * 1.8)
 		Stump_speed = int(Stump_speed * 1.3)
 		Stump_EXP_cost = int(Stump_EXP_cost * 2.5)
 		Stump_left_gold += 6
@@ -214,7 +215,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 20:
 		Global.Stump_damage = int(Global.Stump_damage * 3)
 		Stump_max_health = int(Stump_max_health * 3)
-		Stump_health = int(Stump_health * 3)
 		Stump_speed = int(Stump_speed * 2)
 		Stump_EXP_cost = int(Stump_EXP_cost * 5)
 		Stump_left_gold += 15

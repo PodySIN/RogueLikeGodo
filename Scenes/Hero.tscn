@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://b56mrg8633ijo"]
+[gd_scene load_steps=39 format=3 uid="uid://b56mrg8633ijo"]
 
 [ext_resource type="Script" path="res://Scripts/Hero.gd" id="1_nhwvj"]
 [ext_resource type="Texture2D" uid="uid://wb4sdmvkyv3n" path="res://Assets/Character/3 Dude_Monster/Dude_Monster_Death_8.png" id="2_depky"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://bqpk13o0j0gys" path="res://Assets/Other/Music/Kar98kSound.mp3" id="13_wtkno"]
 [ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="14_4mbau"]
 [ext_resource type="AudioStream" uid="uid://bwuscuyyfdoaw" path="res://Assets/Other/Music/ShotgunSound.mp3" id="16_8v2vc"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="17_nnbos"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cdkg"]
 atlas = ExtResource("2_depky")
@@ -285,6 +286,39 @@ unique_name_in_owner = true
 position = Vector2(-15, -7)
 
 [node name="Weapons" type="Node2D" parent="."]
+
+[node name="MissLabel1" type="Label" parent="."]
+visible = false
+offset_left = -28.0
+offset_top = -37.0
+offset_right = -7.0
+offset_bottom = -25.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("17_nnbos")
+theme_override_font_sizes/font_size = 10
+text = "Miss"
+
+[node name="MissLabel2" type="Label" parent="."]
+visible = false
+offset_left = -33.0
+offset_top = -10.0
+offset_right = -12.0
+offset_bottom = 2.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("17_nnbos")
+theme_override_font_sizes/font_size = 10
+text = "Miss"
+
+[node name="MissLabel3" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -25.0
+offset_right = 31.0
+offset_bottom = -13.0
+theme_override_constants/outline_size = 0
+theme_override_fonts/font = ExtResource("17_nnbos")
+theme_override_font_sizes/font_size = 10
+text = "Miss"
 
 [connection signal="timeout" from="death_timer" to="." method="_on_death_timer_timeout"]
 [connection signal="timeout" from="HpRegen" to="." method="_on_hp_regen_timeout"]

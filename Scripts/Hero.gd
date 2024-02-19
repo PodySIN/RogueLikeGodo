@@ -21,13 +21,18 @@ var counter_of_death = 0
 
 
 func _ready():
-	Global.weapon_instances[0] = pistol_preload.instantiate()
-	if Global.array_players_guns[0] == 'Pistol':
-		Global.weapon_instances[0].position = Vector2(13,-23)
-		$Weapons.add_child(Global.weapon_instances[0])
-
+	if Global.Class_select != 8:
+		Global.array_players_guns = ['Pistol']
+		Global.weapon_instances[0] = pistol_preload.instantiate()
+		if Global.array_players_guns[0] == 'Pistol':
+			Global.weapon_instances[0].position = Vector2(13,-23)
+			$Weapons.add_child(Global.weapon_instances[0])
+	if Global.Class_select == 2:
+		Global.owner_damage_percentage = int(Global.player_max_health / 10) + Global.owner_damage_percentage
+		Global.owner_damage = (int(Global.player_max_health / 100) * 5) + Global.owner_damage
 	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
 	Signals.connect('Worm_hit', Callable(self, 'on_worm_bullet_damage_received'))
+	Signals.connect('MISS', Callable(self, 'on_miss_received'))
 	Global.player_health = Global.player_max_health
 
 func _physics_process(delta):
@@ -176,11 +181,25 @@ func on_worm_bullet_damage_received(Worm_damage):
 func _on_hitbox_area_entered(area):
 	if area.name == 'StumpBullet':
 		$Sounds/GetHit.play()
-		Global.player_health -= Stump_dmg
+		var random_miss = randi_range(0,100)
+		if random_miss >= Global.player_miss_chance:
+			Global.player_health -= Global.Stump_damage
+		else:
+			Global.player_health -= 0
+			Signals.emit_signal('MISS')
+		if Global.can_return_damage:
+			Signals.emit_signal('Return_damage_stump', Stump_dmg)
 	if area.name == 'worm_bullet':
 		Signals.emit_signal('WormBulletHit')
 		$Sounds/GetHit.play()
-		Global.player_health -= Worm_dmg
+		var random_miss = randi_range(0,100)
+		if random_miss >= Global.player_miss_chance:
+			Global.player_health -= Global.Worm_damage
+		else:
+			Global.player_health -= 0
+			Signals.emit_signal('MISS')
+		if Global.can_return_damage:
+			Signals.emit_signal('Return_damage_worm', Worm_dmg)
 
 func helth_control():
 	if Global.player_health > Global.player_max_health:
@@ -204,3 +223,16 @@ func _on_death_timer_timeout():
 func _on_hp_regen_timeout():
 	if Global.player_hp_regen > 0:
 		Global.player_health += Global.player_hp_regen
+
+func on_miss_received():
+	var miss_label = randi_range(0,2)
+	if miss_label == 0:
+		$MissLabel1.visible = true
+	elif miss_label == 1:
+		$MissLabel2.visible = true
+	else:
+		$MissLabel3.visible = true
+	await get_tree().create_timer(1).timeout
+	$MissLabel1.visible = false
+	$MissLabel2.visible = false
+	$MissLabel3.visible = false

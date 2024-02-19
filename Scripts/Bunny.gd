@@ -18,9 +18,9 @@ var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
 var direction = Vector2(randf_range(-1,1), randf_range(-1,1))
-var Bunny_speed = 210
-var Bunny_health = 80
-var Bunny_max_health = 80
+var Bunny_speed = 250
+var Bunny_health = 322
+var Bunny_max_health = 322
 var Bunny_EXP_cost = 10
 var Bunny_left_gold = 16
 var Bunny_right_gold = 36
@@ -157,28 +157,24 @@ func _on_main_upgrade_timer_timeout():
 	upgrade_times += 1
 	if upgrade_times < 4:
 		Bunny_max_health = int(Bunny_max_health * 1.15)
-		Bunny_health = int(Bunny_health * 1.15)
 		Bunny_speed = int(Bunny_speed * 1.05)
 		Bunny_EXP_cost = int(Bunny_EXP_cost * 1.2)
 		Bunny_left_gold += 2
 		Bunny_right_gold += 2
 	elif upgrade_times > 4 and upgrade_times < 10:
 		Bunny_max_health = int(Bunny_max_health * 1.4)
-		Bunny_health = int(Bunny_health * 1.4)
 		Bunny_speed = int(Bunny_speed * 1.15)
 		Bunny_EXP_cost = int(Bunny_EXP_cost * 1.6)
 		Bunny_left_gold += 6
 		Bunny_right_gold += 6
 	elif upgrade_times > 10 and upgrade_times < 20:
 		Bunny_max_health = int(Bunny_max_health * 1.8)
-		Bunny_health = int(Bunny_health * 1.8)
 		Bunny_speed = int(Bunny_speed * 1.3)
 		Bunny_EXP_cost = int(Bunny_EXP_cost * 2.5)
 		Bunny_left_gold += 15
 		Bunny_right_gold += 15
 	elif upgrade_times > 20:
 		Bunny_max_health = int(Bunny_max_health * 3)
-		Bunny_health = int(Bunny_health * 3)
 		Bunny_speed = int(Bunny_speed * 2)
 		Bunny_EXP_cost = int(Bunny_EXP_cost * 5)
 		Bunny_left_gold += 30
