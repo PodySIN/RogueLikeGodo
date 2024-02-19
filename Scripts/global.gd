@@ -14,10 +14,10 @@ var array_of_items: Array = ["res://Assets/Other/Guns/GlockImage.png",
 "res://Assets/Other/Guns/M4A4Image.png",
 "res://Assets/Other/Guns/UZI.png",
 "res://Assets/Other/Guns/Kar98kImage.png" ,
+"res://Assets/Other/Guns/Shotgun/ShotgunImage.png",
 "res://Assets/Other/Items/Items/Item__25.png",
 "res://Assets/Other/Items/Items/Item__28.png",
-"res://Assets/Other/Items/Items/Item__34.png",
-"res://Assets/Other/Guns/Shotgun/ShotgunImage.png"]
+"res://Assets/Other/Items/Items/Item__34.png"]
 
 ##-----------------------------level_stats--------------------------------------
 ##var array_level_statss = [1,2,4,9, 3,6,10,16, 10,20,40,75, 1,3,5,9, 15,25,50,90, 3,6,10,16]
@@ -37,11 +37,11 @@ var array_level_stats_info = [
 '+12 atk','+25% atk','+75 hp','+15% crit.ch','+75 ms','+20% crit.dmg']
 
 var array_level_stats_upgrade =[
- 1,0.02,5,1,10,0.02,
- 2,0.05,10,2,20,0.04,
- 4,0.1,20,5,50,0.07,
- 7,0.16,40,9,90,0.12,
- 12,0.25,75,15,150,0.2,
+ 1,2,5,1,10,0.02,
+ 2,5,10,2,20,0.04,
+ 4,10,20,5,50,0.07,
+ 7,16,40,9,90,0.12,
+ 12,25,75,15,150,0.2,
 ]
 
 var array_level_stats_textures = [
@@ -64,9 +64,10 @@ var ALL_KILLS_IN_GAME: int = 0
 
 #--------------------global_stats-------------------------------
 var EXP: int = 0
-var GOLD: int = 10
+var GOLD: int = 0
 var Level: int = 1
 var UpgradesCounter: int = 0
+var Class_select: int = 1
 #--------------------global_stats-------------------------------
 
 #--------------------guns_stats_and_afrtifacts-------------------------------
@@ -81,21 +82,23 @@ var Rifle_damage_crit: int = Rifle_damage
 var Uzi_damage_crit: int = Uzi_damage
 var Kar_damage_crit: int = Kar_damage
 var Shotgun_damage_crit: int = Shotgun_damage
-var array_players_guns: Array = ['Pistol']
+var array_players_guns: Array = []
 var weapon_instances: Array = [0,1,2,3,4,5]
 #--------------------guns_stats-------------------------------
 
 #--------------------player_stats-------------------------------
+var player_hp_percentage: = 0
 var owner_damage_percentage: float = 1
 var owner_damage: int = 0
 var player_max_health: int = 100
 var player_health: int = 100
 var player_speed: int = 200
 var player_hp_regen: int = 0
-var player_crit_chance: int = 17
-var player_crit_damage: float = 1.5
+var player_crit_chance: int = 5
+var player_crit_damage: float = 1.3
 var player_gold_per_time: int = 0
-var player_return_damage: int = 0
+var player_miss_chance: int = 0
+var can_return_damage: bool = false
 #--------------------player_stats-------------------------------
 
 #--------------------shop-----------------------------------------------
@@ -107,9 +110,9 @@ var item4: int = 0
 var buy_oportunity: Array = [true,true,true,true]
 var level_buy_oportunity: Array = [true,true,true,true]
 var buying_item_array = [item1 ,item2 ,item3 ,item4]
-var array_of_costs: Array = [20,35,25,40,15,30,20,30]
-var array_of_names_items: Array = ['Pistol','Rifle','Uzi','Kar',
-'Shield','StrenghtPotion','SharkOmulet','Shotgun']
+var array_of_costs: Array = [20,35,25,40,30,15,30,20]
+var array_of_names_items: Array = ['Pistol','Rifle','Uzi','Kar','Shotgun',
+'Shield','StrenghtPotion','SharkOmulet']
 var array_of_texts_items: Array = [
 'Deagle
 Урон 20
@@ -127,6 +130,10 @@ var array_of_texts_items: Array = [
 Урон 100
 Перезарядка 3,25',
 
+'Saved off
+Урон 60
+Перезарядка 2,75',
+
 'Щит героя
 Здоровье +25
 Скорость -10',
@@ -141,22 +148,18 @@ var array_of_texts_items: Array = [
 Крит.Дмг +4%
 Урон% -1%',
 
-'Saved off
-Урон 60
-Перезарядка 2,75',
-
 ]
 #--------------------shop-----------------------------------------------
 
 #--------------------enemy-----------------------------------------------
 
-var Sheep_damage: int = 30
+var Sheep_damage: int = 45
 
-var Stump_damage: int = 45
+var Stump_damage: int = 75
 
-var Hameleon_damage: int = 65
+var Hameleon_damage: int = 90
 
-var Worm_damage: int = 90
+var Worm_damage: int = 150
 #--------------------enemy-----------------------------------------------
 
 #------------------------funcs-----------------------------------
@@ -178,7 +181,8 @@ func zero_stats():
 	Level = 1
 	UpgradesCounter = 0
 	counter_guns = 1
-	array_players_guns = ['Pistol']
+	if Class_select != 8:
+		array_players_guns = ['Pistol']
 	player_crit_chance = 17
 	player_max_health = 100
 	player_health = 100

@@ -32,17 +32,21 @@ script = ExtResource("1_iw6ku")
 [node name="BG" parent="." instance=ExtResource("1_e43oi")]
 
 [node name="Label" type="Label" parent="."]
-offset_left = 114.0
-offset_top = 54.0
-offset_right = 2025.0
-offset_bottom = 1111.0
+offset_left = 36.0
+offset_top = 28.0
+offset_right = 1932.0
+offset_bottom = 1085.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_8ex6x")
-theme_override_font_sizes/font_size = 175
-text = "1) Убивать монстров
-2) Выживать
-3) Собирать экспу
-4) Прокачиваться
-5) ПОБЕДИТЬ!"
+theme_override_font_sizes/font_size = 70
+text = "Во-первых, игра становится сложнее со временем: спавнится больше монстров и они также становятся сильнее.
+Во-вторых, в игре присутсвуют разные классы и они также становятся сильнее каждые 90 секунд: например воин получает дополнительные 5 урона, а также 10% урона.
+В-третьих, в игре присутствуют различные статы, например уклонение, скриты, проценты урона, усиление за счет других статов(класс толстяк).
+В-четвертых, за разные оружия ты получаешь бонусы.
+В-пятых, в игре есть босс, но до него нужно дойти. Удачи! :)"
+autowrap_mode = 2
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_yewhq")
@@ -55,10 +59,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1422.0
-offset_top = 820.0
-offset_right = 1704.0
-offset_bottom = 958.0
+offset_left = 1647.0
+offset_top = 932.0
+offset_right = 1852.0
+offset_bottom = 1033.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.2, 1.2)

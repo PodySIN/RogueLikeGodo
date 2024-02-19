@@ -5,7 +5,7 @@
 [sub_resource type="GDScript" id="GDScript_v6sgl"]
 script/source = "extends Area2D
 
-@export var speed = 500
+@export var speed = 900
 
 func _process(delta):
 	position += transform.x * speed * delta

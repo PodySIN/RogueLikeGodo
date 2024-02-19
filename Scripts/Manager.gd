@@ -62,11 +62,21 @@ func update_player_level():
 			Global.UpgradesCounter = 5
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
+		if Global.Class_select == 2:
+			Global.player_max_health = Global.player_max_health + (Global.player_max_health * 0.02)
+			Global.owner_damage_percentage = int(Global.player_max_health * 0.02) + Global.owner_damage_percentage
+			Global.owner_damage = int(Global.player_max_health * 0.005) + Global.owner_damage
 		Global.player_health = Global.player_max_health
-		Global.item1 = randi_range(0,7)
-		Global.item2 = randi_range(0,7)
-		Global.item3 = randi_range(0,7)
-		Global.item4 = randi_range(0,7)
+		if Global.Class_select != 8:
+			Global.item1 = randi_range(0,7)
+			Global.item2 = randi_range(0,7)
+			Global.item3 = randi_range(0,7)
+			Global.item4 = randi_range(0,7)
+		else:
+			Global.item1 = randi_range(5,7)
+			Global.item2 = randi_range(5,7)
+			Global.item3 = randi_range(5,7)
+			Global.item4 = randi_range(5,7)
 		Global.chances_on_lvl = [randi_range(0,100),randi_range(0,100),randi_range(0,100),randi_range(0,100)]
 		for i in range(len(Global.chances_on_lvl)):
 			if Global.chances_on_lvl[i] <= 60:
@@ -79,6 +89,15 @@ func update_player_level():
 				Global.level_stats[i] = randi_range(18,23)
 			elif Global.chances_on_lvl[i] == 100:
 				Global.level_stats[i] = randi_range(24,29)
+		for i in range(len(Global.array_of_costs)):
+			if Global.Game_Time <= 90 and Global.Game_Time >= 45:
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.1)
+			elif Global.Game_Time > 90 and Global.Game_Time <= 240:
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.2)
+			elif Global.Game_Time > 240 and Global.Game_Time <= 600:
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.3)
+			elif Global.Game_Time > 600:
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.5)
 		Global.can_sell = true
 		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]

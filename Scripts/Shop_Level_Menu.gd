@@ -11,7 +11,7 @@ var array_of_WeaponTextures = ['%WeaponTexture1','%WeaponTexture2','%WeaponTextu
 var buy_oportunity_number = 0
 
 func _process(delta):
-	$InformationWindow/InformationWindowLabel.text = str('HP: ',Global.player_max_health,'\n','Attack: ',Global.owner_damage,'\n','Attack%: ',(Global.owner_damage_percentage * 100) - 100,'%','\n','MS: ',Global.player_speed,'\n','Crit.chance: ',Global.player_crit_chance,'%','\n','Crit.dmg: ',Global.player_crit_damage * 100,'%','\n','HP Regen: ',Global.player_hp_regen)
+	$InformationWindow/InformationWindowLabel.text = str('HP: ',Global.player_max_health,'\n','Attack: ',Global.owner_damage,'\n','Attack%: ',Global.owner_damage_percentage,'%','\n','MS: ',Global.player_speed,'\n','Crit.chance: ',Global.player_crit_chance,'%','\n','Crit.dmg: ',Global.player_crit_damage * 100,'%','\n','HP Regen: ',Global.player_hp_regen)
 	print('Hp_max: ',Global.player_max_health,'\n','HP: ',Global.player_health,'\n','Atck: ',Global.owner_damage,'\n','Attck%: ',Global.owner_damage_percentage,
 	'\n','Crit.chn: ',Global.player_crit_chance,'\n','Crit.dmg: ',Global.player_crit_damage,'\n','Ms: ',Global.player_speed)
 	visible_UpgradesCounter()
@@ -98,7 +98,7 @@ func weapon_free():
 			Global.weapon_instances[i].queue_free()
 
 func buy_items(buy_oportunity_number, item):
-	if Global.array_players_guns.count('Pistol') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 0 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
+	if Global.Class_select != 8 and Global.array_players_guns.count('Pistol') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 0 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		#$"../../Hero/Hero/Weapons"
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
@@ -115,7 +115,7 @@ func buy_items(buy_oportunity_number, item):
 					break
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.array_players_guns.count('Rifle') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 1 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.Class_select != 8 and Global.array_players_guns.count('Rifle') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 1 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
 			weapon_free()
@@ -131,7 +131,7 @@ func buy_items(buy_oportunity_number, item):
 					break
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.array_players_guns.count('Uzi') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 2 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.Class_select != 8 and Global.array_players_guns.count('Uzi') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 2 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
 			weapon_free()
@@ -147,7 +147,7 @@ func buy_items(buy_oportunity_number, item):
 					break
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.array_players_guns.count('Kar') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 3 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.Class_select != 8 and Global.array_players_guns.count('Kar') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 3 and Global.counter_guns < 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
 			weapon_free()
@@ -163,7 +163,7 @@ func buy_items(buy_oportunity_number, item):
 					break
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.array_players_guns.count('Shotgun') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
+	elif Global.Class_select != 8 and Global.array_players_guns.count('Shotgun') < 2 and Global.buy_oportunity[buy_oportunity_number] == true and item == 4 and Global.counter_guns < 6 and Global.array_of_costs[Global.item1] <= Global.GOLD:
 		Global.GOLD -= Global.array_of_costs[item]
 		if len(Global.array_players_guns) < 6:
 			weapon_free()
@@ -179,19 +179,19 @@ func buy_items(buy_oportunity_number, item):
 					break
 		Global.counter_guns += 1
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 4 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 5 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 25
 		Global.player_speed -= 10
 		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 5 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.owner_damage += 5
 		Global.owner_damage_percentage += 0.05
 		Global.player_max_health -= 5
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
-	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_crit_chance += 2
 		Global.player_crit_damage += 0.04
 		Global.owner_damage_percentage -= 0.01

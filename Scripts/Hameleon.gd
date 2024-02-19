@@ -18,9 +18,9 @@ var playerkar_dmg = 0
 var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
-var Hameleon_speed = 150
-var Hameleon_health = 120
-var Hameleon_max_health = 120
+var Hameleon_speed = 180
+var Hameleon_health = 250
+var Hameleon_max_health = 250
 var Hameleon_EXP_cost = 8
 var Hameleon_left_gold = 4
 var Hameleon_right_gold = 5
@@ -114,7 +114,14 @@ func _on_attack_cd_timeout():
 	if alive:
 		$Sounds/AttackSound.play()
 		$Sounds/HitSound.play()
-		Global.player_health -= Global.Hameleon_damage
+		var random_miss = randi_range(0,100)
+		if random_miss >= Global.player_miss_chance:
+			Global.player_health -= Global.Hameleon_damage
+		else:
+			Global.player_health -= 0
+			Signals.emit_signal('MISS')
+		if Global.can_return_damage:
+			Hameleon_health -= Global.Hameleon_damage
 
 func _on_death_timer_timeout():
 	queue_free()
@@ -187,7 +194,6 @@ func _on_main_upgrade_timer_timeout():
 	if upgrade_times < 4:
 		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.15)
 		Hameleon_max_health = int(Hameleon_max_health * 1.15)
-		Hameleon_health = int(Hameleon_health * 1.15)
 		Hameleon_speed = int(Hameleon_speed * 1.05)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 1.2)
 		Hameleon_left_gold += 1
@@ -195,7 +201,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 4 and upgrade_times < 10:
 		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.4)
 		Hameleon_max_health = int(Hameleon_max_health * 1.4)
-		Hameleon_health = int(Hameleon_health * 1.4)
 		Hameleon_speed = int(Hameleon_speed * 1.15)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 1.6)
 		Hameleon_left_gold += 3
@@ -203,7 +208,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 10 and upgrade_times < 20:
 		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.8)
 		Hameleon_max_health = int(Hameleon_max_health * 1.8)
-		Hameleon_health = int(Hameleon_health * 1.8)
 		Hameleon_speed = int(Hameleon_speed * 1.3)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 2.5)
 		Hameleon_left_gold += 6
@@ -211,7 +215,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 20:
 		Global.Hameleon_damage = int(Global.Hameleon_damage * 3)
 		Hameleon_max_health = int(Hameleon_max_health * 3)
-		Hameleon_health = int(Hameleon_health * 3)
 		Hameleon_speed = int(Hameleon_speed * 2)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 5)
 		Hameleon_left_gold += 15

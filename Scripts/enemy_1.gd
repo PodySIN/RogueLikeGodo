@@ -18,8 +18,8 @@ var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
 var Sheep_speed = 140
-var Sheep_health = 110
-var Sheep_max_health = 110
+var Sheep_health = 170
+var Sheep_max_health = 170
 var Sheep_EXP_cost = 2
 var Sheep_left_gold = 2
 var Sheep_right_gold = 3
@@ -95,14 +95,28 @@ func _on_hit_area_body_exited(body):
 	if body.name == 'Hero' and alive:
 		if $attack_cd.time_left < 0.15:
 			$Music/HitSound.play()
-			Global.player_health -= Global.Sheep_damage / 2
+			var random_miss = randi_range(0,100)
+			if random_miss >= Global.player_miss_chance:
+				Global.player_health -= Global.Sheep_damage / 2
+			else:
+				Global.player_health -= 0
+				Signals.emit_signal('MISS')
+			if Global.can_return_damage:
+				Sheep_health -= Global.Sheep_damage / 2
 		attacking = false
 		$attack_cd.stop()
 
 func _on_attack_cd_timeout():
 	if alive:
 		$Music/HitSound.play()
-		Global.player_health -= Global.Sheep_damage
+		var random_miss = randi_range(0,100)
+		if random_miss >= Global.player_miss_chance:
+			Global.player_health -= Global.Sheep_damage
+		else:
+			Global.player_health -= 0
+			Signals.emit_signal('MISS')
+		if Global.can_return_damage:
+			Sheep_health -= Global.Sheep_damage
 
 func _on_death_timer_timeout():
 	queue_free()
@@ -175,7 +189,6 @@ func _on_main_upgrade_timer_timeout():
 	if upgrade_times < 4:
 		Global.Sheep_damage = int(Global.Sheep_damage * 1.15)
 		Sheep_max_health = int(Sheep_max_health * 1.15)
-		Sheep_health = int(Sheep_health * 1.15)
 		Sheep_speed = int(Sheep_speed * 1.05)
 		Sheep_EXP_cost = int(Sheep_EXP_cost * 1.2)
 		Sheep_left_gold += 1
@@ -183,7 +196,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 4 and upgrade_times < 10:
 		Global.Sheep_damage = int(Global.Sheep_damage * 1.4)
 		Sheep_max_health = int(Sheep_max_health * 1.4)
-		Sheep_health = int(Sheep_health * 1.4)
 		Sheep_speed = int(Sheep_speed * 1.15)
 		Sheep_EXP_cost = int(Sheep_EXP_cost * 1.6)
 		Sheep_left_gold += 3
@@ -191,7 +203,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 10 and upgrade_times < 20:
 		Global.Sheep_damage = int(Global.Sheep_damage * 1.8)
 		Sheep_max_health = int(Sheep_max_health * 1.8)
-		Sheep_health = int(Sheep_health * 1.8)
 		Sheep_speed = int(Sheep_speed * 1.3)
 		Sheep_EXP_cost = int(Sheep_EXP_cost * 2.5)
 		Sheep_left_gold += 6
@@ -199,7 +210,6 @@ func _on_main_upgrade_timer_timeout():
 	elif upgrade_times > 20:
 		Global.Sheep_damage = int(Global.Sheep_damage * 3)
 		Sheep_max_health = int(Sheep_max_health * 3)
-		Sheep_health = int(Sheep_health * 3)
 		Sheep_speed = int(Sheep_speed * 2)
 		Sheep_EXP_cost = int(Sheep_EXP_cost * 5)
 		Sheep_left_gold += 15

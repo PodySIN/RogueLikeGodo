@@ -152,7 +152,7 @@ func enemy_spawn():
 	if coller % 20 == 0:
 		Bunny.position = Vector2(1025,550)
 		$Mobs.add_child(Bunny)
-	if coller % 15 == 0:
+	if coller % 14 == 0:
 		red_cross.position = random_pos
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
@@ -202,6 +202,70 @@ func _on_stat_upgrade_timer_timeout():
 
 func _on_area_polygon_area_entered(area):
 	area.queue_free()
+
+func _on_gold_give_timeout():
+	if Global.Game_Time <= 60:
+		Global.GOLD += Global.player_gold_per_time
+	elif Global.Game_Time > 60 and Global.Game_Time <= 120:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 5
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 5
+	elif Global.Game_Time > 120 and Global.Game_Time <= 240:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 10
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 10
+	elif Global.Game_Time > 240 and Global.Game_Time <= 360:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 15
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 15
+	elif Global.Game_Time > 360 and Global.Game_Time <= 600:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 20
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 20
+	elif Global.Game_Time > 600 and Global.Game_Time <= 900:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 30
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 30
+	elif Global.Game_Time > 900:
+		if Global.Class_select == 5:
+			Global.GOLD += Global.player_gold_per_time + 50
+		elif Global.Class_select == 6:
+			Global.GOLD += Global.player_gold_per_time - 45
+
+func _on_class_upgrade_timeout():
+	if Global.Class_select == 3:
+		Global.owner_damage += 5
+		Global.owner_damage_percentage += 5
+	if Global.Class_select == 6:
+		Global.player_max_health += 10
+		Global.player_health += 10
+		Global.owner_damage += 3
+		Global.owner_damage_percentage += 5
+		Global.player_crit_chance += 1
+		Global.player_crit_damage += 0.05
+		Global.player_speed += 2
+	if Global.Class_select == 7:
+		Global.player_crit_chance += 3
+		Global.player_crit_damage += 0.4
+		Global.player_speed += 2
+	if Global.Class_select == 4:
+		Global.player_speed += 25
+	if Global.Class_select == 2:
+		Global.player_max_health += 10
+		Global.player_max_health = Global.player_max_health + (Global.player_max_health * 0.05)
+		Global.player_health += 10
+		Global.player_health = Global.player_health + (Global.player_max_health * 0.05)
+		Global.owner_damage_percentage = int(Global.player_max_health * 0.03) + Global.owner_damage_percentage
+		Global.owner_damage = int(Global.player_max_health * 0.01) + Global.owner_damage
+	if Global.Class_select == 8:
+		Global.player_hp_regen += 10
+		Global.player_max_health = Global.player_max_health + (Global.player_max_health * 0.05)
+		Global.player_health = Global.player_health + (Global.player_max_health * 0.05)
 "
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xat20"]
@@ -1340,7 +1404,15 @@ autostart = true
 autostart = true
 
 [node name="StatUpgradeTimer" type="Timer" parent="Timers"]
-wait_time = 20.0
+wait_time = 15.0
+autostart = true
+
+[node name="GoldGive" type="Timer" parent="Timers"]
+wait_time = 25.0
+autostart = true
+
+[node name="ClassUpgrade" type="Timer" parent="Timers"]
+wait_time = 90.0
 autostart = true
 
 [connection signal="area_entered" from="Collisions/AreaPolygon" to="." method="_on_area_polygon_area_entered"]
@@ -1356,6 +1428,8 @@ autostart = true
 [connection signal="timeout" from="Timers/MainTimer" to="." method="_on_main_timer_timeout"]
 [connection signal="timeout" from="Timers/UpgradeTimer" to="." method="_on_upgrade_timer_timeout"]
 [connection signal="timeout" from="Timers/StatUpgradeTimer" to="." method="_on_stat_upgrade_timer_timeout"]
+[connection signal="timeout" from="Timers/GoldGive" to="." method="_on_gold_give_timeout"]
+[connection signal="timeout" from="Timers/ClassUpgrade" to="." method="_on_class_upgrade_timeout"]
 
 [editable path="Hero/Hero"]
 [editable path="UI/Shop_Level_Menu"]
