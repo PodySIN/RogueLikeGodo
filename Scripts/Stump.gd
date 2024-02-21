@@ -21,8 +21,8 @@ var playershotgun_dmg = 0
 
 #-----stats-------------------------
 var Stump_speed = 80
-var Stump_health = 240
-var Stump_max_health = 240
+var Stump_health = 220
+var Stump_max_health = 220
 var Stump_EXP_cost = 10
 var Stump_left_gold = 5
 var Stump_right_gold = 6
@@ -107,9 +107,10 @@ func on_uzidamage_received(playeruzi_damage):
 
 func on_kardamage_received(playerkar_damage):
 	playerkar_dmg = playerkar_damage
-	
+
 func on_Shotgundamage_received(player_damage):
 	playershotgun_dmg = player_damage
+
 func _on_enemy_hitbox_area_entered(area):
 	if area.name == 'Bullet':
 		await get_tree().create_timer(0.02).timeout

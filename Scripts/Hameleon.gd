@@ -115,8 +115,9 @@ func _on_attack_cd_timeout():
 		$Sounds/AttackSound.play()
 		$Sounds/HitSound.play()
 		var random_miss = randi_range(0,100)
+		var armor = Global.armor_calculating()
 		if random_miss >= Global.player_miss_chance:
-			Global.player_health -= Global.Hameleon_damage
+			Global.player_health -= (Global.Hameleon_damage - (Global.Hameleon_damage * armor))
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')

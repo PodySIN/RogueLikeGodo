@@ -31,6 +31,7 @@ script/source = "extends Node2D
 @onready var ST = $Timers/SecondTimer
 @onready var ExpBar = $UI/ExpBar
 
+
 var colling = 0
 var colling2 = 0
 var random_pos = 0
@@ -42,6 +43,7 @@ var stump_preload = preload(\"res://Scenes/stump.tscn\")
 var hameleon_preload = preload(\"res://Scenes/hameleon.tscn\")
 var bunny_preload = preload(\"res://Scenes/bunny.tscn\")
 var worm_preload = preload(\"res://Scenes/worm_enemy.tscn\")
+var flower_prload = preload(\"res://Scenes/flower.tscn\")
 var coller = 0
 var red_cross_pos = Vector2(0,0)
 
@@ -133,18 +135,19 @@ func enemy_spawn():
 	var Hameleon = hameleon_preload.instantiate()
 	var Bunny = bunny_preload.instantiate()
 	var Worm = worm_preload.instantiate()
+	var Flower = flower_prload.instantiate()
 	var red_cross = red_cross_preload.instantiate()
 	enemy1.position = red_cross_pos
 	coller+=1
 	$Mobs.add_child(enemy1)
-	if coller % 5 == 0:
-		red_cross.position = random_pos
+	if coller % 4 == 0:
+		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Stump.position = red_cross.position
 		$Mobs.add_child(Stump)
 	if coller % 3 == 0:
-		red_cross.position = random_pos
+		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Hameleon.position = red_cross.position
@@ -152,12 +155,19 @@ func enemy_spawn():
 	if coller % 20 == 0:
 		Bunny.position = Vector2(1025,550)
 		$Mobs.add_child(Bunny)
-	if coller % 14 == 0:
-		red_cross.position = random_pos
+	if coller % 11 == 0:
+		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Worm.position = red_cross.position
 		$Mobs.add_child(Worm)
+	if coller > 5 and Global.Flower_counter <= 5:
+		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
+		$Mobs.add_child(red_cross)
+		await get_tree().create_timer(1).timeout
+		Flower.position = red_cross.position
+		$Mobs.add_child(Flower)
+		Global.Flower_counter += 1
 
 func _on_second_timer_timeout():
 	ST.stop()

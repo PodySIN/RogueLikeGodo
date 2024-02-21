@@ -7,7 +7,7 @@ func _on_balanced_pressed():
 	
 func _on_fatty_pressed():
 	Global.Class_select = 2
-	$UI/ClassInfo/Label.text = '+250 HP\n+30% HP\n+10 HPRegen\n-50 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
+	$UI/ClassInfo/Label.text = '+250 HP\n+30% HP\n+10 HPRegen\n+5Armor\n-50 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
 	$UI/ClassInfo.visible = true
 
 func _on_warrior_pressed():
@@ -37,7 +37,7 @@ func _on_killer_pressed():
 
 func _on_lizard_pressed():
 	Global.Class_select = 8
-	$UI/ClassInfo/Label.text = '+200 HP\n+75 HPRegen\nБольше не может атаковать\nвозвращает урон (все враги 1 типа дальнего боя получают урон)'
+	$UI/ClassInfo/Label.text = '+200 HP\n+75 HPRegen\n+10 armor\nБольше не может атаковать\nвозвращает урон (все враги 1 типа дальнего боя получают урон)'
 	$UI/ClassInfo.visible = true
 
 func _on_killer_mouse_entered():
@@ -78,6 +78,7 @@ func _on_get_pressed():
 	elif Global.Class_select == 2:
 		Global.player_max_health += 250
 		Global.player_hp_percentage += 30
+		Global.player_armor += 5
 		Global.player_hp_regen += 10
 		Global.player_health += 250
 		Global.player_speed -= 50
@@ -123,6 +124,7 @@ func _on_get_pressed():
 		Global.player_speed += 25
 	elif Global.Class_select == 8:
 		Global.player_max_health += 200
+		Global.player_armor += 10
 		Global.player_hp_regen += 75
 		Global.player_health += 200
 		Global.owner_damage -= 100

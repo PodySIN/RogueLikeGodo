@@ -16,6 +16,7 @@ var alive = true
 var run = 0
 var Stump_dmg = 60
 var Worm_dmg = 90
+var Flower_dmg = 30
 var counter_of_death = 0
 #-----vars-------------------------
 
@@ -32,6 +33,7 @@ func _ready():
 		Global.owner_damage = (int(Global.player_max_health / 100) * 5) + Global.owner_damage
 	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
 	Signals.connect('Worm_hit', Callable(self, 'on_worm_bullet_damage_received'))
+	Signals.connect('Flower_hit', Callable(self, 'on_Flower_bullet_damage_received'))
 	Signals.connect('MISS', Callable(self, 'on_miss_received'))
 	Global.player_health = Global.player_max_health
 
@@ -178,12 +180,16 @@ func on_stump_bullet_damage_received(Stump_damage):
 func on_worm_bullet_damage_received(Worm_damage):
 	Worm_dmg = Worm_damage
 	
+func on_flower_bullet_damage_received(Flower_damage):
+	Flower_dmg = Flower_damage
+
 func _on_hitbox_area_entered(area):
+	var armor = Global.armor_calculating()
 	if area.name == 'StumpBullet':
 		$Sounds/GetHit.play()
 		var random_miss = randi_range(0,100)
 		if random_miss >= Global.player_miss_chance:
-			Global.player_health -= Global.Stump_damage
+			Global.player_health -= (Global.Stump_damage - (Global.Stump_damage * armor))
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
@@ -194,13 +200,23 @@ func _on_hitbox_area_entered(area):
 		$Sounds/GetHit.play()
 		var random_miss = randi_range(0,100)
 		if random_miss >= Global.player_miss_chance:
-			Global.player_health -= Global.Worm_damage
+			Global.player_health -= (Global.Worm_damage - (Global.Worm_damage * armor))
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
 		if Global.can_return_damage:
 			Signals.emit_signal('Return_damage_worm', Worm_dmg)
-
+	if area.name == 'flower_bullet':
+		Signals.emit_signal('FlowerBulletHit')
+		$Sounds/GetHit.play()
+		var random_miss = randi_range(0,100)
+		if random_miss >= Global.player_miss_chance:
+			Global.player_health -= (Global.Flower_damage - (Global.Flower_counter * armor))
+		else:
+			Global.player_health -= 0
+			Signals.emit_signal('MISS')
+		if Global.can_return_damage:
+			Signals.emit_signal('Return_damage_flower', Flower_dmg)
 func helth_control():
 	if Global.player_health > Global.player_max_health:
 		Global.player_health = Global.player_max_health
