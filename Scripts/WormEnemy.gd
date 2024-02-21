@@ -20,12 +20,12 @@ var playershotgun_dmg = 0
 #-----vars-------------------------
 
 #-----stats-------------------------
-var Worm_speed = 20
-var Worm_health = 600
-var Worm_max_health = 600
-var Worm_EXP_cost = 40
-var Worm_left_gold = 15
-var Worm_right_gold = 25
+var Worm_speed = 30
+var Worm_health = 500
+var Worm_max_health = 500
+var Worm_EXP_cost = 50
+var Worm_left_gold = 17
+var Worm_right_gold = 27
 var Worm_GOLD_cost = randi_range(Worm_left_gold,Worm_right_gold)
 #-----stats-------------------------
 

@@ -90,14 +90,15 @@ var weapon_instances: Array = [0,1,2,3,4,5]
 var player_hp_percentage: = 0
 var owner_damage_percentage: float = 1
 var owner_damage: int = 0
-var player_max_health: int = 100
-var player_health: int = 100
+var player_max_health: int = 10000
+var player_health: int = 10000
 var player_speed: int = 200
-var player_hp_regen: int = 0
+var player_hp_regen: int = 1000
 var player_crit_chance: int = 5
 var player_crit_damage: float = 1.3
 var player_gold_per_time: int = 0
 var player_miss_chance: int = 0
+var player_armor: int = 100
 var can_return_damage: bool = false
 #--------------------player_stats-------------------------------
 
@@ -152,6 +153,7 @@ var array_of_texts_items: Array = [
 #--------------------shop-----------------------------------------------
 
 #--------------------enemy-----------------------------------------------
+var Flower_counter: int = 0
 
 var Sheep_damage: int = 45
 
@@ -160,6 +162,8 @@ var Stump_damage: int = 75
 var Hameleon_damage: int = 90
 
 var Worm_damage: int = 150
+
+var Flower_damage: int = 35
 #--------------------enemy-----------------------------------------------
 
 #------------------------funcs-----------------------------------
@@ -170,6 +174,28 @@ func _process(delta):
 	Kar_damage = (100 + owner_damage) * ((owner_damage_percentage + 100) / 100)
 	Shotgun_damage = (60 + owner_damage) * ((owner_damage_percentage + 100) / 100)
 
+func armor_calculating():
+	var armor_calculate = 0.0
+	for i in range(player_armor):
+		if i == 0:
+			armor_calculate += 1
+		elif i == 1:
+			armor_calculate += 9
+		elif i <= 4 and i > 1:
+			armor_calculate += 6
+		elif i <= 7 and i > 4:
+			armor_calculate += 4
+		elif i <= 10 and i > 7:
+			armor_calculate += 3
+		elif i <= 15 and i > 10:
+			armor_calculate += 2
+		elif i <= 31 and i > 15:
+			armor_calculate += 1
+		elif i > 31:
+			break
+	armor_calculate /= 100
+	return armor_calculate
+	
 func zero_stats():
 	GOLD = 10
 	EXP = 0
@@ -192,4 +218,7 @@ func zero_stats():
 	Sheep_damage = 30
 	Stump_damage = 60
 	Hameleon_damage = 40
+	Flower_damage = 35
+	Worm_damage = 150
+	Flower_counter = 0
 #------------------------funcs-----------------------------------
