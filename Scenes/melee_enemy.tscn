@@ -1,0 +1,120 @@
+[gd_scene load_steps=9 format=3 uid="uid://dls76qkasgpjd"]
+
+[ext_resource type="Script" path="res://Scripts/Base/Melee_enemy.gd" id="1_udbf2"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="2_j7ght"]
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="3_uu6cg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjw51"]
+size = Vector2(14, 17)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvpy3"]
+radius = 6.0
+height = 20.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
+atlas = ExtResource("3_uu6cg")
+region = Rect2(112, 80, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jc7ln"]
+atlas = ExtResource("3_uu6cg")
+region = Rect2(128, 80, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvi0v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_otif0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jc7ln")
+}],
+"loop": true,
+"name": &"fire",
+"speed": 3.0
+}]
+
+[node name="Melee_enemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 12
+script = ExtResource("1_udbf2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_cjw51")
+
+[node name="Enemy_hitbox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_cvpy3")
+
+[node name="Damage_label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = -7.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0.14902, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_j7ght")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_rifle" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -26.0
+offset_right = 23.0
+offset_bottom = -14.0
+theme_override_colors/font_color = Color(0.211765, 0.180392, 1, 1)
+theme_override_fonts/font = ExtResource("2_j7ght")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_uzi" type="Label" parent="."]
+visible = false
+offset_left = 7.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.568627, 0, 1, 1)
+theme_override_fonts/font = ExtResource("2_j7ght")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_kar" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 3.0
+offset_bottom = -3.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_j7ght")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="Damage_label_shotgun" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 4.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("2_j7ght")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -12)
+scale = Vector2(1.01563, 1.01563)
+sprite_frames = SubResource("SpriteFrames_qvi0v")
+animation = &"fire"
+frame_progress = 0.526928
+
+[node name="Damage_timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
+[connection signal="timeout" from="Damage_timer" to="." method="_on_damage_timer_timeout"]

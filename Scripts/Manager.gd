@@ -68,27 +68,27 @@ func update_player_level():
 			Global.owner_damage = int(Global.player_max_health * 0.005) + Global.owner_damage
 		Global.player_health = Global.player_max_health
 		if Global.Class_select != 8:
-			Global.item1 = randi_range(0,7)
-			Global.item2 = randi_range(0,7)
-			Global.item3 = randi_range(0,7)
-			Global.item4 = randi_range(0,7)
+			Global.item1 = randi_range(0,4)
+			Global.item2 = randi_range(5,17)
+			Global.item3 = randi_range(5,17)
+			Global.item4 = randi_range(5,17)
 		else:
-			Global.item1 = randi_range(5,7)
-			Global.item2 = randi_range(5,7)
-			Global.item3 = randi_range(5,7)
-			Global.item4 = randi_range(5,7)
+			Global.item1 = randi_range(5,17)
+			Global.item2 = randi_range(5,17)
+			Global.item3 = randi_range(5,17)
+			Global.item4 = randi_range(5,17)
 		Global.chances_on_lvl = [randi_range(0,100),randi_range(0,100),randi_range(0,100),randi_range(0,100)]
 		for i in range(len(Global.chances_on_lvl)):
 			if Global.chances_on_lvl[i] <= 60:
-				Global.level_stats[i] = randi_range(0,5)
+				Global.level_stats[i] = randi_range(0,7)
 			elif Global.chances_on_lvl[i] > 60 and Global.chances_on_lvl[i] <= 85:
-				Global.level_stats[i] = randi_range(6,11)
+				Global.level_stats[i] = randi_range(8,15)
 			elif Global.chances_on_lvl[i] > 85 and Global.chances_on_lvl[i] <= 95:
-				Global.level_stats[i] = randi_range(12,17)
+				Global.level_stats[i] = randi_range(16,23)
 			elif Global.chances_on_lvl[i] > 95 and Global.chances_on_lvl[i] <= 99:
-				Global.level_stats[i] = randi_range(18,23)
+				Global.level_stats[i] = randi_range(24,31)
 			elif Global.chances_on_lvl[i] == 100:
-				Global.level_stats[i] = randi_range(24,29)
+				Global.level_stats[i] = randi_range(32,39)
 		for i in range(len(Global.array_of_costs)):
 			if Global.Game_Time <= 90 and Global.Game_Time >= 45:
 				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.1)

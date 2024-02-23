@@ -193,6 +193,7 @@ func _on_hitbox_area_entered(area):
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
+			Signals.emit_signal('Return_damage_flower', Stump_dmg)
 		if Global.can_return_damage:
 			Signals.emit_signal('Return_damage_stump', Stump_dmg)
 	if area.name == 'worm_bullet':
@@ -204,6 +205,7 @@ func _on_hitbox_area_entered(area):
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
+			Signals.emit_signal('Return_damage_flower', Worm_dmg)
 		if Global.can_return_damage:
 			Signals.emit_signal('Return_damage_worm', Worm_dmg)
 	if area.name == 'flower_bullet':
@@ -215,6 +217,7 @@ func _on_hitbox_area_entered(area):
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
+			Signals.emit_signal('Return_damage_flower', Flower_dmg)
 		if Global.can_return_damage:
 			Signals.emit_signal('Return_damage_flower', Flower_dmg)
 func helth_control():

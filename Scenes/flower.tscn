@@ -436,7 +436,6 @@ Flowerbullet_preload = ExtResource("2_630te")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, 9)
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_c8lfp")
 animation = &"Side_anim"
 frame_progress = 0.885754

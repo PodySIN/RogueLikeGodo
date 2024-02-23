@@ -44,6 +44,7 @@ var hameleon_preload = preload(\"res://Scenes/hameleon.tscn\")
 var bunny_preload = preload(\"res://Scenes/bunny.tscn\")
 var worm_preload = preload(\"res://Scenes/worm_enemy.tscn\")
 var flower_prload = preload(\"res://Scenes/flower.tscn\")
+var RAPTOR_preload = preload(\"res://Scenes/Raptor.tscn\")
 var coller = 0
 var red_cross_pos = Vector2(0,0)
 
@@ -189,23 +190,36 @@ func _on_main_timer_timeout():
 
 func _on_upgrade_timer_timeout():
 	if Global.Game_Time == 60:
+		$Mobs/Spawner.wait_time = 5.5
+		$Mobs/red_cross_spawner.wait_time = 4.5
+	elif Global.Game_Time == 120:
+		$Mobs/Spawner.wait_time = 5
+		$Mobs/red_cross_spawner.wait_time = 4
+	elif Global.Game_Time == 180:
 		$Mobs/Spawner.wait_time = 4.5
 		$Mobs/red_cross_spawner.wait_time = 3.5
-	elif Global.Game_Time == 120:
+	elif Global.Game_Time == 240:
 		$Mobs/Spawner.wait_time = 4
 		$Mobs/red_cross_spawner.wait_time = 3
-	elif Global.Game_Time == 180:
+	elif Global.Game_Time == 300:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
+	elif Global.Game_Time == 360:
 		$Mobs/Spawner.wait_time = 3.5
 		$Mobs/red_cross_spawner.wait_time = 2.5
-	elif Global.Game_Time == 240:
+	elif Global.Game_Time == 420:
 		$Mobs/Spawner.wait_time = 3
 		$Mobs/red_cross_spawner.wait_time = 2
-	elif Global.Game_Time == 360:
+	elif Global.Game_Time == 480:
 		$Mobs/Spawner.wait_time = 2.5
 		$Mobs/red_cross_spawner.wait_time = 1.5
-	elif Global.Game_Time == 420:
+	elif Global.Game_Time == 540:
 		$Mobs/Spawner.wait_time = 2
 		$Mobs/red_cross_spawner.wait_time = 1
+	elif Global.Game_Time == 600:
+		$Mobs/Spawner.wait_time = 1.5
+		$Mobs/red_cross_spawner.wait_time = 0.5
 
 func _on_stat_upgrade_timer_timeout():
 	Signals.emit_signal('Upgradetime')
@@ -264,7 +278,9 @@ func _on_class_upgrade_timeout():
 		Global.player_crit_damage += 0.4
 		Global.player_speed += 2
 	if Global.Class_select == 4:
-		Global.player_speed += 25
+		Global.owner_damage += 3
+		Global.player_speed += 5
+		Global.player_miss_chance += 3
 	if Global.Class_select == 2:
 		Global.player_max_health += 10
 		Global.player_max_health = Global.player_max_health + (Global.player_max_health * 0.05)
@@ -1057,10 +1073,10 @@ position = Vector2(855, 475)
 [node name="Mobs" type="Node2D" parent="."]
 
 [node name="Spawner" type="Timer" parent="Mobs"]
-wait_time = 5.0
+wait_time = 6.0
 
 [node name="red_cross_spawner" type="Timer" parent="Mobs"]
-wait_time = 4.0
+wait_time = 5.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -1418,7 +1434,7 @@ wait_time = 15.0
 autostart = true
 
 [node name="GoldGive" type="Timer" parent="Timers"]
-wait_time = 25.0
+wait_time = 30.0
 autostart = true
 
 [node name="ClassUpgrade" type="Timer" parent="Timers"]

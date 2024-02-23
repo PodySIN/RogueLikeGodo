@@ -18,12 +18,12 @@ var playerkar_dmg = 0
 var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
-var Hameleon_speed = 180
-var Hameleon_health = 250
-var Hameleon_max_health = 250
-var Hameleon_EXP_cost = 8
-var Hameleon_left_gold = 4
-var Hameleon_right_gold = 5
+var Hameleon_speed = 170
+var Hameleon_health = 210
+var Hameleon_max_health = 210
+var Hameleon_EXP_cost = 9
+var Hameleon_left_gold = 5
+var Hameleon_right_gold = 7
 var Hameleon_GOLD_cost = randi_range(Hameleon_left_gold,Hameleon_right_gold)
 #-----stats-------------------------
 
@@ -121,6 +121,7 @@ func _on_attack_cd_timeout():
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
+			Hameleon_health -= Global.Hameleon_damage
 		if Global.can_return_damage:
 			Hameleon_health -= Global.Hameleon_damage
 
@@ -141,45 +142,6 @@ func on_kardamage_received(playerkar_damage):
 
 func on_Shotgundamage_received(playerkar_damage):
 	playershotgun_dmg = playerkar_damage
-	
-func _on_enemy_hitbox_area_entered(area):
-	if area.name == 'Bullet':
-		await get_tree().create_timer(0.02).timeout
-		$Damage_label.text = str(player_dmg)
-		$Damage_label.visible = true
-		Hameleon_health -= player_dmg
-		Global.ALL_DAMAGE_IN_GAME += player_dmg
-		$Timers/Damage_timer.start()
-	elif area.name == 'rifle_bullet':
-		await get_tree().create_timer(0.02).timeout
-		$Damage_label_rifle.text = str(playerrifle_dmg)
-		$Damage_label_rifle.visible = true
-		Hameleon_health -= playerrifle_dmg
-		Global.ALL_DAMAGE_IN_GAME += playerrifle_dmg
-		$Timers/Damage_timer.start()
-	elif area.name == 'UziBullet':
-		await get_tree().create_timer(0.02).timeout
-		$Damage_label_uzi.text = str(playeruzi_dmg)
-		$Damage_label_uzi.visible = true
-		Hameleon_health -= playeruzi_dmg
-		Global.ALL_DAMAGE_IN_GAME += playeruzi_dmg
-		$Timers/Damage_timer.start()
-	elif area.name == 'kar98k_bullet':
-		await get_tree().create_timer(0.02).timeout
-		$Damage_label_kar.text = str(playerkar_dmg)
-		$Damage_label_kar.visible = true
-		Hameleon_health -= playerkar_dmg
-		Global.ALL_DAMAGE_IN_GAME += playerkar_dmg
-		$Timers/Damage_timer.start()
-	elif area.name == 'Shotgun_bullet':
-		await get_tree().create_timer(0.02).timeout
-		$ShotgunBullet.visible = true
-		$ShotgunBullet.play('fire')
-		$Damage_label_shotgun.text = str(playershotgun_dmg)
-		$Damage_label_shotgun.visible = true
-		Hameleon_health -= playershotgun_dmg
-		Global.ALL_DAMAGE_IN_GAME += playershotgun_dmg
-		$Timers/Damage_timer.start()
 
 func _on_damage_timer_timeout():
 	$ShotgunBullet.stop()
@@ -221,3 +183,41 @@ func _on_main_upgrade_timer_timeout():
 		Hameleon_left_gold += 15
 		Hameleon_right_gold += 15
 
+func _on_enemy_hitbox_area_entered(area):
+	if area.name == 'Bullet':
+		await get_tree().create_timer(0.02).timeout
+		$Damage_label.text = str(player_dmg)
+		$Damage_label.visible = true
+		Hameleon_health -= player_dmg
+		Global.ALL_DAMAGE_IN_GAME += player_dmg
+		$Timers/Damage_timer.start()
+	elif area.name == 'rifle_bullet':
+		await get_tree().create_timer(0.02).timeout
+		$Damage_label_rifle.text = str(playerrifle_dmg)
+		$Damage_label_rifle.visible = true
+		Hameleon_health -= playerrifle_dmg
+		Global.ALL_DAMAGE_IN_GAME += playerrifle_dmg
+		$Timers/Damage_timer.start()
+	elif area.name == 'UziBullet':
+		await get_tree().create_timer(0.02).timeout
+		$Damage_label_uzi.text = str(playeruzi_dmg)
+		$Damage_label_uzi.visible = true
+		Hameleon_health -= playeruzi_dmg
+		Global.ALL_DAMAGE_IN_GAME += playeruzi_dmg
+		$Timers/Damage_timer.start()
+	elif area.name == 'kar98k_bullet':
+		await get_tree().create_timer(0.02).timeout
+		$Damage_label_kar.text = str(playerkar_dmg)
+		$Damage_label_kar.visible = true
+		Hameleon_health -= playerkar_dmg
+		Global.ALL_DAMAGE_IN_GAME += playerkar_dmg
+		$Timers/Damage_timer.start()
+	elif area.name == 'Shotgun_bullet':
+		await get_tree().create_timer(0.02).timeout
+		$ShotgunBullet.visible = true
+		$ShotgunBullet.play('fire')
+		$Damage_label_shotgun.text = str(playershotgun_dmg)
+		$Damage_label_shotgun.visible = true
+		Hameleon_health -= playershotgun_dmg
+		Global.ALL_DAMAGE_IN_GAME += playershotgun_dmg
+		$Timers/Damage_timer.start()

@@ -11,9 +11,18 @@ var array_of_WeaponTextures = ['%WeaponTexture1','%WeaponTexture2','%WeaponTextu
 var buy_oportunity_number = 0
 
 func _process(delta):
-	$InformationWindow/InformationWindowLabel.text = str('HP: ',Global.player_max_health,'\n','Attack: ',Global.owner_damage,'\n','Attack%: ',Global.owner_damage_percentage,'%','\n','MS: ',Global.player_speed,'\n','Crit.chance: ',Global.player_crit_chance,'%','\n','Crit.dmg: ',Global.player_crit_damage * 100,'%','\n','HP Regen: ',Global.player_hp_regen)
+	$InformationWindow/InformationWindowLabel.text = str('HP: ',Global.player_max_health,'\n',
+	'HP Regen: ',Global.player_hp_regen,'\n',
+	'Armor: ',Global.player_armor,'\n',
+	'Attack: ',Global.owner_damage,'\n',
+	'Attack%: ',Global.owner_damage_percentage,'%','\n',
+	'Crit.chance: ',Global.player_crit_chance,'%','\n',
+	'Crit.dmg: ',Global.player_crit_damage * 100,'%','\n',
+	'MS: ',Global.player_speed,'\n',
+	'Miss%: ',Global.player_miss_chance,'\n',)
+	
 	print('Hp_max: ',Global.player_max_health,'\n','HP: ',Global.player_health,'\n','Atck: ',Global.owner_damage,'\n','Attck%: ',Global.owner_damage_percentage,
-	'\n','Crit.chn: ',Global.player_crit_chance,'\n','Crit.dmg: ',Global.player_crit_damage,'\n','Ms: ',Global.player_speed)
+	'\n','Crit.chn: ',Global.player_crit_chance,'\n','Crit.dmg: ',Global.player_crit_damage,'\n','Ms: ',Global.player_speed,'\n','Armor: ', Global.player_armor,'\n','Evasive: ', Global.player_miss_chance)
 	visible_UpgradesCounter()
 	visible_texture_and_texts()
 	visible_level_system()
@@ -187,17 +196,79 @@ func buy_items(buy_oportunity_number, item):
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.owner_damage += 5
-		Global.owner_damage_percentage += 0.05
+		Global.owner_damage_percentage += 5
 		Global.player_max_health -= 5
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_crit_chance += 2
 		Global.player_crit_damage += 0.04
-		Global.owner_damage_percentage -= 0.01
+		Global.owner_damage_percentage -= 1
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
-	
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 8 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_armor += 3
+		Global.player_speed -= 5
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 9 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_max_health += 10
+		Global.player_hp_regen += 5
+		Global.player_health = Global.player_max_health
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 10 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_miss_chance += 10
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 11 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_gold_per_time += 5
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 12 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_crit_chance += 3
+		Global.player_crit_damage += 0.07
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 13 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.owner_damage += 5
+		Global.owner_damage_percentage += 5
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 14 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_speed += 10
+		Global.player_miss_chance += 5
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 15 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_crit_chance += 5
+		Global.player_crit_damage += 0.2
+		Global.owner_damage_percentage += 15
+		Global.owner_damage += 10
+		Global.player_max_health -= 50
+		Global.player_hp_regen -= 10
+		Global.player_health = Global.player_max_health
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 16 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_speed += 25
+		Global.player_miss_chance += 10
+		Global.player_crit_damage += 0.1
+		Global.player_crit_chance += 5
+		Global.owner_damage_percentage += 5
+		Global.player_armor -= 10
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
+	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 17 and Global.array_of_costs[item] <= Global.GOLD:
+		Global.player_max_health += 50
+		Global.player_hp_regen += 25
+		Global.player_health = Global.player_max_health
+		Global.player_armor += 3
+		Global.owner_damage += 10
+		Global.player_speed -= 20
+		Global.player_miss_chance -= 10
+		Global.GOLD -= Global.array_of_costs[item]
+		Global.buy_oportunity[buy_oportunity_number] = false
 
 func position_for_gun(weapon, i):
 	if i == 0:
@@ -413,20 +484,24 @@ func _on_button_level_3_pressed():
 
 func buy(a):
 	if Global.UpgradesCounter > 0:
-		if a == 0 or a == 6 or a == 12 or a == 18 or a == 24:
+		if a == 0 or a == 8 or a == 16 or a == 24 or a == 32:
 			Global.owner_damage += Global.array_level_stats_upgrade[a]
-		elif a == 1 or a == 7 or a == 13 or a == 19 or a == 25:
+		elif a == 1 or a == 9 or a == 17 or a == 25 or a == 33:
 			Global.owner_damage_percentage += Global.array_level_stats_upgrade[a]
-		elif a == 2 or a == 8 or a == 14 or a == 20 or a == 26:
+		elif a == 2 or a == 10 or a == 18 or a == 26 or a == 34:
 			Global.player_max_health += Global.array_level_stats_upgrade[a]
 			Global.player_health = Global.player_max_health
 			Signals.emit_signal("health_upgraded", Global.player_health)
-		elif a == 3 or a == 9 or a == 15 or a == 21 or a == 27:
+		elif a == 3 or a == 11 or a == 19 or a == 27 or a == 35:
 			Global.player_crit_chance += Global.array_level_stats_upgrade[a]
-		elif a == 4 or a == 10 or a == 16 or a == 22 or a == 28:
+		elif a == 4 or a == 12 or a == 20 or a == 28 or a == 36:
 			Global.player_speed += Global.array_level_stats_upgrade[a]
-		elif a == 5 or a == 11 or a == 17 or a == 23 or a == 29:
+		elif a == 5 or a == 13 or a == 21 or a == 29 or a == 37:
 			Global.player_crit_damage += Global.array_level_stats_upgrade[a]
+		elif a == 6 or a == 14 or a == 22 or a == 30 or a == 38:
+			Global.player_armor += Global.array_level_stats_upgrade[a]
+		elif a == 7 or a == 15 or a == 23 or a == 31 or a == 39:
+			Global.player_miss_chance += Global.array_level_stats_upgrade[a]
 		Global.UpgradesCounter -= 1
 
 func _on_information_window_button_pressed():
