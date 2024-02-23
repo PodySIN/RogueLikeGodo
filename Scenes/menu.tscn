@@ -55,13 +55,15 @@ theme_override_styles/focus = SubResource("StyleBoxTexture_2ducc")
 text = "PLAY"
 
 [node name="GAME_NAME" type="Label" parent="."]
-offset_left = 90.0
-offset_top = 54.0
-offset_right = 1847.0
-offset_bottom = 185.0
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1923.0
+offset_bottom = 298.0
 theme_override_fonts/font = ExtResource("3_dgd4g")
-theme_override_font_sizes/font_size = 125
-text = "ComponentsUnificationMonsters"
+theme_override_font_sizes/font_size = 150
+text = "Monster Buster Hero"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="EXIT" type="Button" parent="."]
 offset_left = 750.0
