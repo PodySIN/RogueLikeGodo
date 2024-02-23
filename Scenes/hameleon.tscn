@@ -1,15 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://bovp7giadg5km"]
+[gd_scene load_steps=44 format=3 uid="uid://ccdo5cdqxcb76"]
 
-[ext_resource type="Script" path="res://Scripts/Hameleon.gd" id="1_0vprd"]
+[ext_resource type="Script" path="res://Scripts/Hameleon.gd" id="1_fjmrv"]
 [ext_resource type="Texture2D" uid="uid://b6t5s3ma0il2b" path="res://Assets/Enemy/Chameleon/Attack (84x38).png" id="2_6xm01"]
 [ext_resource type="Texture2D" uid="uid://bvgq4alq5e71j" path="res://Assets/Enemy/Chameleon/Hit (84x38).png" id="3_24aif"]
 [ext_resource type="Texture2D" uid="uid://dqdxahansyv3m" path="res://Assets/Enemy/Chameleon/Run (84x38).png" id="4_7bqjb"]
-[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="5_ftawx"]
+[ext_resource type="FontFile" uid="uid://1lwd7qjkjc2f" path="res://Assets/Other/Kurland.otf" id="5_t35jb"]
 [ext_resource type="AudioStream" uid="uid://b4rjmmi7e38c2" path="res://Assets/Other/Music/Hameleon_death_sound.mp3" id="6_7dolg"]
+[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="6_gk280"]
 [ext_resource type="AudioStream" uid="uid://ctq5qnwl8oflr" path="res://Assets/Other/Music/Hameleon_death_sound_2.mp3" id="7_2mmao"]
 [ext_resource type="AudioStream" uid="uid://bghexovpmngil" path="res://Assets/Other/Music/Hameleon_attack_sound.mp3" id="8_l45do"]
 [ext_resource type="AudioStream" uid="uid://qe0tr4qi42lr" path="res://Assets/Other/Music/SlimeHitted.mp3" id="9_dh0ei"]
-[ext_resource type="Texture2D" uid="uid://bdv2jct3iq2dd" path="res://Assets/Other/Guns/Shotgun/ShotGunBullet.png" id="10_2mrh7"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1v5wq"]
 atlas = ExtResource("2_6xm01")
@@ -103,7 +103,7 @@ region = Rect2(504, 0, 84, 38)
 atlas = ExtResource("4_7bqjb")
 region = Rect2(588, 0, 84, 38)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_s2h66"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_lmrv3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -190,35 +190,22 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6pd2r"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cjw51"]
+size = Vector2(14, 17)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_cvpy3"]
 radius = 6.0
-height = 12.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_r8wia"]
-radius = 6.0
-height = 24.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_8x6d4"]
-size = Vector2(53.5, 32)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_awj81"]
-size = Vector2(140, 34)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsagk"]
-bg_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vvaoq"]
-bg_color = Color(0.698039, 0, 0.0156863, 1)
+height = 20.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
-atlas = ExtResource("10_2mrh7")
+atlas = ExtResource("6_gk280")
 region = Rect2(112, 80, 16, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jc7ln"]
-atlas = ExtResource("10_2mrh7")
+atlas = ExtResource("6_gk280")
 region = Rect2(128, 80, 16, 16)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_4hv8y"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_qvi0v"]
 animations = [{
 "frames": [{
 "duration": 1.0,
@@ -232,29 +219,103 @@ animations = [{
 "speed": 3.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_36a07"]
+size = Vector2(53.5, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_so8ly"]
+size = Vector2(140, 34)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3yfav"]
+bg_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhfim"]
+bg_color = Color(0.780392, 0.0470588, 0, 1)
+
 [node name="Hameleon" type="CharacterBody2D"]
 collision_layer = 4
 collision_mask = 12
-script = ExtResource("1_0vprd")
+script = ExtResource("1_fjmrv")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.869792, 1)
-sprite_frames = SubResource("SpriteFrames_s2h66")
+sprite_frames = SubResource("SpriteFrames_lmrv3")
 animation = &"attack"
-frame_progress = 0.727284
 offset = Vector2(-20, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, -12)
-shape = SubResource("CapsuleShape2D_6pd2r")
+position = Vector2(0, -9.5)
+shape = SubResource("RectangleShape2D_cjw51")
 
 [node name="Enemy_hitbox" type="Area2D" parent="."]
 collision_layer = 32
 collision_mask = 64
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy_hitbox"]
-position = Vector2(-1, -16)
-shape = SubResource("CapsuleShape2D_r8wia")
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_cvpy3")
+
+[node name="Damage_label" type="Label" parent="."]
+visible = false
+offset_left = -20.0
+offset_top = -27.0
+offset_right = -7.0
+offset_bottom = -15.0
+theme_override_colors/font_color = Color(0.14902, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t35jb")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_rifle" type="Label" parent="."]
+visible = false
+offset_left = 10.0
+offset_top = -26.0
+offset_right = 23.0
+offset_bottom = -14.0
+theme_override_colors/font_color = Color(0.211765, 0.180392, 1, 1)
+theme_override_fonts/font = ExtResource("5_t35jb")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_uzi" type="Label" parent="."]
+visible = false
+offset_left = 7.0
+offset_top = -13.0
+offset_right = 18.0
+offset_bottom = -1.0
+theme_override_colors/font_color = Color(0.568627, 0, 1, 1)
+theme_override_fonts/font = ExtResource("5_t35jb")
+theme_override_font_sizes/font_size = 10
+text = "12"
+
+[node name="Damage_label_kar" type="Label" parent="."]
+visible = false
+offset_left = -18.0
+offset_top = -15.0
+offset_right = 3.0
+offset_bottom = -3.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("5_t35jb")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="Damage_label_shotgun" type="Label" parent="."]
+visible = false
+offset_left = -17.0
+offset_top = -39.0
+offset_right = 4.0
+offset_bottom = -27.0
+theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
+theme_override_fonts/font = ExtResource("5_t35jb")
+theme_override_font_sizes/font_size = 10
+text = "21"
+
+[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(1, -12)
+scale = Vector2(1.01563, 1.01563)
+sprite_frames = SubResource("SpriteFrames_qvi0v")
+animation = &"fire"
+frame_progress = 0.526928
 
 [node name="hit_area" type="Area2D" parent="."]
 collision_layer = 4
@@ -262,70 +323,14 @@ collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hit_area"]
 position = Vector2(-41, -15)
-shape = SubResource("RectangleShape2D_8x6d4")
+shape = SubResource("RectangleShape2D_36a07")
 
 [node name="Hero_area" type="Area2D" parent="."]
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hero_area"]
 position = Vector2(-3.09944e-06, -15)
-shape = SubResource("RectangleShape2D_awj81")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -8.0
-offset_top = -32.0
-offset_right = 172.0
-offset_bottom = -5.0
-scale = Vector2(0.1, 0.1)
-theme_override_styles/background = SubResource("StyleBoxFlat_wsagk")
-theme_override_styles/fill = SubResource("StyleBoxFlat_vvaoq")
-value = 30.0
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="Damage_label" type="Label" parent="."]
-visible = false
-offset_left = -21.0
-offset_top = -26.0
-offset_right = -8.0
-offset_bottom = -14.0
-theme_override_colors/font_color = Color(0.14902, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_ftawx")
-theme_override_font_sizes/font_size = 10
-text = "12"
-
-[node name="Damage_label_rifle" type="Label" parent="."]
-visible = false
-offset_left = 13.0
-offset_top = -27.0
-offset_right = 26.0
-offset_bottom = -15.0
-theme_override_colors/font_color = Color(0.14902, 0, 1, 1)
-theme_override_fonts/font = ExtResource("5_ftawx")
-theme_override_font_sizes/font_size = 10
-text = "12"
-
-[node name="Damage_label_uzi" type="Label" parent="."]
-visible = false
-offset_left = 11.0
-offset_top = -8.0
-offset_right = 24.0
-offset_bottom = 4.0
-theme_override_colors/font_color = Color(0.592157, 0, 0.639216, 1)
-theme_override_fonts/font = ExtResource("5_ftawx")
-theme_override_font_sizes/font_size = 10
-text = "12"
-
-[node name="Damage_label_kar" type="Label" parent="."]
-visible = false
-offset_left = -20.0
-offset_top = -10.0
-offset_right = -7.0
-offset_bottom = 2.0
-theme_override_colors/font_color = Color(0.780392, 0, 0, 1)
-theme_override_fonts/font = ExtResource("5_ftawx")
-theme_override_font_sizes/font_size = 10
-text = "12"
+shape = SubResource("RectangleShape2D_so8ly")
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -347,29 +352,24 @@ stream = ExtResource("9_dh0ei")
 position = Vector2(1, 0)
 
 [node name="attack_cd" type="Timer" parent="Timers"]
-wait_time = 0.75
-
-[node name="Damage_timer" type="Timer" parent="Timers"]
+wait_time = 0.65
 
 [node name="death_timer" type="Timer" parent="Timers"]
 
-[node name="Damage_label_shotgun" type="Label" parent="."]
-visible = false
-offset_left = -17.0
-offset_top = -39.0
-offset_right = 4.0
-offset_bottom = -27.0
-theme_override_colors/font_color = Color(0, 0.364706, 0.0705882, 1)
-theme_override_fonts/font = ExtResource("5_ftawx")
-theme_override_font_sizes/font_size = 10
-text = "21"
+[node name="Damage_timer" type="Timer" parent="Timers"]
+wait_time = 0.5
 
-[node name="ShotgunBullet" type="AnimatedSprite2D" parent="."]
-visible = false
-position = Vector2(1, -12)
-scale = Vector2(1.01563, 1.01563)
-sprite_frames = SubResource("SpriteFrames_4hv8y")
-animation = &"fire"
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -10.0
+offset_top = -29.0
+offset_right = 210.0
+offset_bottom = -2.0
+scale = Vector2(0.1, 0.1)
+theme_override_styles/background = SubResource("StyleBoxFlat_3yfav")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rhfim")
+value = 10.0
+show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [connection signal="area_entered" from="Enemy_hitbox" to="." method="_on_enemy_hitbox_area_entered"]
 [connection signal="body_entered" from="hit_area" to="." method="_on_hit_area_body_entered"]
@@ -377,5 +377,5 @@ animation = &"fire"
 [connection signal="body_entered" from="Hero_area" to="." method="_on_hero_area_body_entered"]
 [connection signal="body_exited" from="Hero_area" to="." method="_on_hero_area_body_exited"]
 [connection signal="timeout" from="Timers/attack_cd" to="." method="_on_attack_cd_timeout"]
-[connection signal="timeout" from="Timers/Damage_timer" to="." method="_on_damage_timer_timeout"]
 [connection signal="timeout" from="Timers/death_timer" to="." method="_on_death_timer_timeout"]
+[connection signal="timeout" from="Timers/Damage_timer" to="." method="_on_damage_timer_timeout"]

@@ -7,7 +7,7 @@ func _on_balanced_pressed():
 	
 func _on_fatty_pressed():
 	Global.Class_select = 2
-	$UI/ClassInfo/Label.text = '+250 HP\n+30% HP\n+10 HPRegen\n+5Armor\n-50 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
+	$UI/ClassInfo/Label.text = '+250 HP\n+30% HP\n+10 HPRegen\n+5Armor\n-35 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
 	$UI/ClassInfo.visible = true
 
 func _on_warrior_pressed():
@@ -81,7 +81,7 @@ func _on_get_pressed():
 		Global.player_armor += 5
 		Global.player_hp_regen += 10
 		Global.player_health += 250
-		Global.player_speed -= 50
+		Global.player_speed -= 35
 		Global.player_crit_chance -= 5
 		Global.player_crit_damage -= 10
 	elif Global.Class_select == 3:
@@ -127,8 +127,8 @@ func _on_get_pressed():
 		Global.player_armor += 10
 		Global.player_hp_regen += 75
 		Global.player_health += 200
-		Global.owner_damage -= 100
-		Global.owner_damage_percentage -= 100
+		Global.owner_damage -= 10000
+		Global.owner_damage_percentage -= 10000
 		Global.can_return_damage = true
 	get_tree().change_scene_to_file("res://Scenes/world.tscn")
 

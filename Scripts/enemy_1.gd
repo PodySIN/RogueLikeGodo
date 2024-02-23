@@ -18,11 +18,11 @@ var playershotgun_dmg = 0
 #-----vars-------------------------
 #-----stats-------------------------
 var Sheep_speed = 135
-var Sheep_health = 160
-var Sheep_max_health = 160
-var Sheep_EXP_cost = 2
-var Sheep_left_gold = 2
-var Sheep_right_gold = 3
+var Sheep_health = 140
+var Sheep_max_health = 140
+var Sheep_EXP_cost = 3
+var Sheep_left_gold = 3
+var Sheep_right_gold = 4
 var Sheep_GOLD_cost = randi_range(Sheep_left_gold,Sheep_right_gold)
 #-----stats-------------------------
 
@@ -102,6 +102,7 @@ func _on_hit_area_body_exited(body):
 			else:
 				Global.player_health -= 0
 				Signals.emit_signal('MISS')
+				Sheep_health -= Global.Sheep_damage / 2
 			if Global.can_return_damage:
 				Sheep_health -= Global.Sheep_damage / 2
 		attacking = false
@@ -117,6 +118,7 @@ func _on_attack_cd_timeout():
 		else:
 			Global.player_health -= 0
 			Signals.emit_signal('MISS')
+			Sheep_health -= Global.Sheep_damage
 		if Global.can_return_damage:
 			Sheep_health -= Global.Sheep_damage
 
