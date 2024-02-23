@@ -46,7 +46,7 @@ var worm_preload = preload(\"res://Scenes/worm_enemy.tscn\")
 var flower_prload = preload(\"res://Scenes/flower.tscn\")
 var RAPTOR_preload = preload(\"res://Scenes/Raptor.tscn\")
 var coller = 0
-var red_cross_pos = Vector2(0,0)
+var red_cross_pos = Vector2(875,475)
 
 func _ready():
 	Signals.connect('health_changed', Callable(self, '_on_hero_health_changed'))
@@ -142,12 +142,14 @@ func enemy_spawn():
 	coller+=1
 	$Mobs.add_child(enemy1)
 	if coller % 4 == 0:
+		red_cross = red_cross_preload.instantiate()
 		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Stump.position = red_cross.position
 		$Mobs.add_child(Stump)
 	if coller % 3 == 0:
+		red_cross = red_cross_preload.instantiate()
 		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
@@ -157,13 +159,15 @@ func enemy_spawn():
 		Bunny.position = Vector2(1025,550)
 		$Mobs.add_child(Bunny)
 	if coller % 11 == 0:
+		red_cross = red_cross_preload.instantiate()
 		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Worm.position = red_cross.position
 		$Mobs.add_child(Worm)
-	if coller > 5 and Global.Flower_counter <= 5:
-		red_cross.position = Vector2(randi_range(465,1375), randi_range(255,750))
+	if coller > 5 and Global.Flower_counter < 3:
+		red_cross = red_cross_preload.instantiate()
+		red_cross.position = Vector2(randi_range(465,1375), randi_range(270,720))
 		$Mobs.add_child(red_cross)
 		await get_tree().create_timer(1).timeout
 		Flower.position = red_cross.position
@@ -1430,7 +1434,7 @@ autostart = true
 autostart = true
 
 [node name="StatUpgradeTimer" type="Timer" parent="Timers"]
-wait_time = 15.0
+wait_time = 30.0
 autostart = true
 
 [node name="GoldGive" type="Timer" parent="Timers"]

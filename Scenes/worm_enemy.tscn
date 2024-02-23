@@ -370,6 +370,8 @@ animations = [{
 }]
 
 [node name="WormEnemy" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 12
 script = ExtResource("1_gikuj")
 Wormbullet_preload = ExtResource("2_cr33j")
 

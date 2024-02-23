@@ -22,6 +22,8 @@ var counter_of_death = 0
 
 
 func _ready():
+	if Global.Class_select == 8:
+		Global.array_players_guns =['']
 	if Global.Class_select != 8:
 		Global.array_players_guns = ['Pistol']
 		Global.weapon_instances[0] = pistol_preload.instantiate()

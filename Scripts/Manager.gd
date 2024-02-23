@@ -69,12 +69,12 @@ func update_player_level():
 		Global.player_health = Global.player_max_health
 		if Global.Class_select != 8:
 			Global.item1 = randi_range(0,4)
-			Global.item2 = randi_range(5,17)
-			Global.item3 = randi_range(5,17)
+			Global.item2 = randi_range(5,14)
+			Global.item3 = randi_range(5,14)
 			Global.item4 = randi_range(5,17)
 		else:
-			Global.item1 = randi_range(5,17)
-			Global.item2 = randi_range(5,17)
+			Global.item1 = randi_range(5,14)
+			Global.item2 = randi_range(5,14)
 			Global.item3 = randi_range(5,17)
 			Global.item4 = randi_range(5,17)
 		Global.chances_on_lvl = [randi_range(0,100),randi_range(0,100),randi_range(0,100),randi_range(0,100)]
@@ -91,13 +91,13 @@ func update_player_level():
 				Global.level_stats[i] = randi_range(32,39)
 		for i in range(len(Global.array_of_costs)):
 			if Global.Game_Time <= 90 and Global.Game_Time >= 45:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.1)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.05)
 			elif Global.Game_Time > 90 and Global.Game_Time <= 240:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.2)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.1)
 			elif Global.Game_Time > 240 and Global.Game_Time <= 600:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.3)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.15)
 			elif Global.Game_Time > 600:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.5)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.25)
 		Global.can_sell = true
 		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]
@@ -105,10 +105,10 @@ func update_player_level():
 		LVLED_UP = true
 
 func _on_exit_menu_pressed():
+	Global.zero_stats()
 	$"../UI/PauseMenu/PressButtonSound".play()
 	await $"../UI/PauseMenu/PressButtonSound".finished
 	Global.game_paused_menu = false
 	Global.game_paused_shop = false
 	get_tree().paused = false
-	Global.zero_stats()
 	get_tree().change_scene_to_file("res://Scenes/menu.tscn")
