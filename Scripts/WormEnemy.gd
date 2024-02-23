@@ -187,32 +187,32 @@ func _on_player_in_area_body_exited(body):
 		in_area = false
 
 func _on_main_upgrade_timer_timeout():
-	upgrade_times += 1
-	if upgrade_times < 4:
-		Global.Worm_damage = int(Global.Worm_damage * 1.2)
+	if upgrade_times <= 4:
+		Global.Worm_damage = int(Global.Worm_damage * 1.1)
 		Worm_max_health = int(Worm_max_health * 1.15)
 		Worm_speed = int(Worm_speed * 1.05)
 		Worm_EXP_cost = int(Worm_EXP_cost * 1.2)
 		Worm_left_gold += 1
 		Worm_right_gold += 1
 	elif upgrade_times > 4 and upgrade_times < 10:
-		Global.Worm_damage = int(Global.Worm_damage * 1.5)
-		Worm_max_health = int(Worm_max_health * 1.4)
+		Global.Worm_damage = int(Global.Worm_damage * 1.2)
+		Worm_max_health = int(Worm_max_health * 1.2)
 		Worm_speed = int(Worm_speed * 1.15)
 		Worm_EXP_cost = int(Worm_EXP_cost * 1.6)
 		Worm_left_gold += 3
 		Worm_right_gold += 3
 	elif upgrade_times > 10 and upgrade_times < 20:
-		Global.Worm_damage = int(Global.Worm_damage * 2)
-		Worm_max_health = int(Worm_max_health * 1.8)
+		Global.Worm_damage = int(Global.Worm_damage * 1.4)
+		Worm_max_health = int(Worm_max_health * 1.4)
 		Worm_speed = int(Worm_speed * 1.3)
 		Worm_EXP_cost = int(Worm_EXP_cost * 2.5)
 		Worm_left_gold += 6
 		Worm_right_gold += 6
 	elif upgrade_times > 20:
-		Global.Worm_damage = int(Global.Worm_damage * 4)
-		Worm_max_health = int(Worm_max_health * 3)
+		Global.Worm_damage = int(Global.Worm_damage * 1.75)
+		Worm_max_health = int(Worm_max_health * 1.75)
 		Worm_speed = int(Worm_speed * 2)
 		Worm_EXP_cost = int(Worm_EXP_cost * 5)
 		Worm_left_gold += 15
 		Worm_right_gold += 15
+	upgrade_times += 1

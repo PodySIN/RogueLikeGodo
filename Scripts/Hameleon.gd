@@ -153,35 +153,35 @@ func _on_damage_timer_timeout():
 	$Damage_label_shotgun.visible = false
 
 func _on_main_upgrade_timer_timeout():
-	upgrade_times += 1
-	if upgrade_times < 4:
-		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.15)
-		Hameleon_max_health = int(Hameleon_max_health * 1.15)
+	if upgrade_times <= 4:
+		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.07)
+		Hameleon_max_health = int(Hameleon_max_health * 1.07)
 		Hameleon_speed = int(Hameleon_speed * 1.05)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 1.2)
 		Hameleon_left_gold += 1
 		Hameleon_right_gold += 1
 	elif upgrade_times > 4 and upgrade_times < 10:
-		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.4)
-		Hameleon_max_health = int(Hameleon_max_health * 1.4)
+		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.13)
+		Hameleon_max_health = int(Hameleon_max_health * 1.13)
 		Hameleon_speed = int(Hameleon_speed * 1.15)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 1.6)
 		Hameleon_left_gold += 3
 		Hameleon_right_gold += 3
 	elif upgrade_times > 10 and upgrade_times < 20:
-		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.8)
-		Hameleon_max_health = int(Hameleon_max_health * 1.8)
+		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.19)
+		Hameleon_max_health = int(Hameleon_max_health * 1.19)
 		Hameleon_speed = int(Hameleon_speed * 1.3)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 2.5)
 		Hameleon_left_gold += 6
 		Hameleon_right_gold += 6
 	elif upgrade_times > 20:
-		Global.Hameleon_damage = int(Global.Hameleon_damage * 3)
-		Hameleon_max_health = int(Hameleon_max_health * 3)
+		Global.Hameleon_damage = int(Global.Hameleon_damage * 1.4)
+		Hameleon_max_health = int(Hameleon_max_health * 1.4)
 		Hameleon_speed = int(Hameleon_speed * 2)
 		Hameleon_EXP_cost = int(Hameleon_EXP_cost * 5)
 		Hameleon_left_gold += 15
 		Hameleon_right_gold += 15
+	upgrade_times += 1
 
 func _on_enemy_hitbox_area_entered(area):
 	if area.name == 'Bullet':

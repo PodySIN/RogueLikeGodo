@@ -177,28 +177,28 @@ func _on_attack_anim_cd_timeout():
 	$attack_anim_cd.stop()
 
 func _on_main_upgrade_timer_timeout():
-	upgrade_times += 1
-	if upgrade_times < 4:
-		Global.Flower_damage = int(Global.Flower_damage * 1.15)
-		Flower_max_health = int(Flower_max_health * 1.15)
+	if upgrade_times <= 4:
+		Global.Flower_damage = int(Global.Flower_damage * 1.07)
+		Flower_max_health = int(Flower_max_health * 1.07)
 		Flower_EXP_cost = int(Flower_EXP_cost * 1.2)
 		Flower_left_gold += 1
 		Flower_right_gold += 1
-	elif upgrade_times > 4 and upgrade_times < 10:
-		Global.Flower_damage = int(Global.Flower_damage * 1.4)
-		Flower_max_health = int(Flower_max_health * 1.4)
-		Flower_EXP_cost = int(Flower_EXP_cost * 1.6)
+	elif upgrade_times > 4 and upgrade_times <= 10:
+		Global.Flower_damage = int(Global.Flower_damage * 1.13)
+		Flower_max_health = int(Flower_max_health * 1.13)
+		Flower_EXP_cost = int(Flower_EXP_cost * 1.5)
 		Flower_left_gold += 3
 		Flower_right_gold += 3
-	elif upgrade_times > 10 and upgrade_times < 20:
-		Global.Flower_damage = int(Global.Flower_damage * 1.8)
-		Flower_max_health = int(Flower_max_health * 1.8)
-		Flower_EXP_cost = int(Flower_EXP_cost * 2.5)
+	elif upgrade_times > 10 and upgrade_times <= 20:
+		Global.Flower_damage = int(Global.Flower_damage * 1.19)
+		Flower_max_health = int(Flower_max_health * 1.19)
+		Flower_EXP_cost = int(Flower_EXP_cost * 2)
 		Flower_left_gold += 6
 		Flower_right_gold += 6
 	elif upgrade_times > 20:
-		Global.Flower_damage = int(Global.Flower_damage * 3)
-		Flower_max_health = int(Flower_max_health * 3)
-		Flower_EXP_cost = int(Flower_EXP_cost * 5)
+		Global.Flower_damage = int(Global.Flower_damage * 1.4)
+		Flower_max_health = int(Flower_max_health * 1.4)
+		Flower_EXP_cost = int(Flower_EXP_cost * 4)
 		Flower_left_gold += 15
 		Flower_right_gold += 15
+	upgrade_times += 1

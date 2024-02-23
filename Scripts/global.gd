@@ -38,11 +38,11 @@ var array_level_stats_info = [
 '+12 atk','+25% atk','+75 hp','+15% crit.ch','+50 ms','+20% crit.dmg','+8 armor','+8% evasive',]
 
 var array_level_stats_upgrade =[
- 1,2,5,1,10,0.02,1,1,
- 2,5,10,2,20,0.04,2,2,
- 4,10,20,5,50,0.07,3,3,
- 7,16,40,9,90,0.12,5,5,
- 12,25,75,15,150,0.2,8,8,
+ 1,2,5,1,5,0.02,1,1,
+ 2,5,10,2,10,0.04,2,2,
+ 4,10,20,5,15,0.07,3,3,
+ 7,16,40,9,25,0.12,5,5,
+ 12,25,75,15,50,0.2,8,8,
 ]
 
 var array_level_stats_textures = [
@@ -90,9 +90,9 @@ var weapon_instances: Array = [0,1,2,3,4,5]
 #--------------------player_stats-------------------------------
 var player_hp_percentage: = 0
 var owner_damage_percentage: float = 1
-var owner_damage: int = 0
-var player_max_health: int = 100
-var player_health: int = 100
+var owner_damage: int = 20
+var player_max_health: int = 1000
+var player_health: int = 1000
 var player_speed: int = 200
 var player_hp_regen: int = 10
 var player_crit_chance: int = 5
@@ -112,7 +112,7 @@ var item4: int = 0
 var buy_oportunity: Array = [true,true,true,true]
 var level_buy_oportunity: Array = [true,true,true,true]
 var buying_item_array = [item1 ,item2 ,item3 ,item4]
-var array_of_costs: Array = [20,32,23,37,28,18,24,27,36,46,37,58,48,56,44,105,110,125]
+var array_of_costs: Array = [26,32,28,37,28,20,24,27,36,40,37,51,48,51,44,66,74,83]
 var array_of_names_items: Array = ['Pistol','Rifle','Uzi','Kar','Shotgun',
 'Shield','StrenghtPotion','SharkOmulet',
 'Book of Stone','Book fo blood','Book of fate',
@@ -288,6 +288,8 @@ func zero_stats():
 	counter_guns = 1
 	if Class_select != 8:
 		array_players_guns = ['Pistol']
+	if Class_select == 8:
+		array_players_guns = ['']
 	player_crit_chance = 5
 	player_max_health = 100
 	player_health = 100
