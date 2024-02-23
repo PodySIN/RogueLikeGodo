@@ -699,7 +699,7 @@ scale = Vector2(2.14063, 2.14063)
 sprite_frames = SubResource("SpriteFrames_xbo1y")
 animation = &"Bite"
 autoplay = "Idle"
-frame_progress = 0.631533
+frame_progress = 0.373916
 
 [node name="RaptorCollision" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -13)
