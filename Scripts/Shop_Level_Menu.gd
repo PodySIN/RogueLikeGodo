@@ -190,6 +190,10 @@ func buy_items(buy_oportunity_number, item):
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 5 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 25
+		Global.player_previous_health += 25
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.player_speed -= 10
 		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
@@ -197,7 +201,13 @@ func buy_items(buy_oportunity_number, item):
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 6 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.owner_damage += 5
 		Global.owner_damage_percentage += 5
+		Global.player_previous_owner_damage += 5
+		Global.player_previous_owner_damage_percentage += 5
 		Global.player_max_health -= 5
+		Global.player_previous_health -= 5
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 7 and Global.array_of_costs[item] <= Global.GOLD:
@@ -213,7 +223,11 @@ func buy_items(buy_oportunity_number, item):
 		Global.buy_oportunity[buy_oportunity_number] = false
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 9 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 10
+		Global.player_previous_health += 10
 		Global.player_hp_regen += 5
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
@@ -247,6 +261,12 @@ func buy_items(buy_oportunity_number, item):
 		Global.owner_damage += 10
 		Global.player_max_health -= 50
 		Global.player_hp_regen -= 10
+		Global.player_previous_health -= 50
+		Global.player_previous_owner_damage += 10
+		Global.player_previous_owner_damage_percentage += 15
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
@@ -262,11 +282,16 @@ func buy_items(buy_oportunity_number, item):
 	elif Global.buy_oportunity[buy_oportunity_number] == true and item == 17 and Global.array_of_costs[item] <= Global.GOLD:
 		Global.player_max_health += 50
 		Global.player_hp_regen += 25
-		Global.player_health = Global.player_max_health
 		Global.player_armor += 3
 		Global.owner_damage += 10
+		Global.player_previous_health += 50
+		Global.player_previous_owner_damage += 10
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.player_speed -= 20
 		Global.player_miss_chance -= 10
+		Global.player_health = Global.player_max_health
 		Global.GOLD -= Global.array_of_costs[item]
 		Global.buy_oportunity[buy_oportunity_number] = false
 
@@ -489,7 +514,10 @@ func buy(a):
 		elif a == 1 or a == 9 or a == 17 or a == 25 or a == 33:
 			Global.owner_damage_percentage += Global.array_level_stats_upgrade[a]
 		elif a == 2 or a == 10 or a == 18 or a == 26 or a == 34:
-			Global.player_max_health += Global.array_level_stats_upgrade[a]
+			Global.player_previous_health += Global.array_level_stats_upgrade[a]
+			Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+			Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+			Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 			Global.player_health = Global.player_max_health
 			Signals.emit_signal("health_upgraded", Global.player_health)
 		elif a == 3 or a == 11 or a == 19 or a == 27 or a == 35:

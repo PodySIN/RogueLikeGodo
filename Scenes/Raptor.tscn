@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://rvsdnfajgomn"]
+[gd_scene load_steps=116 format=3 uid="uid://rvsdnfajgomn"]
 
 [ext_resource type="Script" path="res://Scripts/Raptor.gd" id="1_db7ag"]
 [ext_resource type="Texture2D" uid="uid://chlarwqutfsb5" path="res://Assets/Enemy/ReaptorBoss/raptor-bite.png" id="2_eagam"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://ba2ufv6coenaq" path="res://Assets/Other/Music/Raptor_death_sound.mp3" id="17_h81u4"]
 [ext_resource type="AudioStream" uid="uid://46m6r6gltmwv" path="res://Assets/Other/Music/Raptor_scan_sound.mp3" id="18_243kq"]
 [ext_resource type="AudioStream" uid="uid://b150qvwbcqfaf" path="res://Assets/Other/Music/Raptor_PounceAttack_sound.mp3" id="19_at6nu"]
+[ext_resource type="AudioStream" uid="uid://er2q5nen4cyx" path="res://Assets/Other/Music/Raptor_FirghtTheme_music.mp3" id="20_shwjt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r7y52"]
 atlas = ExtResource("2_eagam")
@@ -654,6 +655,72 @@ bg_color = Color(0, 0, 0, 1)
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_01vwn"]
 bg_color = Color(0.780392, 0.0470588, 0, 1)
 
+[sub_resource type="Animation" id="Animation_bgfde"]
+resource_name = "BossSpawned"
+length = 1.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossSpawnedLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["T", "Th", "The", "The L", "The La", "The Las", "The Last", "The Last R", "The Last Ra", "The Last Rap", "The Last Rapt", "The Last Rapto", "The Last Raptor"]
+}
+
+[sub_resource type="Animation" id="Animation_6jvqr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossSpawnedLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["T"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("BossDiedLabel:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["R"]
+}
+
+[sub_resource type="Animation" id="Animation_upls4"]
+resource_name = "WinAnimation"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BossDiedLabel:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": ["R", "Ra", "Rap", "Rapt", "Rapto", "Raptor", "Raptor w", "Raptor wa", "Raptor was", "Raptor was k", "Raptor was ki", "Raptor was kil", "Raptor was kill", "Raptor was kille", "Raptor was killed", "Raptor was killed!"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_v7hxa"]
+_data = {
+"BossSpawned": SubResource("Animation_bgfde"),
+"RESET": SubResource("Animation_6jvqr"),
+"WinAnimation": SubResource("Animation_upls4")
+}
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_otif0"]
 atlas = ExtResource("15_aevgv")
 region = Rect2(112, 80, 16, 16)
@@ -677,10 +744,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_jj64k"]
-radius = 372.0
+radius = 334.006
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lk7ml"]
-radius = 313.002
+radius = 269.017
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fk3y"]
 radius = 13.1529
@@ -718,27 +785,57 @@ polygon = PackedVector2Array(3, -1, -9, 0, -19, -1, -13, -14, -21, -19, -25, -33
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="UI"]
-offset_left = 1280.0
-offset_top = 1002.0
-offset_right = 7591.0
-offset_bottom = 1673.0
+offset_left = 1130.0
+offset_top = 986.0
+offset_right = 8946.0
+offset_bottom = 1817.0
 scale = Vector2(0.1, 0.1)
 size_flags_vertical = 8
 theme_override_fonts/font = ExtResource("14_d4tjn")
 theme_override_font_sizes/font_size = 400
 theme_override_styles/background = SubResource("StyleBoxFlat_5kweb")
 theme_override_styles/fill = SubResource("StyleBoxFlat_01vwn")
-value = 23.0
+value = 25.0
 
 [node name="HelthBarLabel" type="Label" parent="UI/HealthBar"]
 layout_mode = 0
-offset_left = 90.0
-offset_top = 120.0
-offset_right = 2733.0
-offset_bottom = 660.0
+offset_left = 140.0
+offset_top = 130.0
+offset_right = 3443.0
+offset_bottom = 670.0
 theme_override_fonts/font = ExtResource("14_d4tjn")
-theme_override_font_sizes/font_size = 400
+theme_override_font_sizes/font_size = 500
 text = "LAST RAPTOR:"
+
+[node name="BossSpawnedLabel" type="Label" parent="UI"]
+visible = false
+offset_left = -1.0
+offset_top = 396.0
+offset_right = 1920.0
+offset_bottom = 658.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("14_d4tjn")
+theme_override_font_sizes/font_size = 250
+text = "T"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BossDiedLabel" type="Label" parent="UI"]
+visible = false
+offset_top = 419.0
+offset_right = 1914.0
+offset_bottom = 654.0
+theme_override_colors/font_color = Color(0.690196, 0, 0.254902, 1)
+theme_override_fonts/font = ExtResource("14_d4tjn")
+theme_override_font_sizes/font_size = 225
+text = "R"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_v7hxa")
+}
 
 [node name="Timers" type="Node2D" parent="."]
 
@@ -755,6 +852,13 @@ autostart = true
 [node name="PounceCDTimer" type="Timer" parent="Timers"]
 wait_time = 15.0
 autostart = true
+
+[node name="BossSpawnedLabel" type="Timer" parent="Timers"]
+wait_time = 1.5
+autostart = true
+
+[node name="WinTimer" type="Timer" parent="Timers"]
+wait_time = 2.0
 
 [node name="Sounds" type="Node2D" parent="."]
 
@@ -776,6 +880,10 @@ volume_db = -8.0
 [node name="PounceSound" type="AudioStreamPlayer" parent="Sounds"]
 stream = ExtResource("19_at6nu")
 volume_db = -5.0
+
+[node name="FightThemeMusic" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("20_shwjt")
+autoplay = true
 
 [node name="Labels" type="Node2D" parent="."]
 
@@ -842,6 +950,7 @@ sprite_frames = SubResource("SpriteFrames_sdgis")
 animation = &"fire"
 
 [node name="ROAR" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -850,6 +959,7 @@ position = Vector2(0, -18)
 shape = SubResource("CircleShape2D_jj64k")
 
 [node name="Pounce" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -858,6 +968,7 @@ position = Vector2(0, -16)
 shape = SubResource("CircleShape2D_lk7ml")
 
 [node name="Pounce_hit area" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -866,6 +977,7 @@ position = Vector2(25, -19)
 shape = SubResource("CircleShape2D_8fk3y")
 
 [node name="Bite_hit_area" type="Area2D" parent="."]
+visible = false
 collision_layer = 4
 collision_mask = 2
 
@@ -878,6 +990,8 @@ shape = SubResource("RectangleShape2D_ec6ik")
 [connection signal="timeout" from="Timers/Hp_regen_timer" to="." method="_on_hp_regen_timer_timeout"]
 [connection signal="timeout" from="Timers/RoarCDtimer" to="." method="_on_roar_c_dtimer_timeout"]
 [connection signal="timeout" from="Timers/PounceCDTimer" to="." method="_on_pounce_cd_timer_timeout"]
+[connection signal="timeout" from="Timers/BossSpawnedLabel" to="." method="_on_boss_spawned_label_timeout"]
+[connection signal="timeout" from="Timers/WinTimer" to="." method="_on_win_timer_timeout"]
 [connection signal="finished" from="Sounds/StepSound" to="." method="_on_step_sound_finished"]
 [connection signal="body_entered" from="ROAR" to="." method="_on_roar_body_entered"]
 [connection signal="body_exited" from="ROAR" to="." method="_on_roar_body_exited"]

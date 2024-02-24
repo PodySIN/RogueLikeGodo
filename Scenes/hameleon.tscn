@@ -240,7 +240,7 @@ script = ExtResource("1_fjmrv")
 scale = Vector2(0.869792, 1)
 sprite_frames = SubResource("SpriteFrames_lmrv3")
 animation = &"attack"
-frame_progress = 0.0368207
+frame_progress = 0.967545
 offset = Vector2(-20, -19)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

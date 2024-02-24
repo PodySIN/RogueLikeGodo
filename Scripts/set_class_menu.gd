@@ -7,7 +7,7 @@ func _on_balanced_pressed():
 	
 func _on_fatty_pressed():
 	Global.Class_select = 2
-	$UI/ClassInfo/Label.text = '+250 HP\n+30% HP\n+10 HPRegen\n+5Armor\n-35 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
+	$UI/ClassInfo/Label.text = '+150 HP\n+15% HP\n+5 HPRegen\n+3 Armor\n-20 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
 	$UI/ClassInfo.visible = true
 
 func _on_warrior_pressed():
@@ -65,7 +65,7 @@ func _on_lizard_mouse_entered():
 	$focus.play()
 
 func _on_get_pressed():
-	if Global.Class_select == 1:
+	if Global.Class_select == 1: ##сбалансированный
 		Global.player_max_health += 50
 		Global.player_hp_regen += 5
 		Global.player_health += 50
@@ -75,16 +75,16 @@ func _on_get_pressed():
 		Global.player_crit_damage += 0.15
 		Global.player_speed += 25
 		Global.GOLD += 10
-	elif Global.Class_select == 2:
-		Global.player_max_health += 250
-		Global.player_hp_percentage += 30
-		Global.player_armor += 5
-		Global.player_hp_regen += 10
-		Global.player_health += 250
-		Global.player_speed -= 35
+	elif Global.Class_select == 2:## толстяк
+		Global.player_max_health += 150
+		Global.player_hp_percentage += 15
+		Global.player_armor += 3
+		Global.player_hp_regen += 5
+		Global.player_health += 150
+		Global.player_speed -= 20
 		Global.player_crit_chance -= 5
-		Global.player_crit_damage -= 10
-	elif Global.Class_select == 3:
+		Global.player_crit_damage -= 0.1
+	elif Global.Class_select == 3:## воин
 		Global.player_max_health -= 99
 		Global.player_hp_regen -= 10
 		Global.player_health -= 99

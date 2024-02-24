@@ -2,6 +2,7 @@ extends CharacterBody2D
 #------------------------------------vars--------------------
 @onready var ap = $Animations
 @onready var player = $"../../Hero/Hero"
+@onready var BG_music = $"../../Sounds/BGMUSIC"
 var player_dmg = Global.Pistol_damage
 var playerrifle_dmg = 0
 var playeruzi_dmg = 0
@@ -55,8 +56,12 @@ var state: int = 0:
 				roar_state()
 
 func _ready():
+	BG_music.stop()
+	$UI/BossSpawnedLabel.visible = true
+	$UI/BossDiedLabel.visible = false
+	$UI/AnimationPlayer.play('BossSpawned')
 	for i in range(Global.Raptor_kill_times):
-		Raptor_armor *= 1.25
+		Raptor_armor *= 1.1
 		Raptor_Bite_damage *= 1.5
 		Raptor_max_health *= 1.25
 		Raptor_health *= 1.25
@@ -64,7 +69,7 @@ func _ready():
 		Raptor_ROAR_damage *= 1.5
 		Raptor_Pounce_damage *= 1.5
 		Raptor_speed *= 1.2
-		Raptor_GOLD_cost *= 1.1
+		Raptor_GOLD_cost *= 1.2
 		Raptor_armor = int(Raptor_armor)
 		Raptor_Bite_damage = int(Raptor_Bite_damage)
 		Raptor_max_health = int(Raptor_max_health)
@@ -140,12 +145,17 @@ func death_state():
 	ap.play('Death')
 	$RaptorCollision.disabled = true
 	$Enemy_hitbox.collision_layer = 8
-	Global.UpgradesCounter += 5 - Global.UpgradesCounter
-	Global.GOLD += Raptor_GOLD_cost
-	Global.ALL_KILLS_IN_GAME += 1
 	if $Sounds/DeathSound.playing == false:
+		BG_music.play()
+		$Sounds/FightThemeMusic.stop()
+		$UI/BossDiedLabel.visible = true
+		$UI/AnimationPlayer.play('WinAnimation')
+		$Timers/WinTimer.start()
 		$Sounds/DeathSound.play()
+		Global.GOLD += Raptor_GOLD_cost
 		Global.Raptor_kill_times += 1
+		Global.ALL_KILLS_IN_GAME += 1
+		Global.UpgradesCounter += 5 - Global.UpgradesCounter
 	await get_tree().create_timer(1.8).timeout
 	queue_free()
 
@@ -331,3 +341,10 @@ func _on_bite_hit_area_body_entered(body):
 func _on_bite_hit_area_body_exited(body):
 	if body.name == 'Hero':
 		Raptor_can_bite = false
+
+func _on_boss_spawned_label_timeout():
+	$UI/BossSpawnedLabel.visible = false
+	
+
+func _on_win_timer_timeout():
+	$UI/BossDiedLabel.visible = false

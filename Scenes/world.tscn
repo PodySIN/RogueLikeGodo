@@ -213,17 +213,46 @@ func _on_upgrade_timer_timeout():
 		$Mobs/Spawner.wait_time = 3.5
 		$Mobs/red_cross_spawner.wait_time = 2.5
 	elif Global.Game_Time == 420:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
 		$Mobs/Spawner.wait_time = 3
 		$Mobs/red_cross_spawner.wait_time = 2
 	elif Global.Game_Time == 480:
 		$Mobs/Spawner.wait_time = 2.5
 		$Mobs/red_cross_spawner.wait_time = 1.5
 	elif Global.Game_Time == 540:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
 		$Mobs/Spawner.wait_time = 2
 		$Mobs/red_cross_spawner.wait_time = 1
 	elif Global.Game_Time == 600:
 		$Mobs/Spawner.wait_time = 1.5
 		$Mobs/red_cross_spawner.wait_time = 0.5
+	elif Global.Game_Time == 660:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
+	elif Global.Game_Time == 720:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
+	elif Global.Game_Time == 780:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
+	elif Global.Game_Time == 840:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(900,550)
+		$Mobs.add_child(RAPTOR)
+	elif Global.Game_Time == 900:
+		var RAPTOR = RAPTOR_preload.instantiate()
+		var RAPTOR2 = RAPTOR_preload.instantiate()
+		RAPTOR.position = Vector2(600,500)
+		RAPTOR2.position = Vector2(1200,500)
+		$Mobs.add_child(RAPTOR)
+		$Mobs.add_child(RAPTOR2)
 
 func _on_stat_upgrade_timer_timeout():
 	Signals.emit_signal('Upgradetime')

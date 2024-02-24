@@ -654,9 +654,9 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
 
 [node name="Label1Info" type="Label" parent="Item1Info"]
 layout_mode = 0
-offset_left = 65.0
+offset_left = 71.0
 offset_top = 23.0
-offset_right = 284.0
+offset_right = 276.0
 offset_bottom = 222.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
@@ -678,10 +678,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
 
 [node name="Label2Info" type="Label" parent="Item2Info"]
 layout_mode = 0
-offset_left = 65.0
+offset_left = 78.0
 offset_top = 23.0
-offset_right = 284.0
-offset_bottom = 222.0
+offset_right = 276.0
+offset_bottom = 230.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 22
@@ -702,10 +702,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
 
 [node name="Label3Info" type="Label" parent="Item3Info"]
 layout_mode = 0
-offset_left = 65.0
+offset_left = 78.0
 offset_top = 23.0
-offset_right = 284.0
-offset_bottom = 239.0
+offset_right = 276.0
+offset_bottom = 229.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 22
@@ -726,10 +726,10 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_i0awt")
 
 [node name="Label4Info" type="Label" parent="Item4Info"]
 layout_mode = 0
-offset_left = 65.0
+offset_left = 79.0
 offset_top = 23.0
-offset_right = 286.0
-offset_bottom = 243.0
+offset_right = 277.0
+offset_bottom = 241.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_cau25")
 theme_override_font_sizes/font_size = 22

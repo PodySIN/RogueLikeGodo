@@ -31,8 +31,12 @@ func _ready():
 			Global.weapon_instances[0].position = Vector2(13,-23)
 			$Weapons.add_child(Global.weapon_instances[0])
 	if Global.Class_select == 2:
-		Global.owner_damage_percentage = int(Global.player_max_health / 10) + Global.owner_damage_percentage
-		Global.owner_damage = (int(Global.player_max_health / 100) * 5) + Global.owner_damage
+		Global.player_previous_health = Global.player_max_health
+		Global.player_previous_owner_damage = Global.owner_damage
+		Global.player_previous_owner_damage_percentage = Global.owner_damage_percentage
+		Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+		Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+		Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 	Signals.connect('Stump_hit', Callable(self, 'on_stump_bullet_damage_received'))
 	Signals.connect('Worm_hit', Callable(self, 'on_worm_bullet_damage_received'))
 	Signals.connect('Flower_hit', Callable(self, 'on_Flower_bullet_damage_received'))

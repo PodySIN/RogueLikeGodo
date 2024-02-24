@@ -1,9 +1,10 @@
+AudioStreamPlayer
+Timer
+AnimationPlayer
+Label
 CollisionShape2D
 Area2D
 CollisionPolygon2D
-AudioStreamPlayer
-Timer
-Label
 Node2D
 CanvasLayer
 AnimatedSprite2D
@@ -11,4 +12,3 @@ CharacterBody2D
 Button
 Panel
 Control
-Container
