@@ -49,6 +49,7 @@ func _on_quit_shop_pressed():
 	LVLED_UP = false
 	Global.game_paused_shop = !Global.game_paused_shop
 
+
 func update_player_level():
 
 	var previous_level = Global.Level
@@ -63,9 +64,11 @@ func update_player_level():
 		Global.player_max_health += Global.HP_gained_from_lvl
 		Global.owner_damage += Global.DMG_gained_from_lvl
 		if Global.Class_select == 2:
-			Global.player_max_health = Global.player_max_health + (Global.player_max_health * 0.02)
-			Global.owner_damage_percentage = int(Global.player_max_health * 0.02) + Global.owner_damage_percentage
-			Global.owner_damage = int(Global.player_max_health * 0.005) + Global.owner_damage
+			Global.player_previous_owner_damage += 3
+			Global.player_previous_health += 10
+			Global.player_max_health = Global.player_previous_health * (1.0 + (Global.player_hp_percentage / 100))
+			Global.owner_damage_percentage = int(Global.player_previous_health * 0.05) + Global.player_previous_owner_damage_percentage
+			Global.owner_damage = (int(Global.player_previous_health * 0.05)) + Global.player_previous_owner_damage
 		Global.player_health = Global.player_max_health
 		if Global.Class_select != 8:
 			Global.item1 = randi_range(0,4)

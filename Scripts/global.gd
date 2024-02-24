@@ -56,7 +56,7 @@ var level_stats: Array = [0,0,0,0]
 var chances_on_lvl: Array = [0,0,0,0]
 
 var HP_gained_from_lvl: int = 10
-var DMG_gained_from_lvl: int = 1
+var DMG_gained_from_lvl: int = 3
 ##-----------------------------level_stats--------------------------------------
 var player_get_random_crit: int = 100
 var ALL_DAMAGE_IN_GAME: int = 0
@@ -88,11 +88,14 @@ var weapon_instances: Array = [0,1,2,3,4,5]
 #--------------------guns_stats-------------------------------
 
 #--------------------player_stats-------------------------------
-var player_hp_percentage: = 0
+var player_hp_percentage: float = 0.0
 var owner_damage_percentage: float = 1
-var owner_damage: int = 20
-var player_max_health: int = 1000
-var player_health: int = 1000
+var owner_damage: int = 0
+var player_max_health: int = 100
+var player_health: int = 100
+var player_previous_health: int = player_max_health
+var player_previous_owner_damage: int = owner_damage
+var player_previous_owner_damage_percentage: float = owner_damage_percentage
 var player_speed: int = 200
 var player_hp_regen: int = 10
 var player_crit_chance: int = 5
