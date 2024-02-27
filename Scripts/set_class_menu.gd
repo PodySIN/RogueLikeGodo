@@ -7,7 +7,7 @@ func _on_balanced_pressed():
 	
 func _on_fatty_pressed():
 	Global.Class_select = 2
-	$UI/ClassInfo/Label.text = '+150 HP\n+15% HP\n+5 HPRegen\n+3 Armor\n-20 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
+	$UI/ClassInfo/Label.text = '+100 HP\n+15% HP\n-3 Armor\n-20 ms\n-5% critchance\n-10% critdmg\nУвеличивает урон за хп'
 	$UI/ClassInfo.visible = true
 
 func _on_warrior_pressed():
@@ -76,16 +76,17 @@ func _on_get_pressed():
 		Global.player_speed += 25
 		Global.GOLD += 10
 	elif Global.Class_select == 2:## толстяк
-		Global.player_max_health += 150
+		Global.player_max_health += 100
+		Global.player_previous_health += 100
 		Global.player_hp_percentage += 15
-		Global.player_armor += 3
-		Global.player_hp_regen += 5
-		Global.player_health += 150
+		Global.player_armor -= 3
+		Global.player_health += 100
 		Global.player_speed -= 20
 		Global.player_crit_chance -= 5
 		Global.player_crit_damage -= 0.1
 	elif Global.Class_select == 3:## воин
 		Global.player_max_health -= 99
+		Global.player_previous_health -= 99
 		Global.player_hp_regen -= 10
 		Global.player_health -= 99
 		Global.owner_damage += 15
@@ -100,12 +101,14 @@ func _on_get_pressed():
 		Global.player_miss_chance += 15
 	elif Global.Class_select == 5:
 		Global.player_max_health -= 75
+		Global.player_previous_health -= 75
 		Global.player_health -= 75
 		Global.owner_damage -= 5
 		Global.player_gold_per_time += 10
 		Global.GOLD += 50
 	elif Global.Class_select == 6:
 		Global.player_max_health += 100
+		Global.player_previous_health += 100
 		Global.player_hp_regen += 10
 		Global.player_health += 100
 		Global.owner_damage += 7
@@ -116,6 +119,7 @@ func _on_get_pressed():
 		Global.player_gold_per_time -= 5
 	elif Global.Class_select == 7:
 		Global.player_max_health -= 25
+		Global.player_previous_health -= 25
 		Global.player_health -= 25
 		Global.owner_damage += 2
 		Global.owner_damage_percentage += 5
@@ -124,6 +128,7 @@ func _on_get_pressed():
 		Global.player_speed += 25
 	elif Global.Class_select == 8:
 		Global.player_max_health += 200
+		Global.player_previous_health += 200
 		Global.player_armor += 10
 		Global.player_hp_regen += 75
 		Global.player_health += 200

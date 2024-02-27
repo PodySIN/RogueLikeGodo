@@ -261,3 +261,6 @@ func on_miss_received():
 	$MissLabel1.visible = false
 	$MissLabel2.visible = false
 	$MissLabel3.visible = false
+
+func _on_sword_timer_timeout():
+	Signals.emit_signal('sword_slash')

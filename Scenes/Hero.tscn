@@ -229,6 +229,10 @@ autostart = true
 wait_time = 2.75
 autostart = true
 
+[node name="SwordTimer" type="Timer" parent="TimersWeapon"]
+wait_time = 2.0
+autostart = true
+
 [node name="Sounds" type="Node2D" parent="."]
 
 [node name="Steps" type="AudioStreamPlayer" parent="Sounds"]
@@ -328,3 +332,4 @@ text = "Miss"
 [connection signal="timeout" from="TimersWeapon/UziTimer" to="." method="_on_uzi_timer_timeout"]
 [connection signal="timeout" from="TimersWeapon/KarTimer" to="." method="_on_kar_timer_timeout"]
 [connection signal="timeout" from="TimersWeapon/ShotgunTimer" to="." method="_on_shotgun_timer_timeout"]
+[connection signal="timeout" from="TimersWeapon/SwordTimer" to="." method="_on_sword_timer_timeout"]
