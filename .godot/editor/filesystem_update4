@@ -12,5 +12,5 @@ res://Scenes/flower.tscn
 res://Scenes/pause_menu.tscn
 res://Scenes/pistol.tscn
 res://Scenes/shotgun.tscn
+res://Scripts/global.gd
 res://Scripts/set_class_menu.gd
-res://Scripts/shop_level_menu.gd

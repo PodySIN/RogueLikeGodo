@@ -278,6 +278,7 @@ func armor_calculating():
 	return armor_calculate
 	
 func zero_stats():
+	array_of_costs = [26,32,28,37,28,20,24,27,36,40,37,51,48,51,44,66,74,83]
 	player_hp_percentage = 0
 	GOLD = 10
 	EXP = 0
