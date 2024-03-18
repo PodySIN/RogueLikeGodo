@@ -1,10 +1,10 @@
+AudioStreamPlayer
 Sprite2D
 AnimatedSprite2D
 Timer
 CollisionShape2D
 AnimationPlayer
 Area2D
-AudioStreamPlayer
 Label
 CollisionPolygon2D
 Node2D

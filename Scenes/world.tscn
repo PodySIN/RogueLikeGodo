@@ -165,7 +165,7 @@ func enemy_spawn():
 		await get_tree().create_timer(1).timeout
 		Worm.position = red_cross.position
 		$Mobs.add_child(Worm)
-	if coller > 5 and Global.Flower_counter < 3:
+	if coller > 5 and Global.Flower_counter < 3 and coller % 2 == 0:
 		red_cross = red_cross_preload.instantiate()
 		red_cross.position = Vector2(randi_range(465,1375), randi_range(270,720))
 		$Mobs.add_child(red_cross)

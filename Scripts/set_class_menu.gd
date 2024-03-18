@@ -2,7 +2,7 @@ extends Control
 
 func _on_balanced_pressed():
 	Global.Class_select = 1
-	$UI/ClassInfo/Label.text = str('+75 HP\n+5 HPRegen\n+10 atk\n+10% atk\n+5% critchance\n+15% critdmg\n+25 ms\n+10 Start gold')
+	$UI/ClassInfo/Label.text = str('+60 HP\n+5 HPRegen\n+7 atk\n+10% atk\n+5% critchance\n+15% critdmg\n+25 ms\n+10 Start gold')
 	$UI/ClassInfo.visible = true
 	
 func _on_fatty_pressed():
@@ -32,12 +32,12 @@ func _on_comander_pressed():
 
 func _on_killer_pressed():
 	Global.Class_select = 7
-	$UI/ClassInfo/Label.text = '-25 HP\n+7 atk\n+5% atk\n+15% critchance\n+65% critdmg\n+25 ms\nС каждой минутой криты становятся сильнее'
+	$UI/ClassInfo/Label.text = '-25 HP\n+10 atk\n+5% atk\n+15% critchance\n+60% critdmg\n+25 ms\nС каждой минутой криты становятся сильнее'
 	$UI/ClassInfo.visible = true
 
 func _on_lizard_pressed():
 	Global.Class_select = 8
-	$UI/ClassInfo/Label.text = '+300 HP\n+75 HPRegen\n+10 armor\nБольше не может атаковать\nвозвращает урон (все враги 1 типа дальнего боя получают урон)'
+	$UI/ClassInfo/Label.text = '+200 HP\n+50 HPRegen\n+7 armor\nБольше не может атаковать\nвозвращает урон (все враги 1 типа дальнего боя получают урон)'
 	$UI/ClassInfo.visible = true
 
 func _on_killer_mouse_entered():
@@ -66,10 +66,10 @@ func _on_lizard_mouse_entered():
 
 func _on_get_pressed():
 	if Global.Class_select == 1: ##сбалансированный
-		Global.player_max_health += 75
+		Global.player_max_health += 60
 		Global.player_hp_regen += 5
-		Global.player_health += 50
-		Global.owner_damage += 10
+		Global.player_health += 60
+		Global.owner_damage += 7
 		Global.owner_damage_percentage += 10
 		Global.player_crit_chance += 5
 		Global.player_crit_damage += 0.15
@@ -121,17 +121,17 @@ func _on_get_pressed():
 		Global.player_max_health -= 25
 		Global.player_previous_health -= 25
 		Global.player_health -= 25
-		Global.owner_damage += 7
+		Global.owner_damage += 10
 		Global.owner_damage_percentage += 5
 		Global.player_crit_chance += 15
-		Global.player_crit_damage += 0.65
+		Global.player_crit_damage += 0.6
 		Global.player_speed += 25
 	elif Global.Class_select == 8:
-		Global.player_max_health += 300
-		Global.player_previous_health += 300
-		Global.player_armor += 10
-		Global.player_hp_regen += 75
-		Global.player_health += 300
+		Global.player_max_health += 200
+		Global.player_previous_health += 200
+		Global.player_armor += 7
+		Global.player_hp_regen += 50
+		Global.player_health += 200
 		Global.owner_damage -= 10000
 		Global.owner_damage_percentage -= 10000
 		Global.can_return_damage = true

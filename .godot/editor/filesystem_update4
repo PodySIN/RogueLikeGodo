@@ -14,3 +14,7 @@ res://Scenes/pistol.tscn
 res://Scenes/shotgun.tscn
 res://Scripts/global.gd
 res://Scripts/set_class_menu.gd
+res://Scripts/Flower.gd
+res://Scripts/Manager.gd
+res://Scripts/Raptor.gd
+res://Scenes/worm_bullet.tscn
