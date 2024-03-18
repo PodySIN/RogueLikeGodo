@@ -18,8 +18,8 @@ var Raptor_can_ROAR = true
 var armor
 var Raptor_can_bite = false
 #------------------------------------stats--------------------
-var Raptor_health: int = 2500
-var Raptor_max_health: int = 2500
+var Raptor_health: int = 2000
+var Raptor_max_health: int = 2000
 var Raptor_speed: int = 100
 var Raptor_health_regen: int = 50
 var Raptor_armor: float = 0.4
@@ -62,14 +62,14 @@ func _ready():
 	$UI/AnimationPlayer.play('BossSpawned')
 	for i in range(Global.Raptor_kill_times):
 		Raptor_armor *= 1.1
-		Raptor_Bite_damage *= 1.5
-		Raptor_max_health *= 1.25
-		Raptor_health *= 1.25
-		Raptor_health_regen *= 1.25
-		Raptor_ROAR_damage *= 1.5
-		Raptor_Pounce_damage *= 1.5
+		Raptor_Bite_damage *= 1.3
+		Raptor_max_health *= 1.2
+		Raptor_health *= 1.2
+		Raptor_health_regen *= 1.2
+		Raptor_ROAR_damage *= 1.25
+		Raptor_Pounce_damage *= 1.3
 		Raptor_speed *= 1.2
-		Raptor_GOLD_cost *= 1.2
+		Raptor_GOLD_cost *= 1.1
 		Raptor_armor = int(Raptor_armor)
 		Raptor_Bite_damage = int(Raptor_Bite_damage)
 		Raptor_max_health = int(Raptor_max_health)
@@ -79,6 +79,8 @@ func _ready():
 		Raptor_Pounce_damage = int(Raptor_Pounce_damage)
 		Raptor_speed = int(Raptor_speed)
 		Raptor_GOLD_cost = int(Raptor_GOLD_cost)
+	if Raptor_armor >= 0.9:
+		Raptor_armor = 0.9
 	state = SCAN
 	Signals.connect('bullet_hit', Callable (self, 'on_damage_received'))
 	Signals.connect('Riflebullet_hit', Callable(self, 'on_rifledamage_received'))

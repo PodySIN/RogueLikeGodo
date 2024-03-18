@@ -98,9 +98,11 @@ func update_player_level():
 			elif Global.Game_Time > 90 and Global.Game_Time <= 240:
 				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.1)
 			elif Global.Game_Time > 240 and Global.Game_Time <= 600:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.15)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.2)
 			elif Global.Game_Time > 600:
-				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.25)
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.35)
+			elif Global.Game_Time > 900:
+				Global.array_of_costs[i] = int(Global.array_of_costs[i] * 1.6)
 		Global.can_sell = true
 		Global.buying_item_array = [Global.item1 ,Global.item2 ,Global.item3 ,Global.item4]
 		Global.buy_oportunity = [true,true,true,true]
